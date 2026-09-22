@@ -4,6 +4,8 @@ Single-file, click-through prototype of the redesigned Etiya Campaign Management
 Iterated after each UX/UI redesign meeting (16–18 Sept 2026) and the follow-up sessions.
 
 **Open it:** download `index.html` and open it in a browser — no build, no server, no external calls (fonts are optional).
+On the first visit per role a welcome card offers a guided tour. Append **`?notour`** to the URL to suppress the welcome card
+and the resume prompt — useful for demos, screenshots and automated runs (automation is detected and suppressed anyway).
 With GitHub Pages enabled on this repo it is served at the repo's Pages URL.
 
 ## What is in the prototype (v41)
@@ -16,6 +18,7 @@ With GitHub Pages enabled on this repo it is served at the repo's Pages URL.
 - **Segments** workbench: definition + query builder + live audience insight; channel-scoped exclusion lists; Segment Groups in Parameters.
 - **Templates (design)** per channel — admin only; content is written inside deliveries.
 - **Reports**, **Parameters** (campaign form switches, rule defaults, channels & senders), **Release & licences**.
+- **Getting started** checklist per role, and **guided tours** with spotlight coachmarks — the campaign tour is interactive and ends with a real campaign waiting for approval.
 - **User manual** behind a button in the top bar — embedded in the file, so it works offline.
 - Etiya commercial palette; tooltips on every meaningful field.
 
@@ -32,6 +35,7 @@ tests/specs/                      Playwright regression specs
 tests/screenshots/                reference screenshots of the main screens
 tests/README.md                   how to run them and what they cover
 tools/embed-manual.js             copies the user manual into index.html
+tests/tour.js                     standalone regression run for the guided tours
 CHANGELOG.md
 ```
 
@@ -48,6 +52,13 @@ cd tests && npm install && npm test
 
 It opens `index.html` over `file://`, so there is nothing to build or serve. `npm run shots` refreshes
 `tests/screenshots/`.
+
+The guided tours have their own end-to-end run, which drives the whole campaign tour and writes its screenshots to
+`tests/shots/`:
+
+```bash
+cd tests && node tour.js
+```
 
 `docs/user-manual.md` is embedded in the prototype. After editing it, run `node tools/embed-manual.js`
 to copy it back into `index.html` — the test suite fails if the two drift apart.

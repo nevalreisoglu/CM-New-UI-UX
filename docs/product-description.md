@@ -171,6 +171,50 @@ Both carry a **simulation strip** (see §9).
 
 ---
 
+## 8b. Onboarding: Getting started and guided tours
+
+ECM is a product people are dropped into, usually with a deadline. The
+onboarding layer answers two questions — *what should I do first?* and *what is
+this control?* — without turning either into an obstacle.
+
+**The design principle: first-run guidance is shown once, can be restarted, and
+never blocks.** A welcome card appears once per role. Everything else is opt-in
+from the **?** button or the Getting started page. No tour prevents using the
+page underneath it: the spotlight leaves the target fully live, and Skip and
+Escape are on every step.
+
+**Getting started** is a checklist per role — the marketer's runs from the
+dashboard through a first campaign; the approver's is about the queue; the
+admin's is the five Parameters screens; the executive's is reading results.
+Items tick themselves off **from real application state wherever that can be
+observed** — a segment that was actually saved, a campaign that actually reached
+*Pending approval* — rather than from having sat through a tour. Watching a tour
+is not the same as having done the thing, and the checklist should not pretend
+otherwise. Journey and Program are listed but not yet built.
+
+**Guided tours** dim the page, cut a hole around one element and put a short
+explanation beside it, with a step counter and a progress bar. Two things make
+them more than a slideshow:
+
+- They are **interactive**. A step that asks you to name the campaign waits
+  until you have typed a name; a step that asks you to pick a channel waits
+  until a channel is picked. The tour follows the user, not a script. Every
+  such step also has a **Fill for me** link, so the same tour can be run as a
+  demo end to end without typing anything.
+- They follow the **real editor**. The campaign tour moves through the actual
+  eight steps and honours their rules — on an Info campaign the Offer step is
+  skipped, exactly as the editor skips it.
+
+Five tours ship: *Create your first campaign* (the important one — sixteen
+steps ending with a real campaign submitted for approval), *Create a segment*,
+*Review and approve a campaign*, *Read the dashboard*, and *Admin setup*.
+
+Progress is remembered per role, so a tour abandoned halfway offers to resume.
+A tour is written for one role; changing role stops it rather than walking
+someone through screens they cannot see.
+
+---
+
 ## 9. What is prototype scaffolding, not product
 
 The prototype has **no back end, no clock and no sends**. Nothing leaves the
@@ -206,4 +250,6 @@ collapsing the menu moves each label into a tooltip.
 ## 11. Known gaps in the prototype
 
 - Reports is a layout with sample numbers, not a reporting engine.
-- Nothing is persisted: a reload starts over.
+- Nothing is persisted: a reload starts over. A guided tour resumed after a
+  reload therefore always picks up from *New campaign* — the draft it was
+  building no longer exists.
