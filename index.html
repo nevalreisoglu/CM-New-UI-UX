@@ -431,8 +431,9 @@ pre.code{margin:0;background:#2B313A;color:#E6EAEF;border-radius:6px;padding:12p
 .tour-band{position:fixed;z-index:80;background:transparent}
 .tour-hole.blank{outline:none}
 .tour-hole{position:fixed;z-index:81;border-radius:8px;pointer-events:none;box-shadow:0 0 0 9999px rgba(8,28,49,.55);outline:2px solid var(--orange);outline-offset:0;transition:top .15s,left .15s,width .15s,height .15s}
-.tour-hole.pulse::after{content:"";position:absolute;inset:-5px;border-radius:11px;border:2px solid var(--orange);animation:tourpulse 1.1s ease-out infinite}
-@keyframes tourpulse{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.14)}}
+.tour-hole.pulse{outline-width:3px}
+.tour-hole.pulse::after{content:"";position:absolute;inset:-6px;border-radius:12px;border:3px solid #fff;box-shadow:0 0 0 3px var(--orange);animation:tourpulse 1s ease-out 3}
+@keyframes tourpulse{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.22)}}
 /* the card */
 .tour-card{position:fixed;z-index:83;width:340px;max-width:calc(100vw - 16px);max-height:calc(100vh - 16px);overflow:auto;background:var(--green-ink);color:#fff;border-radius:8px;box-shadow:0 10px 34px rgba(8,28,49,.38);padding:15px 16px 13px;font-size:13px;animation:tourin .15s ease-out}
 .tour-card.center{left:50%;top:50%;transform:translate(-50%,-50%);width:420px}
@@ -449,13 +450,16 @@ pre.code{margin:0;background:#2B313A;color:#E6EAEF;border-radius:6px;padding:12p
 .tour-card .tc-foot{display:flex;align-items:center;gap:10px}
 .tour-card .tc-n{font-size:11px;color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums;white-space:nowrap}
 .tour-card .tc-grow{flex:1}
-.tour-card button{border:0;border-radius:6px;font-size:12.5px;font-weight:600;padding:7px 14px;background:var(--orange);color:#fff}
+.tour-card button{border:0;border-radius:6px;font-size:12.5px;font-weight:600;padding:7px 14px;background:var(--orange);color:#fff;white-space:nowrap}
 .tour-card button:hover{background:var(--orange-ink)}
 .tour-card button.txt{background:none;color:rgba(255,255,255,.75);padding:7px 4px;font-weight:500}
 .tour-card button.txt:hover{background:none;color:#fff;text-decoration:underline}
 .tour-card button[disabled]{opacity:.55;cursor:default}
 .tour-card .tc-fill{display:block;margin:-2px 0 10px;font-size:12px}
-.tour-card .tc-hint{display:flex;align-items:center;gap:6px;font-size:11.5px;color:rgba(255,255,255,.62);margin:-4px 0 10px}
+.tour-card .tc-hint{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 6px;font-size:11.5px;color:rgba(255,255,255,.62);margin:-4px 0 10px}
+.tour-card .tc-hint button{background:none;border:0;padding:0;font-size:11.5px;font-weight:600;color:var(--orange);text-decoration:underline;text-underline-offset:2px}
+.tour-card .tc-hint button:hover{color:#fff}
+.tour-card .tc-hint button[disabled]{color:rgba(255,255,255,.55);text-decoration:none;opacity:1}
 .tour-card .tc-hint.done{color:#8FD98A}
 .tour-card .tc-arr{position:absolute;width:0;height:0;border:7px solid transparent}
 .tour-card .tc-arr.l{left:-14px;border-right-color:var(--green-ink)}
@@ -1178,15 +1182,18 @@ The page dims, one control stays lit with an orange outline, and a dark card
 beside it explains that control. The card shows which step you are on, a
 progress bar, **Back**, **Skip tour**, and the main button.
 
-The tours are **interactive**: on a step that asks you to do something, the
-button reads **Show me** — press it and the target pulses — and the tour moves
-on by itself **once you actually do it**. Type the name and it advances; pick a
-channel and it advances. You do not press Next on those steps.
+The tours are **interactive**: on a step that asks you to do something, the tour
+moves on by itself **once you actually do it**. Type the name and it advances;
+pick a channel and it advances. You do not press Next on those steps.
 
-If you would rather watch than type, every such step has a **Fill for me** link
-that does the step for you with sample data. Using only *Fill for me* and
-*Next*, the campaign tour runs end to end and leaves a real campaign waiting for
-approval.
+On those steps the main button reads **Do it for me** and performs the step for
+you with sample data, so you can watch rather than type. Using only *Do it for
+me* and *Next*, the campaign tour runs end to end and leaves a real campaign
+waiting for approval.
+
+Next to the hint there is also **Show me where**, which flashes a ring around
+the control the step is talking about — useful when the highlight is somewhere
+you are not looking.
 
 The lit control stays fully usable — you can click it and type in it; the rest
 of the page is simply out of the way.
@@ -3419,13 +3426,22 @@ function tourPlace(el){
   tourCss(TOUR.card,`left:${Math.round(left)}px;top:${Math.round(top)}px`);
   const a=TOUR.card.querySelector('.tc-arr'); if(a&&a.className!=='tc-arr '+arr) a.className='tc-arr '+arr;
 }
+function tourFlash(btn){
+  if(!TOUR.hole) return;
+  TOUR.pulse=true; TOUR.hole.classList.add('pulse');
+  if(btn){ const was=btn.textContent; btn.textContent='highlighted ✓'; btn.disabled=true;
+    setTimeout(()=>{ if(btn.isConnected){ btn.textContent=was; btn.disabled=false; } },3000); }
+  setTimeout(()=>{ TOUR.pulse=false; if(TOUR.hole) TOUR.hole.classList.remove('pulse'); },3000);
+}
 function tourCardHtml(st,total,hasTarget){
   const n=TOUR.i+1, pct=Math.round(n/total*100), interactive=st.advance&&st.advance!=='next';
   const canNext=tourCanNext(), last=n===total;
-  let primary = last?'Done ✓' : (interactive&&!TOUR.met?'Show me':'Next');
+  const waiting = interactive&&!TOUR.met;
+  const primary = last?'Done ✓' : waiting?(st.sample?'Do it for me':'Show me where'):'Next';
+  const point = waiting&&st.target?'<button data-point>Show me where</button>':'';
   const hint = interactive
     ? (TOUR.met?'<div class="tc-hint done">✓ Done — moving on</div>'
-              :'<div class="tc-hint">↳ Do it on the page and the tour moves on</div>')
+              :`<div class="tc-hint"><span>↳ Do it on the page and the tour moves on</span>${point}</div>`)
     : '';
   const lost = st.target&&!hasTarget?'<div class="tc-hint">This step’s control is not on screen — read on and press Next.</div>':'';
   const fin = st.finale?`<div class="tc-foot" style="margin-top:2px">${st.finale.map((f,i)=>`<button class="${i?'':'txt'}" data-fin="${i}">${esc(f[0])}</button>`).join('')}</div>`:'';
@@ -3434,23 +3450,23 @@ function tourCardHtml(st,total,hasTarget){
     <h4>${st.title}</h4>
     <p>${st.body}</p>
     ${hint}${lost}
-    ${st.sample?'<a href="#" class="tc-fill" style="color:var(--orange)" data-sample>Fill for me →</a>':''}
     <div class="tc-bar"><i style="width:${pct}%"></i></div>
     <div class="tc-foot">
       <span class="tc-n">${n} / ${total}</span>
       ${TOUR.i>0?'<button class="txt" data-back>Back</button>':''}
       <span class="tc-grow"></span>
       <button class="txt" data-skip>Skip tour</button>
-      ${fin?'':`<button data-next ${canNext?'':''}>${primary}</button>`}
+      ${fin?'':`<button data-next ${waiting&&st.sample?'data-sample':''}>${primary}</button>`}
     </div>${fin}`;
   const q=s=>TOUR.card.querySelector(s);
   const bk=q('[data-back]'); if(bk) bk.onclick=()=>tourGo(TOUR.i-1);
   const sk=q('[data-skip]'); if(sk) sk.onclick=()=>tourAskLeave();
   const nx=q('[data-next]'); if(nx) nx.onclick=()=>{
     if(canNext){ tourNext(); return; }
-    TOUR.pulse=true; tourPaint(); setTimeout(()=>{ TOUR.pulse=false; if(TOUR.hole) TOUR.hole.classList.remove('pulse'); },2400);
+    if(st.sample){ try{ st.sample(); }catch(err){} setTimeout(tourPaint,30); return; }
+    tourFlash(nx);
   };
-  const sm=q('[data-sample]'); if(sm) sm.onclick=e=>{ e.preventDefault(); try{ st.sample(); }catch(err){} setTimeout(tourPaint,30); };
+  const pt=q('[data-point]'); if(pt) pt.onclick=()=>tourFlash(pt);
   TOUR.card.querySelectorAll('[data-fin]').forEach(b=>b.onclick=()=>{ const f=st.finale[+b.dataset.fin]; tourFinish(); if(f[1]) f[1](); });
 }
 

@@ -198,9 +198,11 @@ them more than a slideshow:
 
 - They are **interactive**. A step that asks you to name the campaign waits
   until you have typed a name; a step that asks you to pick a channel waits
-  until a channel is picked. The tour follows the user, not a script. Every
-  such step also has a **Fill for me** link, so the same tour can be run as a
-  demo end to end without typing anything.
+  until a channel is picked. The tour follows the user, not a script. On those
+  steps the primary button is **Do it for me** and performs the step, so the
+  same tour runs as a hands-off demo end to end. A secondary **Show me where**
+  flashes the control instead. The primary button is never a no-op: a button
+  whose only effect is a subtle highlight reads as broken.
 - They follow the **real editor**. The campaign tour moves through the actual
   eight steps and honours their rules — on an Info campaign the Offer step is
   skipped, exactly as the editor skips it.
