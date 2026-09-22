@@ -1,0 +1,27 @@
+const { chromium } = require('@playwright/test'); const path=require('path');
+(async()=>{ const b=await chromium.launch(); const p=await b.newPage({viewport:{width:1440,height:900}});
+  p.on('pageerror',e=>console.log('PAGEERROR:',e.message));
+  p.on('console',m=>{ if(m.type()==='error'&&!/ERR_FAILED/.test(m.text())) console.log('CONSOLE:',m.text()); });
+  await p.route('https://fonts.googleapis.com/**',r=>r.abort());
+  await p.goto('file://'+path.resolve(__dirname,'../index.html')); await p.waitForSelector('.view.active');
+  console.log('visible to marketer:', await p.$$eval('.nav button[data-view="datamart"]',n=>n.map(x=>!x.hidden)));
+  await p.selectOption('#role-sel','admin');
+  console.log('visible to admin:', await p.$eval('.nav button[data-view="datamart"]',x=>!x.hidden));
+  await p.click('.nav button[data-view="datamart"]');
+  console.log('view:', await p.$eval('.view.active',e=>e.id), '| rows:', await p.$$eval('#dm-card tbody tr',n=>n.length));
+  console.log('health states:', await p.$$eval('#dm-card tbody tr .pill',n=>[...new Set(n.map(x=>x.textContent.trim()))]));
+  await p.screenshot({path:'shots/dm-01-list.png'});
+  // open Main
+  await p.click('#dm-card tr[data-dm="DM-1"] [data-open]');
+  console.log('detail tabs:', await p.$$eval('[data-dmtab]',n=>n.map(x=>x.textContent.trim().split(' ')[0])));
+  console.log('overview tiles:', await p.$$eval('#dm-body .db-hd .tile .v',n=>n.map(x=>x.textContent)));
+  console.log('used by:', await p.$eval('#dm-usedby .pb',e=>e.textContent.replace(/\s+/g,' ').slice(0,120)));
+  await p.screenshot({path:'shots/dm-02-overview.png'});
+  await p.click('[data-dmtab="columns"]');
+  console.log('column rows:', await p.$$eval('.dm-col-row',n=>n.length), '| groups:', await p.$$eval('.dm-grp',n=>n.length));
+  console.log('suggestions:', await p.$$eval('[data-sug]',n=>n.map(x=>x.dataset.sug)));
+  await p.click('.dm-col-row[data-col="CHURN_RISK"]');
+  await p.waitForSelector('#dm-drawer:not([hidden])');
+  console.log('drawer profile:', await p.$eval('#dm-drawer .kv',e=>e.textContent.replace(/\s+/g,' ').slice(0,90)));
+  await p.screenshot({path:'shots/dm-03-columns-drawer.png'});
+  await b.close(); })();
