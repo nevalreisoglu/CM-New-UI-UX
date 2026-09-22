@@ -408,6 +408,83 @@ pre.code{margin:0;background:#2B313A;color:#E6EAEF;border-radius:6px;padding:12p
 .hintline{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-2);padding:6px 20px 0}
 .hintline .pill{cursor:default}
 
+/* ============ Onboarding styles (v42) ============
+   A spotlight overlay dims the page, cuts a hole around the step target and
+   parks a dark card beside it. Everything is built from the palette tokens. */
+.navnew{margin-left:auto;background:var(--orange-soft);color:var(--orange-ink);border-radius:999px;padding:0 6px;font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.app.nav-closed .navnew{display:none}
+.helpwrap{position:relative}
+.helpbtn{width:30px;height:30px;padding:0;border-radius:50%;font-size:14px;font-weight:700;color:var(--green);border-color:var(--line);display:grid;place-items:center}
+.helpbtn.on{background:var(--green-soft);border-color:var(--green)}
+.helpmenu{position:absolute;right:0;top:36px;z-index:70;width:300px;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);padding:8px;display:flex;flex-direction:column;gap:2px}
+.helpmenu[hidden]{display:none!important}
+.helpmenu .hm-t{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:600;padding:8px 8px 4px}
+.helpmenu button.hm-i{display:flex;align-items:flex-start;gap:8px;width:100%;text-align:left;border:0;background:none;border-radius:6px;padding:7px 8px;font-size:12.5px;color:var(--ink)}
+.helpmenu button.hm-i:hover{background:var(--surface-2)}
+.helpmenu button.hm-i[disabled]{opacity:.5;cursor:default}
+.helpmenu .hm-i .nm{flex:1;min-width:0}
+.helpmenu .hm-i .nm small{display:block;color:var(--ink-3);font-size:11px}
+.helpmenu .hm-sw{display:flex;align-items:center;gap:8px;padding:8px;border-top:1px solid var(--line-2);margin-top:4px;font-size:12.5px}
+.helpmenu .hm-sw .sw{margin-left:auto}
+/* spotlight */
+.tour-dim{position:fixed;inset:0;z-index:80;pointer-events:auto;background:transparent}
+.tour-band{position:fixed;z-index:80;background:transparent}
+.tour-hole.blank{outline:none}
+.tour-hole{position:fixed;z-index:81;border-radius:8px;pointer-events:none;box-shadow:0 0 0 9999px rgba(8,28,49,.55);outline:2px solid var(--orange);outline-offset:0;transition:top .15s,left .15s,width .15s,height .15s}
+.tour-hole.pulse::after{content:"";position:absolute;inset:-5px;border-radius:11px;border:2px solid var(--orange);animation:tourpulse 1.1s ease-out infinite}
+@keyframes tourpulse{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.14)}}
+/* the card */
+.tour-card{position:fixed;z-index:83;width:340px;max-width:calc(100vw - 16px);max-height:calc(100vh - 16px);overflow:auto;background:var(--green-ink);color:#fff;border-radius:8px;box-shadow:0 10px 34px rgba(8,28,49,.38);padding:15px 16px 13px;font-size:13px;animation:tourin .15s ease-out}
+.tour-card.center{left:50%;top:50%;transform:translate(-50%,-50%);width:420px}
+@keyframes tourin{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.tour-card.center{animation:tourinc .15s ease-out}
+@keyframes tourinc{from{opacity:0}to{opacity:1}}
+.tour-card .tc-k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:5px}
+.tour-card h4{margin:0 0 6px;font-size:14px;font-weight:600;line-height:1.35}
+.tour-card p{margin:0 0 10px;font-size:13px;line-height:1.5;color:rgba(255,255,255,.88)}
+.tour-card p b,.tour-card p strong{color:#fff}
+.tour-card code{background:rgba(255,255,255,.14);border-radius:3px;padding:0 4px;font-family:var(--mono);font-size:11.5px}
+.tour-card .tc-bar{height:3px;border-radius:2px;background:rgba(255,255,255,.16);overflow:hidden;margin-bottom:9px}
+.tour-card .tc-bar i{display:block;height:100%;background:var(--orange);transition:width .2s}
+.tour-card .tc-foot{display:flex;align-items:center;gap:10px}
+.tour-card .tc-n{font-size:11px;color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tour-card .tc-grow{flex:1}
+.tour-card button{border:0;border-radius:6px;font-size:12.5px;font-weight:600;padding:7px 14px;background:var(--orange);color:#fff}
+.tour-card button:hover{background:var(--orange-ink)}
+.tour-card button.txt{background:none;color:rgba(255,255,255,.75);padding:7px 4px;font-weight:500}
+.tour-card button.txt:hover{background:none;color:#fff;text-decoration:underline}
+.tour-card button[disabled]{opacity:.55;cursor:default}
+.tour-card .tc-fill{display:block;margin:-2px 0 10px;font-size:12px}
+.tour-card .tc-hint{display:flex;align-items:center;gap:6px;font-size:11.5px;color:rgba(255,255,255,.62);margin:-4px 0 10px}
+.tour-card .tc-hint.done{color:#8FD98A}
+.tour-card .tc-arr{position:absolute;width:0;height:0;border:7px solid transparent}
+.tour-card .tc-arr.l{left:-14px;border-right-color:var(--green-ink)}
+.tour-card .tc-arr.r{right:-14px;border-left-color:var(--green-ink)}
+.tour-card .tc-arr.t{top:-14px;border-bottom-color:var(--green-ink)}
+.tour-card .tc-arr.b{bottom:-14px;border-top-color:var(--green-ink)}
+.tour-card.center .tc-arr{display:none}
+.tour-card .tc-lead{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+.tour-card .tc-lead .ic{width:30px;height:30px;border-radius:8px;background:var(--orange);display:grid;place-items:center;font-size:15px;flex:none}
+/* Getting started */
+.gs-hd{display:flex;align-items:center;gap:16px;padding:4px 20px 14px;flex-wrap:wrap}
+.gs-hd .gs-prog{flex:1;min-width:220px;max-width:420px}
+.gs-hd .gs-prog .bar{height:8px;border-radius:4px;background:var(--surface-2);overflow:hidden;margin-top:6px}
+.gs-hd .gs-prog .bar i{display:block;height:100%;background:var(--ok);border-radius:4px;transition:width .25s}
+.gs-hd .gs-prog .bar i.lo{background:var(--orange)}
+.gs-grp{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);font-weight:600;padding:14px 20px 6px}
+.gs-list{display:flex;flex-direction:column;gap:8px;padding:0 20px 8px}
+.gs-it{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line);border-radius:8px;padding:11px 14px;background:#fff}
+.gs-it.done{background:var(--surface-2);border-color:var(--line-2)}
+.gs-it.soon{opacity:.55}
+.gs-it .st{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;flex:none;border:1.5px solid var(--line);color:var(--ink-3);margin-top:1px}
+.gs-it.done .st{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.gs-it.warn .st{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
+.gs-it .nm{flex:1;min-width:0}
+.gs-it .nm b{display:block;font-size:13.5px;font-weight:600;color:var(--ink)}
+.gs-it .nm small{color:var(--ink-2);font-size:12.5px;line-height:1.45;display:block;margin-top:1px}
+.gs-it .act{display:flex;gap:6px;align-items:center;flex:none;padding-top:2px}
+@media (max-width:900px){.gs-it{flex-wrap:wrap}.gs-it .act{width:100%;padding-left:34px}}
+@media (prefers-reduced-motion: reduce){.tour-hole,.tour-card,.tour-hole.pulse::after,.gs-hd .gs-prog .bar i{transition:none!important;animation:none!important}}
 /* user manual — the manual travels inside the prototype, so a downloaded
    index.html still has it with no server and no network. */
 .manbtn{white-space:nowrap;padding:6px 11px}
@@ -664,6 +741,10 @@ body{font-size:14px}
     <div class="proto"><span class="pill" title="Prototype — not a product version">Prototype</span></div>
     <div class="tright">
       <button class="btn sm outline manbtn" id="btn-manual" title="User manual — how to drive this prototype, screen by screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg><span class="ml">User manual</span></button>
+      <div class="helpwrap">
+        <button class="btn sm outline helpbtn" id="btn-help" aria-haspopup="true" aria-expanded="false" title="Help, guided tours and Getting started">?</button>
+        <div class="helpmenu" id="help-menu" hidden></div>
+      </div>
       <div class="rolebox" title="Role view — screens and actions follow the signed-in role">
         <label for="role-sel">Role view</label>
         <select id="role-sel">
@@ -681,6 +762,7 @@ body{font-size:14px}
   <nav class="nav" aria-label="Pages">
     <div class="grp" data-grp="home">Home</div>
     <button data-view="dashboard" data-roles="marketer approver admin cmo" data-grp="home"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span class="nl">Dashboard</span></button>
+    <button data-view="start" data-roles="marketer approver admin cmo" data-grp="home"><svg viewBox="0 0 24 24"><path d="M9 11l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="nl">Getting started</span><span class="navnew">New</span></button>
         <div class="grp" data-grp="plan">Plan &amp; build</div>
     <button data-view="programs" data-roles="marketer approver admin cmo" data-grp="plan"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/></svg><span class="nl">Program</span></button>
     <button data-view="campaigns" data-roles="marketer approver admin" data-grp="plan"><svg viewBox="0 0 24 24"><path d="M3 10v4h3l5 4V6L6 10zM15 9a4 4 0 0 1 0 6"/></svg><span class="nl">Campaign</span></button>
@@ -705,6 +787,7 @@ body{font-size:14px}
     <div class="crumb" id="crumb">Plan &amp; build<b>›</b>Journey Builder</div>
 
     <!-- DASHBOARD (home; role presets) -->
+    <section class="view" id="view-start"><div class="card" id="start-card" style="display:flex;flex-direction:column;overflow:auto;flex:1;min-height:0"></div></section>
     <section class="view" id="view-dashboard"><div class="card" id="db-card" style="display:flex;flex-direction:column;overflow:auto;flex:1;min-height:0"></div></section>
 
     <!-- JOURNEYS -->
@@ -1052,9 +1135,88 @@ first page it can.
 
 **Tooltips.** A small `?` beside a label explains the field. Hover it.
 
+**? (help).** Top right: guided tours, Getting started, this manual, and the
+first-visit tips switch. See **Getting started and guided tours** below.
+
 **User manual.** The button at the top right opens this manual. It is embedded
 in the prototype, so it works offline and travels with the file — close it with
 **Close**, **Esc**, or a click outside.
+
+---
+
+## Getting started and guided tours
+
+The first time you open the prototype in a role, a card offers a short guided
+tour. Take it or dismiss it — everything it covers is also on the **Getting
+started** page, at your own pace.
+
+### The ? button
+
+Top right, beside the role picker. It opens:
+
+- **Guided tours** — every tour for your role with its status (not started, part
+  way through, or done ✓). Click one to start it, or to pick it up where you
+  stopped.
+- **Getting started** — the checklist page.
+- **User manual** — this document.
+- **Show tips on first visit** — turn the welcome card off for good.
+
+### Getting started
+
+Under **Home** in the left menu. A checklist for your role with a progress bar:
+what to do, in what order, with **Show me** to run the matching tour and **Go to
+page** to just go there.
+
+Items tick themselves off when you do the real thing, not when you watch the
+tour. Saving a segment ticks "Create a segment"; submitting a campaign ticks
+"Submit a campaign for approval". Journey and Program items are marked *coming
+soon* — those tours are not built yet.
+
+### What a tour looks like
+
+The page dims, one control stays lit with an orange outline, and a dark card
+beside it explains that control. The card shows which step you are on, a
+progress bar, **Back**, **Skip tour**, and the main button.
+
+The tours are **interactive**: on a step that asks you to do something, the
+button reads **Show me** — press it and the target pulses — and the tour moves
+on by itself **once you actually do it**. Type the name and it advances; pick a
+channel and it advances. You do not press Next on those steps.
+
+If you would rather watch than type, every such step has a **Fill for me** link
+that does the step for you with sample data. Using only *Fill for me* and
+*Next*, the campaign tour runs end to end and leaves a real campaign waiting for
+approval.
+
+The lit control stays fully usable — you can click it and type in it; the rest
+of the page is simply out of the way.
+
+**Keyboard:** `→` or `Enter` for Next when it is allowed, `←` for Back, `Esc` to
+leave the tour (it asks first).
+
+### The tours
+
+| Tour | Role | What it covers |
+| --- | --- | --- |
+| Create your first campaign | Marketer | Sixteen steps: name, type, channels, targeting, offer, content, rules, schedule, and submitting for approval. Ends with a real campaign in the approver's queue. |
+| Create a segment | Marketer | The workbench: name, group, DataMart, filters, the live audience insight, exclusion lists, save. |
+| Review and approve a campaign | Approver | From "Needs attention" to the approval step and the decision. |
+| Read the dashboard | Everyone | Period, headline KPIs, Live now, Needs attention, funnel and eliminations, control-group uplift. |
+| Admin setup | Admin | The five Parameters screens. |
+
+### Turning it off
+
+- **Show tips on first visit** in the **?** menu stops the welcome card.
+- **Don't show again** on the welcome card does the same.
+- Adding **`?notour`** to the URL suppresses the welcome card and the resume
+  prompt for that visit — useful when demoing or taking screenshots.
+
+A tour is written for one role. If you change the role picker while a tour is
+running, it stops and says so; restart it from **? › Guided tours**.
+
+Because the prototype keeps nothing across a reload, a tour resumed after
+refreshing the page starts again from **New campaign** — the draft it was
+building is gone.
 
 ---
 
@@ -1281,6 +1443,8 @@ The prototype runs three simulated days at load, so the monitor opens on
 - **Esc** closes any dialog: the manual, the report, new journey, the journey
   list and the segment assistant.
 - The prototype opens on the **Dashboard**.
+- Guided tours never block the page, and `?notour` in the URL turns off anything
+  that would start on its own.
 <!-- MANUAL:END -->
   </script>
 
@@ -2051,15 +2215,15 @@ function renderApi(){
 /* ---------- VIEWS ---------- */
 /* breadcrumb = nav group › nav label (same words as the menu) › optional detail; the menu item stays highlighted */
 let curView='dashboard', jFitted=false;
-function navLabel(v){ const b=document.querySelector(`.nav button[data-view="${v}"]`); return b?b.textContent.trim():v; }
+function navLabel(v){ const b=document.querySelector(`.nav button[data-view="${v}"]`); if(!b) return v; const n=b.querySelector('.nl'); return (n||b).textContent.trim(); }
 function navGroup(v){ const b=document.querySelector(`.nav button[data-view="${v}"]`); const g=b&&document.querySelector(`.nav .grp[data-grp="${b.dataset.grp}"]`); return g?g.textContent.trim():''; }
 function setCrumb(detail){ const c=document.getElementById('crumb'); const parts=[navGroup(curView),navLabel(curView)]; if(detail) parts.push(detail); c.innerHTML=parts.map((p,i)=>i===parts.length-1?`<span class="cur">${p}</span>`:p).join('<b>›</b>'); }
-function showView(v){ curView=v; document.querySelectorAll('.view').forEach(s=>s.classList.toggle('active',s.id==='view-'+v)); document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v)); setCrumb(); render();
+function showView(v){ curView=v; document.querySelectorAll('.view').forEach(s=>s.classList.toggle('active',s.id==='view-'+v)); document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v)); setCrumb(); render(); if(typeof markSeen==='function') markSeen(v);
   /* The canvas can only be measured once it is on screen, so fit it the first
      time the builder is shown rather than at boot. Later visits keep the pan
      and zoom the user left behind. */
   if(v==='journeys'&&!jFitted){ jFitted=true; fitView(); setTimeout(fitView,200); } }
-function render(){ renderCanvas(); renderNodePanel(); renderOffers(); renderPolicies(); renderMonitor(); renderApi(); renderSegmentation(); renderCampaigns(); renderContent(); renderParameters(); renderReports(); renderDashboard(); renderPrograms(); }
+function render(){ renderCanvas(); renderNodePanel(); renderOffers(); renderPolicies(); renderMonitor(); renderApi(); renderSegmentation(); renderCampaigns(); renderContent(); renderParameters(); renderReports(); renderDashboard(); renderPrograms(); renderStart(); }
 
 document.querySelectorAll('.nav button[data-view]').forEach(b=>b.onclick=()=>showView(b.dataset.view));
 
@@ -2072,7 +2236,7 @@ function applyRole(r){ ROLE=r; document.getElementById('role-lbl').textContent=R
   const cur=document.querySelector(`.nav button[data-view="${curView}"]`);
   if(!cur||cur.hidden){ const first=[...document.querySelectorAll('.nav button[data-view]')].find(b=>!b.hidden); if(first) showView(first.dataset.view); else showView('monitor'); } else render();
   document.getElementById('nav-foot').textContent=r==='admin'?'Admin sees every page, including Datamart, Parameters and Release & licences.':r==='cmo'?'Executive view: dashboards and monitoring only.':r==='approver'?'Approver: reviews and activates what marketers submit.':'Marketer view: campaign, journey, audience and content pages. Datamart and Parameters are admin work.'; }
-document.getElementById('role-sel').onchange=e=>applyRole(e.target.value);
+document.getElementById('role-sel').onchange=e=>{ applyRole(e.target.value); if(typeof tourRoleChanged==='function') tourRoleChanged(); };
 /* main menu collapse: icons stay, labels move to tooltips */
 document.querySelectorAll('.nav button .nl').forEach(l=>l.parentElement.title=l.textContent.trim());
 document.getElementById('btn-nav').onclick=()=>{ const app=document.querySelector('.app'); const closed=app.classList.toggle('nav-closed'); const b=document.getElementById('btn-nav'); b.classList.toggle('on',closed); b.title=closed?'Expand menu':'Collapse menu'; setTimeout(()=>{ if(document.getElementById('view-journeys').classList.contains('active')) fitView(); },170); };
@@ -2399,7 +2563,7 @@ function renderCampDetail(card){
           <li class="${stage>=3?'ok':stage===2?'on':''}"><i></i><div><b>${c.status==='Rejected'?'Rejected — back to Draft':'Approved & activated'}</b><br><small style="color:var(--ink-3)">${dec?`${dec.at} · ${esc(dec.who)} · ${dec.act}${dec.note?' · “'+esc(dec.note)+'”':''}`:'The approver checks the summary and activates; deliveries are created per channel.'}</small></div></li>
         </ul>
         ${ROLE==='approver'&&c.status==='Pending approval'?`<div class="fld"><label>Decision comment ${tip('Written into the history; the marketer sees it on the campaign.')}</label><textarea data-k="approvalComment" style="font-family:var(--sans);font-size:12.5px;min-height:56px" placeholder="Optional">${esc(c.approvalComment||'')}</textarea></div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn outline" id="camp-reject">Reject — back to Draft</button><small style="color:var(--ink-3);align-self:center">Approve with the button below.</small></div>`
-        :`<div class="form2" style="padding:0;gap:10px 12px"><div class="fld"><label class="req">Approver ${tip(TIPS.approver)}</label><select data-k="approver" ${c.status==='Pending approval'?'disabled':''}><option value="">— pick an approver</option>${APPROVERS.map(x=>`<option ${c.approver===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="fld span2"><label>Note to the approver ${tip(TIPS.approvalNote)}</label><textarea data-k="approvalNote" style="font-family:var(--sans);font-size:12.5px;min-height:56px" ${c.status==='Pending approval'?'disabled':''} placeholder="What should the approver look at?">${esc(c.approvalNote)}</textarea></div></div>`}
+        :`<div class="form2" data-tour="approval-form" style="padding:0;gap:10px 12px"><div class="fld"><label class="req">Approver ${tip(TIPS.approver)}</label><select data-k="approver" ${c.status==='Pending approval'?'disabled':''}><option value="">— pick an approver</option>${APPROVERS.map(x=>`<option ${c.approver===x?'selected':''}>${x}</option>`).join('')}</select></div><div class="fld span2"><label>Note to the approver ${tip(TIPS.approvalNote)}</label><textarea data-k="approvalNote" style="font-family:var(--sans);font-size:12.5px;min-height:56px" ${c.status==='Pending approval'?'disabled':''} placeholder="What should the approver look at?">${esc(c.approvalNote)}</textarea></div></div>`}
       </div>
       <div>
         <div class="h4" style="padding:0 0 8px">History</div>
@@ -2849,6 +3013,618 @@ function renderSegmentation(){ renderSegList(); if(curView==='segmentation') set
 })();
 
 JOURNEYS.forEach(j=>j.nodes.forEach(n=>{ n.y=Math.round(n.y*1.75); n.x=Math.round(n.x*1.32); }));
+/* ============ Onboarding: guided tours + Getting started (v42) =============
+   A tour is a list of steps. Each step points at an element, explains it, and
+   either waits for a Next click or for the user to actually do the thing. The
+   engine re-resolves its target on every paint because the app replaces
+   innerHTML on most interactions. */
+
+/* Seed snapshots: "did the user make one?" is asked against these. */
+const SEED_CAMP_IDS=new Set(CAMPAIGNS.map(c=>c.id)), SEED_ML_IDS=new Set(MLS.map(m=>m.id));
+const newCampaigns=()=>CAMPAIGNS.filter(c=>!SEED_CAMP_IDS.has(c.id));
+const newSegments=()=>MLS.filter(m=>!SEED_ML_IDS.has(m.id));
+
+/* ---- state ---------------------------------------------------------------
+   localStorage throws in private windows and embedded previews, so every
+   access is guarded and falls back to memory for the rest of the session. */
+const TOUR_KEY='ecm-tours-v1';
+let tourLS=true, tourData=null;
+function tourState(){
+  if(tourData) return tourData;
+  let d=null;
+  if(tourLS){ try{ d=JSON.parse(localStorage.getItem(TOUR_KEY)||'null'); }catch(e){ tourLS=false; } }
+  tourData=(d&&typeof d==='object')?d:{tips:true,roles:{}};
+  if(!tourData.roles||typeof tourData.roles!=='object') tourData.roles={};
+  if(typeof tourData.tips!=='boolean') tourData.tips=true;
+  return tourData;
+}
+function tourSave(){ if(!tourLS) return; try{ localStorage.setItem(TOUR_KEY,JSON.stringify(tourState())); }catch(e){ tourLS=false; } }
+function roleState(r){ const s=tourState(); return s.roles[r||ROLE]=s.roles[r||ROLE]||{welcomed:false,tours:{},seen:{}}; }
+function tourRec(id,r){ const rs=roleState(r); return rs.tours[id]=rs.tours[id]||{status:'not-started',step:0}; }
+function markSeen(v){ const rs=roleState(); if(!rs.seen[v]){ rs.seen[v]=true; tourSave(); } }
+
+/* ---- definitions --------------------------------------------------------- */
+const campCard=()=>document.getElementById('camp-card');
+function tourRerenderCamp(){ const c=campCard(); if(c&&campMode==='detail') renderCampDetail(c); }
+function tourCampStep(n){ if(campMode!=='detail') return; campStep=n; tourRerenderCamp(); }
+const SAMPLE_TEXT='Hi {{FIRST_NAME}}, your {{PLAN}} ends on {{PACKAGE_EXPIRY_DATE}}. Renew today and get +10% data.';
+const renewalOffer=()=>(OFFERS.find(o=>/renew|top-up|bonus/i.test(o.name))||OFFERS[0]).id;
+
+const TOURS={
+'first-campaign':{
+  name:'Create your first campaign', mins:3, roles:['marketer','admin'],
+  blurb:'Build a renewal offer end to end, from the target audience to submitting it for approval.',
+  steps:[
+   {id:'welcome', target:null, title:'Let’s build your first campaign',
+    body:'A campaign is one offer or message, to one audience, over one period. You pick <b>who</b> gets it, <b>what</b> they get, <b>how</b> it reads on each channel, the <b>rules</b> and the <b>schedule</b> — then an approver activates it.<br><br>We’ll build a renewal offer: prepaid customers whose package ends in two days, by SMS.',
+    advance:'next'},
+   {id:'nav', target:'.nav button[data-view="campaigns"]', placement:'right',
+    title:'Open Campaign', body:'Everything about campaigns lives here — the list of what exists, and the editor.',
+    advance:{until:()=>curView==='campaigns'},
+    sample:()=>showView('campaigns')},
+   {id:'new', view:'campaigns', target:'#camp-new', placement:'left',
+    title:'Start a new campaign', body:'This opens an empty draft. Nothing is saved until you say so, and nothing is sent until an approver activates it.',
+    advance:{until:()=>campMode==='detail'},
+    sample:()=>{ const b=document.getElementById('camp-new'); if(b) b.click(); else campOpen(null); }},
+   {id:'name', view:'campaigns', before:()=>{ if(campMode!=='detail') campOpen(null); }, target:'#camp-card input[data-k="name"]', placement:'bottom',
+    title:'Name it', body:'Something your team will recognise in lists and reports — what it is, for whom, and when.',
+    advance:{until:()=>campMode==='detail'&&campDraft&&campDraft.name.trim().length>=3},
+    sample:()=>{ campDraft.name='Package renewal — SMS offer (my first)'; tourRerenderCamp(); }},
+   {id:'type', view:'campaigns', before:()=>tourCampStep(0), target:'#camp-card select[data-k="type"]', placement:'bottom',
+    title:'Offer or Info?', body:'An <b>Offer</b> campaign gives something — a discount, a bonus, a package. An <b>Info</b> campaign only tells people something, so it skips the Offer step entirely. Ours is an Offer.',
+    advance:'next'},
+   {id:'channels', view:'campaigns', before:()=>tourCampStep(0), target:'#camp-card .chgrp', placement:'top',
+    title:'Pick the channels', body:'<b>Push</b> means we send it: SMS, e-mail, push, telemarketing. <b>Pull</b> means it waits to be shown when the customer comes to the app or the portal. A campaign uses one kind or the other, never both. Pick <b>SMS</b>.',
+    advance:{until:()=>campDraft&&(campDraft.channels||[]).length>0},
+    sample:()=>{ campDraft.channels=['sms']; syncPlans(campDraft); tourRerenderCamp(); }},
+   {id:'ready', view:'campaigns', before:()=>tourCampStep(0), target:'#camp-ready', placement:'left',
+    title:'Readiness, not a wizard', body:'This panel lists the parts of a complete campaign and ticks off what is done. You do not have to go in order, and <b>nothing here blocks saving</b> — parts get finished by different people on different days. Click any line to jump there.',
+    advance:'next'},
+   {id:'to-target', view:'campaigns', target:'#camp-next', placement:'top',
+    title:'Move to Targeting', body:'Press <b>Next</b> in the editor — or click <b>Targeting</b> in the step bar. Both work.',
+    advance:{until:()=>campStep===1},
+    sample:()=>{ const b=document.getElementById('camp-next'); if(b) b.click(); else tourCampStep(1); }},
+   {id:'segments', view:'campaigns', before:()=>tourCampStep(1), target:'.tg .box', placement:'right',
+    title:'Choose who gets it', body:'The left box is every segment you can use; the right box is this campaign’s target. Search, then <b>Include</b>. We want <b>Package expiry in next 2 days</b>.',
+    advance:{until:()=>campDraft&&(campDraft.lists||[]).length>0},
+    sample:()=>{ if(!campDraft.lists.some(l=>l.id==='ML-2202')) campDraft.lists.push({id:'ML-2202',mode:'Include'}); tourRerenderCamp(); }},
+   {id:'count', view:'campaigns', before:()=>tourCampStep(1), target:'#tg-count', placement:'left',
+    title:'Who is actually left', body:'The count is the audience after includes, excludes and the global exclusion lists. <b>Exclude</b> always wins over Include, so order does not matter — a customer in both is out.',
+    advance:'next'},
+   {id:'offer', view:'campaigns', before:()=>tourCampStep(2), target:'#camp-card .tcards', placement:'top',
+    skipIf:()=>campDraft&&campDraft.type!=='Offer',
+    title:'What are we giving?', body:'<b>Manual</b> means you name the offers yourself. <b>Next Best Offer</b> hands the choice to the model, per customer. Pick an offer and add it.',
+    advance:{until:()=>campDraft&&(campDraft.strategy==='NBO'||(campDraft.offers||[]).length>0)},
+    sample:()=>{ const o=renewalOffer(); campDraft.strategy='Manual'; if(!campDraft.offers.includes(o)) campDraft.offers.push(o); tourRerenderCamp(); }},
+   {id:'content', view:'campaigns', before:()=>tourCampStep(3), target:'#camp-card [data-slot="body"][data-v="A"]', placement:'right',
+    title:'Write the message', body:'The <b>template</b> is the design and belongs to the admin — for SMS it is applied for you. The <b>content</b> is what you write, and it lives in this campaign. Type, and watch the preview on the right. <code>{{FIRST_NAME}}</code> and friends are filled in per customer.',
+    advance:{until:()=>campDraft&&(campDraft.plans||[]).length>0&&campDraft.plans.every(planFilled)},
+    sample:()=>{ syncPlans(campDraft); campDraft.plans.forEach(p=>{ p.slots=p.slots||slotsBlank(p.ch); if(!(p.slots.body||'').trim()) p.slots.body=SAMPLE_TEXT; p.content=p.content||tplDefault(p.ch); }); tourRerenderCamp(); }},
+   {id:'rules', view:'campaigns', before:()=>tourCampStep(4), target:'#camp-card .form2, #camp-card .padx', placement:'top',
+    title:'Communication rules', body:'Frequency caps, quiet hours and contact policies. The defaults come from <b>Parameters</b>, so most campaigns leave them alone — override only when a send is regulatory and has to ignore the caps.',
+    advance:'next'},
+   {id:'schedule', view:'campaigns', before:()=>tourCampStep(5), target:'#camp-card select[data-sk="trigger"]', placement:'bottom',
+    title:'When does it run?', body:'<b>Run now</b> sends as soon as it is approved. <b>Schedule</b> picks a date, a time and a repeat. Either way nothing leaves before an approver activates it.',
+    advance:'next'},
+   {id:'approval', view:'campaigns', before:()=>tourCampStep(6), target:'[data-tour="approval-form"], #camp-card .apr', placement:'left',
+    title:'Hand it to an approver', body:'Pick who should review it, say what they should look at, then <b>Submit for approval</b>. You cannot activate your own campaign — that separation is the point.',
+    advance:{until:()=>campDraft&&campDraft.status==='Pending approval'},
+    sample:()=>{ campDraft.approver=campDraft.approver||APPROVERS[0]; campDraft.approvalNote=campDraft.approvalNote||'Renewal offer for the 2-day expiry audience. Please check the audience and the SMS wording.'; tourRerenderCamp(); const b=document.getElementById('camp-activate'); if(b&&!b.disabled) b.click(); }},
+   {id:'done', target:null, title:'Submitted ✓',
+    body:'It is in the approver’s queue now. Once they activate it, the deliveries are created and the results show up on the <b>Dashboard</b> and in <b>Reports</b>.<br><br>Two items on your Getting started list just went green.',
+    advance:'next', finale:[['Go to dashboard',()=>showView('dashboard')],['Done',null]]}
+  ]},
+
+'create-segment':{
+  name:'Create a segment', mins:2, roles:['marketer','admin'],
+  blurb:'Define an audience, watch the live insight, and save it for campaigns to use.',
+  steps:[
+   {id:'nav', target:'.nav button[data-view="segmentation"]', placement:'right',
+    title:'Open Segments', body:'A segment is a saved audience definition. Campaigns and journeys point at segments rather than carrying their own queries.',
+    advance:{until:()=>curView==='segmentation'},
+    sample:()=>showView('segmentation')},
+   {id:'new', view:'segmentation', target:'#seg-new', placement:'left',
+    title:'New segment', body:'This opens the workbench: the definition on the left, the audience on the right.',
+    advance:{until:()=>segMode==='edit'},
+    sample:()=>{ const b=document.getElementById('seg-new'); if(b) b.click(); else segLoad(null); }},
+   {id:'name', view:'segmentation', before:()=>{ if(segMode!=='edit') segLoad(null); }, target:'#seg-name', placement:'bottom',
+    title:'Name it', body:'Segment names show up in the campaign targeting list, so write what the audience <i>is</i>, not what you plan to send it.',
+    advance:{until:()=>segMode==='edit'&&segDraft&&segDraft.name.trim().length>=3},
+    sample:()=>{ segDraft.name='Prepaid — package ends in 3 days'; renderSegForm(); }},
+   {id:'group', view:'segmentation', target:'#seg-group', placement:'bottom',
+    title:'File it in a group', body:'Groups keep the list navigable once there are hundreds of segments. An admin manages the list in <b>Parameters › Segment Groups</b>.',
+    advance:'next'},
+   {id:'dm', view:'segmentation', target:'#seg-dm', placement:'bottom',
+    title:'Pick the DataMart', body:'<b>Main</b> holds customers and their attributes. <b>Event</b> holds delivery feedback — opened, clicked, bounced — so you can segment on what happened to earlier sends.',
+    advance:'next'},
+   {id:'filters', view:'segmentation', target:'#seg-filters', placement:'right',
+    title:'Add a filter', body:'Each filter is <i>column · operator · value</i>, combined with AND or OR. Or press <b>✦ Assistant</b> and describe the audience in a sentence — it proposes filters you can still see and edit.',
+    advance:{until:()=>segDraft&&(segDraft.filters||[]).length>0},
+    sample:()=>{ const f=segDraft.filters; if(!f.length){ document.getElementById('seg-add').click(); } }},
+   {id:'insight', view:'segmentation', target:'#seg-insight', placement:'left',
+    title:'Watch the audience', body:'This updates as you change filters: how many customers match, how many you can actually reach per channel, and how they break down. The result <i>rows</i> need <b>Search</b> — pulling them on every keystroke would be slow.',
+    advance:'next'},
+   {id:'excl', view:'segmentation', target:'#seg-exclwrap, #seg-excl', placement:'top',
+    title:'Exclusion lists are per channel', body:'Excluding someone from SMS does not exclude them from e-mail. That is deliberate: consent and fatigue are tracked per channel.',
+    advance:'next'},
+   {id:'save', view:'segmentation', target:'#seg-save', placement:'top',
+    title:'Save it', body:'Saved segments appear in the campaign Targeting list straight away.',
+    advance:'next'}
+  ]},
+
+'approve-campaign':{
+  name:'Review and approve a campaign', mins:2, roles:['approver','admin'],
+  blurb:'Pick up a submitted campaign from the dashboard and decide on it.',
+  steps:[
+   {id:'need', target:null, title:'Nothing is waiting yet',
+    onlyIf:()=>!CAMPAIGNS.some(c=>c.status==='Pending approval'),
+    body:'This tour needs a campaign in <b>Pending approval</b>, and there is none.<br><br>Switch the role picker to <b>Marketer</b>, run <b>Create your first campaign</b>, then come back here as the Approver.',
+    advance:'next'},
+   {id:'att', view:'dashboard', target:'.db-p[data-p="att"]', placement:'left',
+    title:'Needs attention', body:'Anything waiting on you shows up here — campaigns submitted for approval, journeys that failed, segments gone stale. Click a row to open it.',
+    advance:'next'},
+   {id:'open', view:'campaigns', target:'#camp-table', placement:'top',
+    before:()=>{ if(campMode!=='list'){ campMode='list'; renderCampaigns(); } },
+    title:'Open the submitted campaign', body:'A campaign in <b>Pending approval</b> is read-only for the marketer. You can still see every part of it.',
+    advance:{until:()=>campMode==='detail'},
+    sample:()=>{ const c=CAMPAIGNS.find(x=>x.status==='Pending approval')||CAMPAIGNS[0]; if(c) campOpen(c.id); }},
+   {id:'apr', view:'campaigns', before:()=>tourCampStep(6), target:'#camp-card .apr', placement:'top',
+    title:'The approval step', body:'The left column is the flow — who prepared it, who submitted it, what is still missing. The right column is the history: every submission, approval and rejection, with its note.',
+    advance:'next'},
+   {id:'decide', view:'campaigns', before:()=>tourCampStep(6), target:'#camp-activate', placement:'top',
+    title:'Approve or reject', body:'<b>Approve &amp; activate</b> creates the deliveries and starts the schedule. <b>Reject</b> sends it back with your comment — say what has to change, the marketer sees it on this same step.',
+    advance:'next'}
+  ]},
+
+'read-dashboard':{
+  name:'Read the dashboard', mins:2, roles:['marketer','approver','admin','cmo'],
+  blurb:'What each panel answers, and where the control-group numbers come from.',
+  steps:[
+   {id:'period', view:'dashboard', target:'#db-card .chipbar', placement:'bottom',
+    title:'Start with the period', body:'Every number and every "vs previous" delta on this page is read through this window. Change it first, then read.',
+    advance:'next'},
+   {id:'kpi', view:'dashboard', target:'#db-card .db-hd', placement:'bottom',
+    title:'The headline numbers', body:'Delivered, opened and clicked describe the send. <b>Conversions</b> and <b>incremental</b> describe the business: incremental is conversions above what the control group did anyway.',
+    advance:'next'},
+   {id:'live', view:'dashboard', target:'.db-p[data-p="live"]', placement:'right',
+    title:'Live now', body:'What is running this minute — active campaigns, journeys, and how many customers are in them. Click a counter to open what it counts.',
+    advance:'next'},
+   {id:'att', view:'dashboard', target:'.db-p[data-p="att"]', placement:'left',
+    title:'Needs attention', body:'The only panel that is a to-do list. Each row links straight to the thing that needs a decision.',
+    advance:'next'},
+   {id:'funnel', view:'dashboard', target:'.db-p[data-p="funnel"]', placement:'top',
+    title:'Funnel and eliminations', body:'Where the audience went. <b>Eliminations</b> is the useful half: how many were dropped by frequency caps, quiet hours, consent or exclusion lists before anything was sent.',
+    advance:'next'},
+   {id:'cg', view:'dashboard', target:'.db-p[data-p="cg"]', placement:'top',
+    title:'Control-group uplift', body:'A held-back slice of the audience gets nothing. The difference between them and everyone else is the part of the result the campaign actually caused.',
+    advance:'next'}
+  ]},
+
+'admin-setup':{
+  name:'Admin setup', mins:2, roles:['admin'],
+  blurb:'The five Parameters screens that shape what marketers see.',
+  steps:[
+   {id:'grp', view:'parameters', target:'#par-subnav', placement:'right',
+    before:()=>{ const b=document.querySelector('#par-subnav button'); if(b&&!b.classList.contains('on')) b.click(); },
+    title:'Segment Groups', body:'The groups every segment is filed under. Keeping this list short is what keeps the campaign targeting picker usable.',
+    advance:'next'},
+   {id:'cfg', view:'parameters', target:'#par-cfg', placement:'top',
+    title:'Campaign form', body:'Turn Objective, Description and Campaign Brand on or off for this customer. A single-brand operator never sees a brand picker. Hidden fields keep their default value.',
+    advance:'next'},
+   {id:'rules', view:'parameters', target:'#par-rules', placement:'top',
+    title:'Communication rule defaults', body:'The caps and quiet hours every new campaign starts with. Change them here rather than asking marketers to set them each time.',
+    advance:'next'},
+   {id:'chan', view:'parameters', target:'#par-ch-table', placement:'top',
+    title:'Channels & senders', body:'Which channels exist and which sender IDs they go out with. A channel switched off here disappears from the campaign Info step.',
+    advance:'next'},
+   {id:'tpl', target:'.nav button[data-view="content"]', placement:'right',
+    title:'Templates are designs', body:'Templates live under Administration because they are design, not copy. A template is a layout with named slots; the words that go in the slots are written inside each campaign or journey delivery.',
+    advance:'next'}
+  ]}
+};
+const tourFor=r=>Object.keys(TOURS).filter(k=>!TOURS[k].roles||TOURS[k].roles.includes(r||ROLE));
+
+/* ---- engine -------------------------------------------------------------- */
+const TOUR={id:null,i:0,def:null,met:false,advancing:false,role:null,dim:null,hole:null,card:null,mo:null,poll:null,clickH:null,keyH:null,reflowH:null,tries:0};
+const tourOn=()=>!!TOUR.id;
+function tourSteps(){ return TOUR.def?TOUR.def.steps.filter(st=>!(st.onlyIf&&!st.onlyIf())):[]; }
+function tourStep(){ return tourSteps()[TOUR.i]||null; }
+
+function tourResolve(st){
+  if(!st||!st.target) return null;
+  if(typeof st.target==='function'){ try{ return st.target(); }catch(e){ return null; } }
+  /* A comma-separated target is a preference list, tried in order. querySelector
+     would instead return whichever matches first in document order. */
+  for(const sel of String(st.target).split(',')){
+    try{ const el=document.querySelector(sel.trim()); if(el) return el; }catch(e){}
+  }
+  return null;
+}
+function tourTeardown(){
+  [...(TOUR.bands||[]),TOUR.hole,TOUR.card].forEach(n=>n&&n.remove());
+  TOUR.bands=null; TOUR.hole=TOUR.card=null;
+  if(TOUR.raf){ cancelAnimationFrame(TOUR.raf); TOUR.raf=0; }
+  if(TOUR.mo){ TOUR.mo.disconnect(); TOUR.mo=null; }
+  if(TOUR.poll){ clearInterval(TOUR.poll); TOUR.poll=null; }
+  if(TOUR.clickH){ document.removeEventListener('click',TOUR.clickH,true); TOUR.clickH=null; }
+  if(TOUR.keyH){ window.removeEventListener('keydown',TOUR.keyH,true); TOUR.keyH=null; }
+  if(TOUR.reflowH){ window.removeEventListener('resize',TOUR.reflowH); window.removeEventListener('scroll',TOUR.reflowH,true); TOUR.reflowH=null; }
+}
+function stopTour(status){
+  if(!TOUR.id) return;
+  const rec=tourRec(TOUR.id,TOUR.role);
+  rec.status=status||'skipped'; rec.step=TOUR.i; tourSave();
+  TOUR.id=null; TOUR.def=null; tourTeardown();
+  renderStart(); renderHelpMenu();
+}
+function startTour(id,opt){
+  const def=TOURS[id]; if(!def) return;
+  if(TOUR.id) stopTour('skipped');
+  opt=opt||{};
+  TOUR.id=id; TOUR.def=def; TOUR.role=ROLE; TOUR.tries=0;
+  const rec=tourRec(id); rec.status='in-progress'; tourSave();
+  tourBuild();
+  tourGo(opt.fromStep!=null?opt.fromStep:0);
+}
+function tourBuild(){
+  tourTeardown();
+  TOUR.bands=[0,1,2,3].map(()=>{ const d=document.createElement('div'); d.className='tour-band'; return d; });
+  TOUR.hole=document.createElement('div'); TOUR.hole.className='tour-hole';
+  TOUR.card=document.createElement('div'); TOUR.card.className='tour-card'; TOUR.card.setAttribute('role','dialog'); TOUR.card.setAttribute('aria-live','polite');
+  document.body.append(...TOUR.bands,TOUR.hole,TOUR.card);
+  /* The dimming is the hole's huge box-shadow; these four bands sit around the
+     hole and swallow clicks, so the target itself is left completely alone. */
+  TOUR.bands.forEach(d=>d.addEventListener('click',e=>{ e.stopPropagation(); },true));
+  TOUR.reflowH=()=>tourPaint();
+  window.addEventListener('resize',TOUR.reflowH); window.addEventListener('scroll',TOUR.reflowH,true);
+  const main=document.querySelector('.main');
+  if(main&&window.MutationObserver){ TOUR.mo=new MutationObserver(()=>tourPaint()); TOUR.mo.observe(main,{childList:true,subtree:true,attributes:true,attributeFilter:['class','hidden']}); }
+  TOUR.keyH=e=>{
+    if(!TOUR.id) return;
+    if(e.key==='Escape'){ e.preventDefault(); e.stopPropagation(); tourAskLeave(); }
+    else if(e.key==='ArrowLeft'&&TOUR.i>0){ e.preventDefault(); tourGo(TOUR.i-1); }
+    else if((e.key==='ArrowRight'||e.key==='Enter')&&tourCanNext()){ e.preventDefault(); tourNext(); }
+  };
+  window.addEventListener('keydown',TOUR.keyH,true);
+}
+function tourCanNext(){ const st=tourStep(); if(!st) return false; return st.advance==='next'||TOUR.met; }
+function tourAskLeave(){
+  if(confirm('Leave the tour? You can restart it from ? › Guided tours.')) stopTour('skipped');
+}
+function tourNext(){
+  const steps=tourSteps();
+  let n=TOUR.i+1;
+  while(n<steps.length&&steps[n].skipIf&&steps[n].skipIf()) n++;
+  if(n>=steps.length){ tourFinish(); return; }
+  tourGo(n);
+}
+function tourFinish(){
+  const id=TOUR.id; const rec=tourRec(id,TOUR.role);
+  rec.status='done'; rec.step=0; tourSave();
+  TOUR.id=null; TOUR.def=null; tourTeardown();
+  toast('Tour finished',`${TOURS[id].name} — you can run it again from ? › Guided tours.`);
+  renderStart(); renderHelpMenu();
+}
+function tourGo(i){
+  const steps=tourSteps();
+  while(i<steps.length&&steps[i].skipIf&&steps[i].skipIf()) i++;
+  if(i>=steps.length){ tourFinish(); return; }
+  TOUR.i=i; TOUR.met=false; TOUR.advancing=false; TOUR.tries=0; TOUR.sig=null;
+  const st=steps[i];
+  tourRec(TOUR.id,TOUR.role).step=i; tourSave();
+  if(st.view&&curView!==st.view) showView(st.view);
+  if(st.before){ try{ st.before(); }catch(e){} }
+  /* wire the advance condition */
+  if(TOUR.poll){ clearInterval(TOUR.poll); TOUR.poll=null; }
+  if(TOUR.clickH){ document.removeEventListener('click',TOUR.clickH,true); TOUR.clickH=null; }
+  const adv=st.advance;
+  if(adv&&adv.click){
+    TOUR.clickH=e=>{ const t=e.target&&e.target.closest&&e.target.closest(adv.click); if(t) setTimeout(()=>tourMeet(true),0); };
+    document.addEventListener('click',TOUR.clickH,true);
+  } else if(adv&&adv.until){
+    const check=()=>{ let ok=false; try{ ok=!!adv.until(); }catch(e){} if(ok) tourMeet(!TOUR.firstCheck); };
+    TOUR.firstCheck=true; check(); TOUR.firstCheck=false;
+    if(!TOUR.met) TOUR.poll=setInterval(check,250);
+  }
+  tourPaint();
+}
+/* met: condition satisfied. auto = advance by itself (the user just did it). */
+function tourMeet(auto){
+  if(TOUR.met||TOUR.advancing) return;
+  TOUR.met=true;
+  if(TOUR.poll){ clearInterval(TOUR.poll); TOUR.poll=null; }
+  if(TOUR.clickH){ document.removeEventListener('click',TOUR.clickH,true); TOUR.clickH=null; }
+  tourPaint();
+  if(auto){ TOUR.advancing=true; setTimeout(()=>{ if(TOUR.id){ TOUR.advancing=false; tourNext(); } },620); }
+}
+
+/* ---- painting ------------------------------------------------------------ */
+const PLACES=['top','right','bottom','left'];
+/* The app mutates the DOM constantly; coalesce those into one paint per frame
+   so the card never jitters under the pointer. */
+function tourPaint(){ if(TOUR.raf) return; TOUR.raf=requestAnimationFrame(()=>{ TOUR.raf=0; tourPaintNow(); }); }
+function tourPaintNow(){
+  if(!TOUR.id||!TOUR.card) return;
+  const steps=tourSteps(), st=steps[TOUR.i]; if(!st) return;
+  const el=tourResolve(st);
+  if(st.target&&!el){
+    /* the app re-renders by replacing innerHTML; give it up to 2 s to reappear */
+    if(TOUR.tries++<40){ setTimeout(tourPaintNow,50); return; }
+  } else TOUR.tries=0;
+  /* Only rewrite the card when something it shows changed. Repainting on every
+     mutation would detach its buttons under the user's cursor. */
+  const sig=`${TOUR.i}|${TOUR.met}|${!!el}|${steps.length}`;
+  if(sig!==TOUR.sig){ TOUR.sig=sig; tourCardHtml(st,steps.length,!!el); }
+  if(el){
+    const r=el.getBoundingClientRect();
+    if(r.bottom<0||r.top>innerHeight||r.right<0||r.left>innerWidth){ try{ el.scrollIntoView({block:'center',behavior:'auto'}); }catch(e){} }
+    const b=el.getBoundingClientRect(), pad=6;
+    const ht=Math.max(0,b.top-pad), hl=Math.max(0,b.left-pad), hw=b.width+pad*2, hh=b.height+pad*2;
+    tourCss(TOUR.hole,`top:${ht}px;left:${hl}px;width:${hw}px;height:${hh}px`);
+    TOUR.hole.classList.toggle('pulse',!!TOUR.pulse);
+    TOUR.hole.classList.remove('blank');
+    tourBands(ht,hl,hw,hh);
+    tourPlace(el);
+  } else {
+    /* No target: keep the hole off-screen so its shadow still dims the page,
+       and let one band cover everything. */
+    TOUR.hole.classList.add('blank'); TOUR.hole.classList.remove('pulse');
+    tourCss(TOUR.hole,'top:-9999px;left:-9999px;width:0;height:0');
+    tourBands(0,0,0,0,true);
+    if(TOUR.card.className!=='tour-card center') TOUR.card.className='tour-card center';
+    tourCss(TOUR.card,'');
+  }
+}
+function tourCss(n,css){ if(n.style.cssText!==css) n.style.cssText=css; }
+function tourBands(t,l,w,h,all){
+  if(!TOUR.bands) return;
+  const [up,dn,lf,rt]=TOUR.bands;
+  if(all){ tourCss(up,'inset:0'); [dn,lf,rt].forEach(d=>tourCss(d,'width:0;height:0')); return; }
+  tourCss(up,`top:0;left:0;width:100vw;height:${Math.max(0,t)}px`);
+  tourCss(dn,`top:${t+h}px;left:0;width:100vw;height:${Math.max(0,innerHeight-(t+h))}px`);
+  tourCss(lf,`top:${t}px;left:0;width:${Math.max(0,l)}px;height:${h}px`);
+  tourCss(rt,`top:${t}px;left:${l+w}px;width:${Math.max(0,innerWidth-(l+w))}px;height:${h}px`);
+}
+function tourPlace(el){
+  const st=tourStep(), b=el.getBoundingClientRect(), M=8, gap=14;
+  if(TOUR.card.className.indexOf('center')>=0||!TOUR.card.style.left){ TOUR.card.className='tour-card'; tourCss(TOUR.card,'visibility:hidden;left:0;top:0'); }
+  const cw=TOUR.card.offsetWidth, ch=TOUR.card.offsetHeight;
+  const want=st.placement&&st.placement!=='auto'?st.placement:'right';
+  const order=[want,{top:'bottom',bottom:'top',left:'right',right:'left'}[want]||'bottom',...PLACES];
+  const fits=p=>{
+    if(p==='top') return b.top-gap-ch>=M;
+    if(p==='bottom') return b.bottom+gap+ch<=innerHeight-M;
+    if(p==='left') return b.left-gap-cw>=M;
+    if(p==='right') return b.right+gap+cw<=innerWidth-M;
+    return false;
+  };
+  let p=order.find(fits);
+  if(!p){
+    /* Target bigger than the free space: use the widest gap and clamp, which
+       keeps the card off as much of the target as possible. Dead centre would
+       sit right on top of it. */
+    const gaps={top:b.top,bottom:innerHeight-b.bottom,left:b.left,right:innerWidth-b.right};
+    p=PLACES.slice().sort((x,y)=>gaps[y]-gaps[x])[0];
+    if(gaps[p]<60){ if(TOUR.card.className!=='tour-card center') TOUR.card.className='tour-card center'; tourCss(TOUR.card,''); return; }
+  }
+  let left,top,arr;
+  const cx=b.left+b.width/2, cy=b.top+b.height/2;
+  if(p==='top'){ left=cx-cw/2; top=b.top-gap-ch; arr='b'; }
+  else if(p==='bottom'){ left=cx-cw/2; top=b.bottom+gap; arr='t'; }
+  else if(p==='left'){ left=b.left-gap-cw; top=cy-ch/2; arr='r'; }
+  else { left=b.right+gap; top=cy-ch/2; arr='l'; }
+  left=Math.min(Math.max(M,left),innerWidth-cw-M);
+  top=Math.min(Math.max(M,top),innerHeight-ch-M);
+  if(TOUR.card.className!=='tour-card') TOUR.card.className='tour-card';
+  tourCss(TOUR.card,`left:${Math.round(left)}px;top:${Math.round(top)}px`);
+  const a=TOUR.card.querySelector('.tc-arr'); if(a&&a.className!=='tc-arr '+arr) a.className='tc-arr '+arr;
+}
+function tourCardHtml(st,total,hasTarget){
+  const n=TOUR.i+1, pct=Math.round(n/total*100), interactive=st.advance&&st.advance!=='next';
+  const canNext=tourCanNext(), last=n===total;
+  let primary = last?'Done ✓' : (interactive&&!TOUR.met?'Show me':'Next');
+  const hint = interactive
+    ? (TOUR.met?'<div class="tc-hint done">✓ Done — moving on</div>'
+              :'<div class="tc-hint">↳ Do it on the page and the tour moves on</div>')
+    : '';
+  const lost = st.target&&!hasTarget?'<div class="tc-hint">This step’s control is not on screen — read on and press Next.</div>':'';
+  const fin = st.finale?`<div class="tc-foot" style="margin-top:2px">${st.finale.map((f,i)=>`<button class="${i?'':'txt'}" data-fin="${i}">${esc(f[0])}</button>`).join('')}</div>`:'';
+  TOUR.card.innerHTML=`<span class="tc-arr l"></span>
+    <div class="tc-k">${esc(TOUR.def.name)}</div>
+    <h4>${st.title}</h4>
+    <p>${st.body}</p>
+    ${hint}${lost}
+    ${st.sample?'<a href="#" class="tc-fill" style="color:var(--orange)" data-sample>Fill for me →</a>':''}
+    <div class="tc-bar"><i style="width:${pct}%"></i></div>
+    <div class="tc-foot">
+      <span class="tc-n">${n} / ${total}</span>
+      ${TOUR.i>0?'<button class="txt" data-back>Back</button>':''}
+      <span class="tc-grow"></span>
+      <button class="txt" data-skip>Skip tour</button>
+      ${fin?'':`<button data-next ${canNext?'':''}>${primary}</button>`}
+    </div>${fin}`;
+  const q=s=>TOUR.card.querySelector(s);
+  const bk=q('[data-back]'); if(bk) bk.onclick=()=>tourGo(TOUR.i-1);
+  const sk=q('[data-skip]'); if(sk) sk.onclick=()=>tourAskLeave();
+  const nx=q('[data-next]'); if(nx) nx.onclick=()=>{
+    if(canNext){ tourNext(); return; }
+    TOUR.pulse=true; tourPaint(); setTimeout(()=>{ TOUR.pulse=false; if(TOUR.hole) TOUR.hole.classList.remove('pulse'); },2400);
+  };
+  const sm=q('[data-sample]'); if(sm) sm.onclick=e=>{ e.preventDefault(); try{ st.sample(); }catch(err){} setTimeout(tourPaint,30); };
+  TOUR.card.querySelectorAll('[data-fin]').forEach(b=>b.onclick=()=>{ const f=st.finale[+b.dataset.fin]; tourFinish(); if(f[1]) f[1](); });
+}
+
+/* ---- Getting started -----------------------------------------------------
+   Items complete themselves from what is actually in the app where that can be
+   observed, and fall back to "did the tour run" where it cannot. */
+const tourDone=id=>tourRec(id).status==='done';
+const visited=v=>!!roleState().seen[v];
+const START_CHECKS={
+  'explore-dashboard':()=>tourDone('read-dashboard')||visited('dashboard'),
+  'create-segment':()=>newSegments().length>0,
+  'first-campaign':()=>newCampaigns().length>0,
+  'submit-approval':()=>CAMPAIGNS.some(c=>c.status==='Pending approval'&&c.createdBy==='Neval Reisoğlu'),
+  'approve-campaign':()=>CAMPAIGNS.some(c=>(c.approvals||[]).some(a=>a.act==='Approved'||a.act==='Rejected')&&!SEED_CAMP_IDS.has(c.id))||tourDone('approve-campaign'),
+  'reports':()=>visited('reports'),
+  'programs':()=>visited('programs'),
+  'seg-groups':()=>visited('parameters'),
+  'camp-form':()=>CAMP_CFG.objective!==true||CAMP_CFG.desc!==false||CAMP_CFG.multiBrand!==false,
+  'rule-defaults':()=>!!tourFlags.rulesTouched,
+  'channels':()=>!!tourFlags.channelsTouched,
+  'templates':()=>visited('content'),
+  'users-roles':()=>false
+};
+const tourFlags={rulesTouched:false,channelsTouched:false};
+const START_LISTS={
+  marketer:[
+   ['Learn the basics',[
+    ['explore-dashboard','Explore the dashboard','Where results land once a campaign runs.','read-dashboard','dashboard'],
+    ['create-segment','Create a segment','Define an audience once, then point campaigns at it.','create-segment','segmentation']]],
+   ['Ship something',[
+    ['first-campaign','Create your first campaign','Target, offer, content, rules, schedule — end to end.','first-campaign','campaigns'],
+    ['submit-approval','Submit a campaign for approval','You prepare it; an approver activates it.','first-campaign','campaigns']]],
+   ['Go further',[
+    ['journey','Build a journey','Multi-step flows over time.',null,'journeys',true],
+    ['programs','Group work in a program','Give campaigns and journeys a shared goal.',null,'programs',true]]]
+  ],
+  approver:[
+   ['Learn the basics',[
+    ['explore-dashboard','Explore the dashboard','Your queue starts in "Needs attention".','read-dashboard','dashboard']]],
+   ['Your job',[
+    ['approve-campaign','Review and approve a campaign','Read it, then approve or reject with a comment.','approve-campaign','campaigns'],
+    ['reports','Follow results in Reports','What happened after you said yes.',null,'reports']]]
+  ],
+  admin:[
+   ['Audience & content',[
+    ['seg-groups','Segment Groups','The groups every segment is filed under.','admin-setup','parameters'],
+    ['templates','Templates (design)','Layouts with named slots; the words live in campaigns.','admin-setup','content']]],
+   ['Campaign defaults',[
+    ['camp-form','Campaign form settings','Show or hide Objective, Description and Brand.','admin-setup','parameters'],
+    ['rule-defaults','Communication rule defaults','The caps new campaigns start with.','admin-setup','parameters'],
+    ['channels','Channels & senders','Which channels exist and who they send as.','admin-setup','parameters']]],
+   ['Access',[
+    ['users-roles','Users & roles','Who may prepare and who may approve.',null,'parameters',true]]]
+  ],
+  cmo:[
+   ['Read the numbers',[
+    ['explore-dashboard','Read the dashboard','KPIs, funnel and control-group uplift.','read-dashboard','dashboard'],
+    ['programs','Program results','Outcomes rolled up per initiative.',null,'programs'],
+    ['reports','Reports','Per-campaign and per-journey detail.',null,'reports']]]
+  ]
+};
+function startItems(){ return (START_LISTS[ROLE]||START_LISTS.marketer); }
+function startStats(){
+  let done=0,total=0;
+  startItems().forEach(([,rows])=>rows.forEach(r=>{ if(r[5]) return; total++; const f=START_CHECKS[r[0]]; if(f&&f()) done++; }));
+  return {done,total,pct:total?Math.round(done/total*100):0};
+}
+function renderStart(){
+  const card=document.getElementById('start-card'); if(!card) return;
+  if(curView==='start') setCrumb();
+  const s=startStats();
+  card.innerHTML=`
+    <div class="card-h"><h2>Getting started</h2><p>A short path through the product for the <b>${esc(ROLE_NAMES[ROLE])}</b> role. Items tick themselves off as you do the real thing — the tours are optional.</p></div>
+    <div class="gs-hd">
+      <div class="gs-prog"><div style="display:flex;align-items:baseline;gap:8px"><b style="font-size:20px;color:var(--green-ink);font-variant-numeric:tabular-nums">${s.done} of ${s.total}</b><span style="color:var(--ink-2);font-size:12.5px">done · ${s.pct}%</span></div><div class="bar"><i class="${s.pct<50?'lo':''}" style="width:${s.pct}%"></i></div></div>
+      <div class="grow" style="flex:1"></div>
+      ${tourFor().length?`<button class="btn primary" data-gs-tour="${esc(tourFor()[0])}">Start: ${esc(TOURS[tourFor()[0]].name)} · ${TOURS[tourFor()[0]].mins} min</button>`:''}
+    </div>
+    ${startItems().map(([grp,rows])=>`<div class="gs-grp">${esc(grp)}</div><div class="gs-list">${rows.map(r=>{
+      const [k,title,desc,tourId,view,soon]=r;
+      const ok=!soon&&START_CHECKS[k]&&START_CHECKS[k]();
+      const rec=tourId?tourRec(tourId):null;
+      const prog=rec&&rec.status==='in-progress'?` <span class="pill warn">tour ${rec.step+1}/${TOURS[tourId].steps.length}</span>`:'';
+      return `<div class="gs-it ${ok?'done':''} ${soon?'soon':''}">
+        <span class="st">${ok?'✓':soon?'·':'○'}</span>
+        <span class="nm"><b>${esc(title)}${soon?' <span class="pill grey">coming soon</span>':''}${prog}</b><small>${esc(desc)}</small></span>
+        <span class="act">${tourId&&!soon?`<button class="btn sm ${ok?'outline':'primary'}" data-gs-tour="${esc(tourId)}">${rec&&rec.status==='done'?'Again':'Show me'}</button>`:''}${view&&!soon?`<button class="btn sm outline" data-gs-go="${esc(view)}">Go to page</button>`:''}</span>
+      </div>`; }).join('')}</div>`).join('')}
+    <div class="padx" style="padding-top:12px"><div class="note">Guided tours can be restarted any time from the <b>?</b> button in the top bar. They never block the page — you can close one and carry on.</div></div>`;
+  card.querySelectorAll('[data-gs-tour]').forEach(b=>b.onclick=()=>startTour(b.dataset.gsTour));
+  card.querySelectorAll('[data-gs-go]').forEach(b=>b.onclick=()=>showView(b.dataset.gsGo));
+}
+
+/* ---- the ? menu ---------------------------------------------------------- */
+function renderHelpMenu(){
+  const m=document.getElementById('help-menu'); if(!m) return;
+  const s=startStats();
+  m.innerHTML=`<div class="hm-t">Guided tours</div>
+    ${tourFor().map(id=>{ const t=TOURS[id], r=tourRec(id);
+      const st=r.status==='done'?'<span class="pill ok">done ✓</span>':r.status==='in-progress'?`<span class="pill warn">${r.step+1}/${t.steps.length}</span>`:'<span class="pill grey">not started</span>';
+      return `<button class="hm-i" data-tour="${esc(id)}"><span class="nm"><b>${esc(t.name)}</b><small>${t.mins} min · ${esc(t.blurb)}</small></span>${st}</button>`; }).join('')}
+    <div class="hm-t">Help</div>
+    <button class="hm-i" data-go="start"><span class="nm"><b>Getting started</b><small>${s.done} of ${s.total} done</small></span></button>
+    <button class="hm-i" data-manual><span class="nm"><b>User manual</b><small>Every screen, in order</small></span></button>
+    <button class="hm-i" disabled><span class="nm"><b>What’s new</b><small>Coming soon</small></span></button>
+    <div class="hm-sw"><span>Show tips on first visit</span><button class="sw ${tourState().tips?'on':''}" data-tips aria-pressed="${tourState().tips}"></button></div>`;
+  m.querySelectorAll('[data-tour]').forEach(b=>b.onclick=()=>{ helpClose(); const id=b.dataset.tour, r=tourRec(id);
+    startTour(id,{fromStep:r.status==='in-progress'?r.step:0}); });
+  m.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{ helpClose(); showView(b.dataset.go); });
+  const man=m.querySelector('[data-manual]'); if(man) man.onclick=()=>{ helpClose(); const b=document.getElementById('btn-manual'); if(b) b.click(); };
+  const sw=m.querySelector('[data-tips]'); if(sw) sw.onclick=()=>{ tourState().tips=!tourState().tips; tourSave(); renderHelpMenu(); };
+}
+function helpClose(){ const m=document.getElementById('help-menu'), b=document.getElementById('btn-help'); if(m) m.hidden=true; if(b){ b.classList.remove('on'); b.setAttribute('aria-expanded','false'); } }
+(function helpInit(){
+  const b=document.getElementById('btn-help'), m=document.getElementById('help-menu');
+  b.onclick=e=>{ e.stopPropagation(); const open=m.hidden; renderHelpMenu(); m.hidden=!open; b.classList.toggle('on',open); b.setAttribute('aria-expanded',String(open)); };
+  document.addEventListener('click',e=>{ if(!m.hidden&&!e.target.closest('.helpwrap')) helpClose(); });
+  window.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!m.hidden&&!tourOn()) helpClose(); });
+})();
+
+/* ---- welcome / resume ---------------------------------------------------- */
+function tourWelcome(){
+  const rs=roleState(); const id=tourFor()[0]; if(!id) return;
+  const wrap=document.createElement('div'); wrap.className='tour-dim';
+  const card=document.createElement('div'); card.className='tour-card center';
+  const t=TOURS[id];
+  card.innerHTML=`<div class="tc-lead"><span class="ic">✦</span><div><h4 style="margin:0">Welcome to ECM Journey Studio</h4><p style="margin:4px 0 0">You are signed in as <b>${esc(ROLE_NAMES[ROLE])}</b>.</p></div></div>
+    <p>Take the ${t.mins}-minute tour and you will have ${ROLE==='marketer'?'a real campaign waiting for approval':'seen the screens you work in'} by the end. Or skip it — <b>Getting started</b> in the menu has the same path, at your pace.</p>
+    <div class="tc-foot"><button class="txt" data-never>Don’t show again</button><span class="tc-grow"></span><button class="txt" data-later>Later</button><button data-take>Take the ${t.mins}-minute tour</button></div>`;
+  document.body.append(wrap,card);
+  const close=()=>{ wrap.remove(); card.remove(); rs.welcomed=true; tourSave(); };
+  card.querySelector('[data-take]').onclick=()=>{ close(); startTour(id); };
+  card.querySelector('[data-later]').onclick=close;
+  card.querySelector('[data-never]').onclick=()=>{ tourState().tips=false; close(); };
+}
+function tourResume(){
+  const id=tourFor().find(k=>tourRec(k).status==='in-progress'); if(!id) return false;
+  const rec=tourRec(id);
+  const wrap=document.createElement('div'); wrap.className='tour-dim';
+  const card=document.createElement('div'); card.className='tour-card center';
+  /* The prototype keeps nothing across a reload, so a draft from the previous
+     visit is gone and the tour has to go back to the step that creates one.
+     The saved-draft branch is kept for when persistence exists. */
+  const saved=id==='first-campaign'?newCampaigns()[0]:null;
+  const restart=id==='first-campaign'&&!saved&&rec.step>3;
+  const step=restart?2:rec.step;
+  card.innerHTML=`<h4>Continue where you left off?</h4>
+    <p><b>${esc(TOURS[id].name)}</b> — you stopped at step ${rec.step+1} of ${TOURS[id].steps.length}.</p>
+    ${restart?'<p style="color:rgba(255,255,255,.7)">The prototype does not keep drafts across a reload, so we will pick up from <b>New campaign</b>.</p>':''}
+    <div class="tc-foot"><button class="txt" data-drop>Start over</button><span class="tc-grow"></span><button class="txt" data-no>Not now</button><button data-yes>Continue</button></div>`;
+  document.body.append(wrap,card);
+  const close=()=>{ wrap.remove(); card.remove(); };
+  card.querySelector('[data-yes]').onclick=()=>{ close(); if(saved) campOpen(saved.id); startTour(id,{fromStep:step}); };
+  card.querySelector('[data-no]').onclick=close;
+  card.querySelector('[data-drop]').onclick=()=>{ close(); rec.status='not-started'; rec.step=0; tourSave(); renderStart(); };
+  return true;
+}
+function tourBoot(){
+  const url=(location.search||'');
+  if(/[?&]notour\b/.test(url)) return;
+  if(navigator.webdriver) return;           /* keeps the Playwright suite clean */
+  if(!tourState().tips) return;
+  setTimeout(()=>{ if(tourResume()) return; if(!roleState().welcomed) tourWelcome(); },450);
+}
+/* Tours are written per role; if the role changes underneath one, stop. */
+function tourRoleChanged(){
+  if(TOUR.id&&TOUR.role!==ROLE){ const n=TOURS[TOUR.id].name; stopTour('skipped'); toast('Tour stopped',`${n} is written for the ${ROLE_NAMES[TOUR.role]||'previous'} role. Restart it from ? › Guided tours.`,'warn'); }
+  renderStart(); renderHelpMenu();
+}
+/* exposed for tests — navigator.webdriver suppresses auto-start */
+window.startTour=startTour; window.stopTour=stopTour; window.TOURS=TOURS;
+window.tourStateFor=(id)=>tourRec(id); window.startStats=startStats; window.TOUR=TOUR;
+window.tourResume=tourResume; window.tourWelcome=tourWelcome; window.tourGo=tourGo;
+
 buildPalette(); initSim(); selOffer=OFFERS[0].id; selNode=null;
 for(let i=0;i<3;i++) tick();
 quietInit=true; sendEvent('subscription_activated',CUSTOMERS[20].id); quietInit=false;
@@ -2935,7 +3711,7 @@ function mdToHtml(md){
   window.addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
 })();
 
-applyStaticTips(); showView('dashboard'); applyRole('marketer');
+applyStaticTips(); showView('dashboard'); applyRole('marketer'); renderHelpMenu(); tourBoot();
 </script>
 
 </body></html>

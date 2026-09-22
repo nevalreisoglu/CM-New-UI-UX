@@ -32,9 +32,88 @@ first page it can.
 
 **Tooltips.** A small `?` beside a label explains the field. Hover it.
 
+**? (help).** Top right: guided tours, Getting started, this manual, and the
+first-visit tips switch. See **Getting started and guided tours** below.
+
 **User manual.** The button at the top right opens this manual. It is embedded
 in the prototype, so it works offline and travels with the file — close it with
 **Close**, **Esc**, or a click outside.
+
+---
+
+## Getting started and guided tours
+
+The first time you open the prototype in a role, a card offers a short guided
+tour. Take it or dismiss it — everything it covers is also on the **Getting
+started** page, at your own pace.
+
+### The ? button
+
+Top right, beside the role picker. It opens:
+
+- **Guided tours** — every tour for your role with its status (not started, part
+  way through, or done ✓). Click one to start it, or to pick it up where you
+  stopped.
+- **Getting started** — the checklist page.
+- **User manual** — this document.
+- **Show tips on first visit** — turn the welcome card off for good.
+
+### Getting started
+
+Under **Home** in the left menu. A checklist for your role with a progress bar:
+what to do, in what order, with **Show me** to run the matching tour and **Go to
+page** to just go there.
+
+Items tick themselves off when you do the real thing, not when you watch the
+tour. Saving a segment ticks "Create a segment"; submitting a campaign ticks
+"Submit a campaign for approval". Journey and Program items are marked *coming
+soon* — those tours are not built yet.
+
+### What a tour looks like
+
+The page dims, one control stays lit with an orange outline, and a dark card
+beside it explains that control. The card shows which step you are on, a
+progress bar, **Back**, **Skip tour**, and the main button.
+
+The tours are **interactive**: on a step that asks you to do something, the
+button reads **Show me** — press it and the target pulses — and the tour moves
+on by itself **once you actually do it**. Type the name and it advances; pick a
+channel and it advances. You do not press Next on those steps.
+
+If you would rather watch than type, every such step has a **Fill for me** link
+that does the step for you with sample data. Using only *Fill for me* and
+*Next*, the campaign tour runs end to end and leaves a real campaign waiting for
+approval.
+
+The lit control stays fully usable — you can click it and type in it; the rest
+of the page is simply out of the way.
+
+**Keyboard:** `→` or `Enter` for Next when it is allowed, `←` for Back, `Esc` to
+leave the tour (it asks first).
+
+### The tours
+
+| Tour | Role | What it covers |
+| --- | --- | --- |
+| Create your first campaign | Marketer | Sixteen steps: name, type, channels, targeting, offer, content, rules, schedule, and submitting for approval. Ends with a real campaign in the approver's queue. |
+| Create a segment | Marketer | The workbench: name, group, DataMart, filters, the live audience insight, exclusion lists, save. |
+| Review and approve a campaign | Approver | From "Needs attention" to the approval step and the decision. |
+| Read the dashboard | Everyone | Period, headline KPIs, Live now, Needs attention, funnel and eliminations, control-group uplift. |
+| Admin setup | Admin | The five Parameters screens. |
+
+### Turning it off
+
+- **Show tips on first visit** in the **?** menu stops the welcome card.
+- **Don't show again** on the welcome card does the same.
+- Adding **`?notour`** to the URL suppresses the welcome card and the resume
+  prompt for that visit — useful when demoing or taking screenshots.
+
+A tour is written for one role. If you change the role picker while a tour is
+running, it stops and says so; restart it from **? › Guided tours**.
+
+Because the prototype keeps nothing across a reload, a tour resumed after
+refreshing the page starts again from **New campaign** — the draft it was
+building is gone.
 
 ---
 
@@ -261,3 +340,5 @@ The prototype runs three simulated days at load, so the monitor opens on
 - **Esc** closes any dialog: the manual, the report, new journey, the journey
   list and the segment assistant.
 - The prototype opens on the **Dashboard**.
+- Guided tours never block the page, and `?notour` in the URL turns off anything
+  that would start on its own.
