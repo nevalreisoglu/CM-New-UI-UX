@@ -16,6 +16,7 @@ With GitHub Pages enabled on this repo it is served at the repo's Pages URL.
 - **Segments** workbench: definition + query builder + live audience insight; channel-scoped exclusion lists; Segment Groups in Parameters.
 - **Templates (design)** per channel — admin only; content is written inside deliveries.
 - **Reports**, **Parameters** (campaign form switches, rule defaults, channels & senders), **Release & licences**.
+- **User manual** behind a button in the top bar — embedded in the file, so it works offline.
 - Etiya commercial palette; tooltips on every meaningful field.
 
 Demo data only (30 customers, 16 campaigns, 3 journeys). Nothing is sent.
@@ -25,11 +26,12 @@ Demo data only (30 customers, 16 campaigns, 3 journeys). Nothing is sent.
 ```
 index.html                        the prototype (single file)
 docs/product-description.md       what it is, who uses it, why each screen is shaped that way
-docs/user-manual.md               how to drive it, screen by screen
+docs/user-manual.md               how to drive it, screen by screen (also embedded in the prototype)
 docs/meetings/                    meeting notes (Turkish) that drove each iteration
 tests/specs/                      Playwright regression specs
 tests/screenshots/                reference screenshots of the main screens
 tests/README.md                   how to run them and what they cover
+tools/embed-manual.js             copies the user manual into index.html
 CHANGELOG.md
 ```
 
@@ -46,3 +48,6 @@ cd tests && npm install && npm test
 
 It opens `index.html` over `file://`, so there is nothing to build or serve. `npm run shots` refreshes
 `tests/screenshots/`.
+
+`docs/user-manual.md` is embedded in the prototype. After editing it, run `node tools/embed-manual.js`
+to copy it back into `index.html` — the test suite fails if the two drift apart.

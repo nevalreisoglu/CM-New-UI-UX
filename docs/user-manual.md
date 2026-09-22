@@ -32,6 +32,10 @@ first page it can.
 
 **Tooltips.** A small `?` beside a label explains the field. Hover it.
 
+**User manual.** The button at the top right opens this manual. It is embedded
+in the prototype, so it works offline and travels with the file — close it with
+**Close**, **Esc**, or a click outside.
+
 ---
 
 ## Dashboard

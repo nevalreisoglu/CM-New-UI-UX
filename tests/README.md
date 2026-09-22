@@ -31,6 +31,7 @@ version that matches.
 | `campaign.spec.js` | The eight-step wizard: list search, the Offer step disabled for Info campaigns, name required before leaving Info, and the readiness panel counting without blocking. |
 | `segments.spec.js` | The segment workbench: definition beside live audience insight, Search counting the audience, and the assistant living in a dialog rather than the form. |
 | `journey.spec.js` | The builder canvas and palette, and the v41 simulation strips in both Journey Builder and Journey Monitor — marked demo-only, never styled as primary actions, sharing one clock. |
+| `manual.spec.js` | The **User manual** button in the top bar: the dialog opens, closes three ways, renders the markdown as headings/lists/tables, the contents list jumps, and the embedded copy still matches `docs/user-manual.md`. |
 | `screenshots.spec.js` | Writes reference screenshots of the main screens to `screenshots/`. |
 
 ## Screenshots
@@ -72,4 +73,18 @@ These surprised us once, so they are asserted rather than assumed:
 - The **readiness panel refreshes when the step changes**, not on every
   keystroke, so that typing in a field never steals focus.
 - The assistant dialog closes with its **Close button**; the global Escape
-  handler does not cover it.
+  handler does not cover it. (The manual dialog does close on Escape.)
+
+## The embedded user manual
+
+`docs/user-manual.md` is embedded in `index.html` so a downloaded single file
+carries its own manual with no server and no network. After editing the
+markdown, re-embed it:
+
+```bash
+node ../tools/embed-manual.js          # update index.html
+node ../tools/embed-manual.js --check  # exit 1 if out of date
+```
+
+`manual.spec.js` fails the suite if the two drift apart, so a forgotten re-embed
+shows up as a test failure rather than a stale manual in someone's browser.

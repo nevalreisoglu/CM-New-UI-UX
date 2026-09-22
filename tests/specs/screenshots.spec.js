@@ -25,6 +25,7 @@ const SHOTS = [
   ['reports', 'admin', async (app) => app.locator('.nav button[data-view="reports"]').click()],
   ['parameters', 'admin', async (app) => app.locator('.nav button[data-view="parameters"]').click()],
   ['dashboard-cmo', 'cmo', async (app) => app.locator('.nav button[data-view="dashboard"]').click()],
+  ['user-manual', 'marketer', async (app) => app.locator('#btn-manual').click()],
 ];
 
 for (const [name, role, open] of SHOTS) {
