@@ -2,6 +2,11 @@
 
 Version numbers follow the published artifact versions.
 
+## Unreleased — 22 Sept 2026
+- `docs/`: product description, user manual, and the meeting notes (Turkish) behind each iteration.
+- `tests/`: Playwright regression suite (48 specs) over `index.html` plus reference screenshots of the main screens.
+- No change to the prototype itself.
+
 ## v41 — 22 Sept 2026
 - Brand name corrected to ETIYA everywhere (logo, footer, campaign labels, role names).
 - Journey Builder and Journey Monitor: simulation controls moved into a marked "Simulation · demo only" strip so demo clock/event controls are not mistaken for product features.

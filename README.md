@@ -23,11 +23,13 @@ Demo data only (30 customers, 16 campaigns, 3 journeys). Nothing is sent.
 ## Repository layout
 
 ```
-index.html                 the prototype (single file)
-docs/product-description.md
-docs/user-manual.md
-docs/meetings/             meeting notes (Turkish) that drove each iteration
-tests/                     Playwright regression scripts + screenshots
+index.html                        the prototype (single file)
+docs/product-description.md       what it is, who uses it, why each screen is shaped that way
+docs/user-manual.md               how to drive it, screen by screen
+docs/meetings/                    meeting notes (Turkish) that drove each iteration
+tests/specs/                      Playwright regression specs
+tests/screenshots/                reference screenshots of the main screens
+tests/README.md                   how to run them and what they cover
 CHANGELOG.md
 ```
 
@@ -35,4 +37,12 @@ CHANGELOG.md
 
 The prototype is one HTML file with inline CSS and vanilla JS. Data lives in constants near the top of the script
 (`CAMPAIGNS`, `JOURNEYS`, `MLS` segments, `TEMPLATES`, `PROGRAMS`, `DATAMART_ROWS`, `EVENT_ROWS`).
-Run `tests/` after a change (see `tests/README.md`).
+
+After a change, run the regression suite (see `tests/README.md` for what it covers):
+
+```bash
+cd tests && npm install && npm test
+```
+
+It opens `index.html` over `file://`, so there is nothing to build or serve. `npm run shots` refreshes
+`tests/screenshots/`.
