@@ -308,6 +308,98 @@ The prototype runs three simulated days at load, so the monitor opens on
 
 ---
 
+## Datamarts (admin)
+
+**Administration › Datamart.** A catalogue of the data the platform can segment
+on: what exists, how fresh it is, what each column means, how datamarts relate
+and who depends on them. Admin only.
+
+### Find a datamart
+
+The list shows every datamart with its type, key column, size, last load and a
+health pill — **✓ fresh**, **stale** or **✕ failed**. Search by name,
+description or column name; narrow with the type and health chips.
+
+Each row says what uses it ("3 segments · 2 campaigns · 1 journey") — click that
+to jump to the Used by block. **Open** goes to the detail, **Preview data** goes
+straight to the Data tab, and **⋯** holds Load data, Duplicate, Export data
+dictionary and Delete. Delete is greyed with the reason when something depends
+on the datamart.
+
+### Document the columns
+
+**Columns** is the tab that matters. One row per attribute, grouped by area and
+collapsible, showing the label, type, roles, privacy, fill rate, distinct count
+and how many segments filter on it. Turn on **Show technical names** to swap the
+label and the database name.
+
+Click a row to open the drawer on the right and document that column:
+
+- **Identity** — the technical name (fixed), the EN and TR labels, a description
+  and the attribute group. The label is what marketers see in the segment
+  builder, so it is worth writing properly.
+- **Type & mapping** — the data type, and the predefined column it maps to
+  (`PHONE_NUMBER`, `E_MAIL`, `PUSH_TOKEN`) so channels know where to find the
+  address.
+- **Roles** — key, reference, output, sortable, nullable.
+- **Privacy** — privacy level, sensitivity and the GDPR masking rule, with a
+  live example of the masked value underneath.
+- **Profile** — fill rate, distinct count, top values and min/max, all computed
+  from the rows in front of you.
+- **Used by** — the segments that filter on it, and a warning if the column is a
+  personalisation placeholder in content.
+
+**Save column**. If segments filter on the column and you changed its type or
+its key role, it asks first and lists them.
+
+Select several rows with the checkboxes to **bulk edit** group, privacy or
+masking, or to mark them as categories.
+
+### Mark a category
+
+A text column with few distinct values gets a **Suggest: make this a category**
+chip. One click accepts it, or tick *Use as category* in the drawer and press
+**Fill from data** to collect the allowed values.
+
+It matters because of what happens in Segments: a category column's filter stops
+being a free-text box and becomes a **value list with the `in` operator**, so
+nobody has to remember whether the region is written "Kyiv" or "KYIV".
+
+### Define a relationship
+
+**Relationships › + Add relationship.** Pick the target datamart, the column on
+each side and the kind (many-to-one and so on). Both columns must have the same
+type — it says so if they do not.
+
+This is the only way a segment can join a second datamart. In the segment
+builder, **Join a second DataMart** offers only related datamarts and shows the
+real join columns.
+
+### Check freshness
+
+**Load & refresh** (a concept in the prototype) shows the source, the schedule
+and the load history — rows added, changed and failed, duration, and notes such
+as a newly detected column. **Run now** simulates a load.
+
+For query-based sources the page states the guard rails: the view is opened
+read-only, the preview is capped at 100k rows and a statement is cancelled after
+30 seconds.
+
+**Delete all records** is at the bottom, in red. It empties the datamart and
+keeps the column definitions, it asks you to type the datamart name, and it is
+blocked entirely on the default main datamart.
+
+### See the data
+
+**Data** previews the first 50 rows with a search and a column filter, and a
+profile card for whichever column you pick on the left.
+
+Values are **masked per column privacy**. As an admin you see them unmasked and
+the page says so; flip **View as marketer** to see exactly what a marketer
+would. **Export sample (CSV)** always writes the masked values.
+
+---
+
 ## Offers, Policies, Reports
 
 - **Offers** — the offer catalogue; **+** adds one. Journey and campaign offer
@@ -330,7 +422,7 @@ The prototype runs three simulated days at load, so the monitor opens on
   - **Channels & senders** — the channel list and sender IDs.
   - **Segment groups** — the groups segments are filed under.
   - **Pre-sent period** — moved here from the campaign form.
-- **Datamart** — the source tables and their columns.
+- **Datamart** — the data catalogue. See **Datamarts (admin)** above.
 - **Release & licences** — version and licence information.
 
 ---

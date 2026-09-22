@@ -217,6 +217,58 @@ someone through screens they cannot see.
 
 ---
 
+## 8c. Datamart (Administration)
+
+**The principle: a datamart is a documented, profiled, access-controlled data
+product, and segments consume it.** Not a list of tables with settings on them.
+
+The screen that existed before answered "what columns are there". The questions
+people actually arrived with were different: *what data do we even have? is it
+current? what does this column mean? can I join it to something? if I change it,
+what breaks?* The module is built around those five.
+
+**What data exists.** A list of every datamart with its type — Customer (one row
+per subscriber), Event (one row per thing that happened), Lookup (reference data
+joined for its attributes) — its key column, its size, and what uses it, written
+as "3 segments · 2 campaigns · 1 journey" rather than a number with no referent.
+
+**Is it current.** Every datamart carries a health state derived from its last
+load: fresh, stale, or failed. A stale datamart quietly makes every segment built
+on it wrong, so the state is on the list row, on the detail header, and — for the
+admin — in the dashboard's "Needs attention" queue.
+
+**What a column means.** The Columns tab is the heart of it. Each attribute has a
+readable label in EN and TR, a description, an attribute group, roles (key,
+reference, output), privacy and masking, and a **profile computed from the actual
+rows**: fill rate, distinct count, top values, min/max/mean. Nothing is
+hard-coded; the profile is what the data says. A column with few distinct values
+is offered as a **category**, which is what turns a free-text filter in Segments
+into a value list with an `in` operator.
+
+**Can I join it.** Relationships are declared here, validated so both sides have
+the same type, and they are the *only* way a segment may join a second datamart.
+Before, the join was hard-wired; now the segment builder reads the relationship
+and shows the real columns.
+
+**What breaks if I change it.** Usage is computed, never stored: which segments
+filter on a column, which campaigns and journeys reach it through those segments,
+and whether the column is a personalisation placeholder in content. Deleting a
+datamart that something depends on is disabled with the reason. Changing a
+column's type or key role while segments filter on it asks first and lists them.
+
+Privacy is a first-class column property rather than a policy document. Personal
+columns declare a masking rule, and the Data tab shows the values as a marketer
+would see them at the flip of a toggle — the admin sees them unmasked, and the
+screen says which of the two it is showing.
+
+Loading is deliberately a **concept** in the prototype and labelled as one: the
+source, the schedule, a simulated run and a load history with schema-change
+notes. The guard rails it states for query-based sources — read-only view, a
+100k-row preview cap and a 30 s statement timeout — are the ones the SQL
+discussion in meeting 2 asked for.
+
+---
+
 ## 9. What is prototype scaffolding, not product
 
 The prototype has **no back end, no clock and no sends**. Nothing leaves the

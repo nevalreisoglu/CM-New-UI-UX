@@ -408,6 +408,81 @@ pre.code{margin:0;background:#2B313A;color:#E6EAEF;border-radius:6px;padding:12p
 .hintline{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-2);padding:6px 20px 0}
 .hintline .pill{cursor:default}
 
+/* ============ Datamart catalogue (v43) ============ */
+.dm-hd{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:0 20px 10px}
+.dm-hd .back{color:var(--green-ink);font-weight:600;font-size:12.5px;background:none;border:0;padding:0}
+.dm-hd h3{margin:0;font-size:19px;font-weight:600;color:var(--green-ink)}
+.dm-sub{font-size:12.5px;color:var(--ink-2);padding:0 20px 8px}
+.dm-sub b{color:var(--ink);font-variant-numeric:tabular-nums}
+.dm-tbl td .nm b{display:block;font-size:13.5px}
+.dm-tbl td .nm small{color:var(--ink-2);display:block;line-height:1.4}
+.dm-tbl .rel{font-size:11.5px;color:var(--ink-2)}
+.dm-menu{position:relative;display:inline-block}
+.dm-menu .pop{position:absolute;right:0;top:30px;z-index:30;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);padding:6px;width:230px;display:flex;flex-direction:column;gap:2px}
+.dm-menu .pop[hidden]{display:none!important}
+.dm-menu .pop button{border:0;background:none;text-align:left;padding:7px 9px;border-radius:5px;font-size:12.5px;color:var(--ink);width:100%}
+.dm-menu .pop button:hover:not([disabled]){background:var(--surface-2)}
+.dm-menu .pop button[disabled]{opacity:.45;cursor:default}
+.dm-menu .pop button.danger{color:var(--bad)}
+.dm-menu .pop hr{border:0;border-top:1px solid var(--line-2);margin:4px 0}
+/* columns tab */
+.dm-cols thead th{position:sticky;top:0;z-index:2}
+.dm-cols .dm-grp-row td{padding:0;border-bottom:0}
+.dm-grp{display:flex;align-items:center;gap:8px;background:var(--green-soft);color:var(--green-ink);font-size:12.5px;font-weight:600;padding:7px 12px;border-top:1px solid var(--line);cursor:pointer}
+.dm-grp .n{margin-left:auto;font-weight:400;color:var(--ink-2)}
+.dm-grp .caret{transition:transform .15s;display:inline-block}
+.dm-grp.closed .caret{transform:rotate(-90deg)}
+.dm-col-row{cursor:pointer}
+.dm-col-row.sel td{background:var(--orange-soft)}
+.dm-col-row .lbl b{display:block;font-size:13px}
+.dm-col-row .lbl small{font-family:var(--mono);font-size:11px;color:var(--ink-3);display:block}
+.dm-fill{display:flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums}
+.dm-fill i{display:block;width:52px;height:6px;border-radius:3px;background:var(--surface-2);overflow:hidden;flex:none}
+.dm-fill i b{display:block;height:100%;background:var(--ok)}
+.dm-fill i b.lo{background:var(--warn)}
+.dm-sug{background:var(--orange-soft);color:var(--orange-ink);border:1px solid var(--orange);border-radius:999px;padding:1px 8px;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap}
+.dm-bulk{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:var(--green-soft);border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:0 20px 10px;font-size:12.5px}
+.dm-bulk select{border:1px solid var(--line);border-radius:6px;padding:5px 8px;background:#fff;font-size:12.5px}
+/* drawer */
+.dm-drawer{position:fixed;top:56px;right:0;bottom:0;width:420px;max-width:96vw;background:var(--surface);border-left:1px solid var(--line);box-shadow:-6px 0 24px rgba(14,42,71,.12);z-index:35;display:flex;flex-direction:column;animation:dmin .15s ease-out}
+.dm-drawer[hidden]{display:none!important}
+@keyframes dmin{from{transform:translateX(14px);opacity:0}to{transform:none;opacity:1}}
+.dm-drawer .dh{display:flex;align-items:flex-start;gap:8px;padding:14px 16px 10px;border-bottom:1px solid var(--line-2)}
+.dm-drawer .dh h4{margin:0;font-size:16px;font-weight:600;color:var(--green-ink)}
+.dm-drawer .dh .mono{display:block;color:var(--ink-3)}
+.dm-drawer .db{flex:1;overflow:auto;padding:4px 16px 16px;display:flex;flex-direction:column;gap:12px}
+.dm-drawer .df{display:flex;gap:8px;padding:10px 16px;border-top:1px solid var(--line-2);background:var(--surface-2)}
+.dm-drawer .df .grow{flex:1}
+.dm-chipset{display:flex;flex-wrap:wrap;gap:5px}
+.dm-chipset button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:3px 10px;font-size:11.5px;color:var(--ink-2)}
+.dm-chipset button.on{background:var(--orange-soft);border-color:var(--orange);color:var(--orange-ink);font-weight:600}
+.dm-mask-eg{font-family:var(--mono);font-size:11.5px;background:var(--surface-2);border:1px solid var(--line-2);border-radius:5px;padding:5px 8px;color:var(--ink-2)}
+/* data tab */
+.dm-data{display:grid;grid-template-columns:250px minmax(0,1fr);gap:12px;padding:0 20px 16px}
+.dm-data .cl{border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;max-height:520px}
+.dm-data .cl .list{overflow:auto}
+.dm-data .cl button{display:block;width:100%;text-align:left;border:0;background:none;padding:6px 10px;font-size:12.5px;border-bottom:1px solid var(--line-2);color:var(--ink)}
+.dm-data .cl button:hover{background:var(--surface-2)}
+.dm-data .cl button.on{background:var(--green-soft);color:var(--green-ink);font-weight:600}
+.dm-data .cl button small{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+.dm-prev{border:1px solid var(--line);border-radius:8px;overflow:auto;max-height:430px}
+.dm-prev table{width:100%}
+.dm-prev th{position:sticky;top:0;z-index:1}
+.dm-masked{color:var(--ink-3);font-family:var(--mono);font-size:11.5px}
+@media (max-width:1100px){.dm-data{grid-template-columns:1fr}}
+/* relationship diagram */
+.dm-diagram{border:1px solid var(--line-2);border-radius:8px;background:var(--surface-2);padding:8px;overflow:auto}
+.dm-diagram text{font-family:var(--sans);font-size:11px;fill:var(--ink)}
+.dm-diagram text.m{font-family:var(--mono);font-size:9.5px;fill:var(--ink-3)}
+.dm-diagram rect{fill:#fff;stroke:var(--line);stroke-width:1.5;rx:6}
+.dm-diagram rect.me{stroke:var(--orange);stroke-width:2}
+.dm-diagram line{stroke:var(--ink-3);stroke-width:1.2;stroke-dasharray:4 3}
+/* danger zone */
+.dm-danger{border:1px solid var(--bad);border-radius:8px;background:var(--bad-soft);padding:12px 14px;margin:0 20px 16px}
+.dm-danger b{color:var(--bad)}
+.dm-danger input{border:1.5px solid var(--line);border-radius:6px;padding:7px 10px;font-size:12.5px;min-height:36px;max-width:280px}
+.dm-drop{border:1.5px dashed var(--line);border-radius:8px;padding:18px;text-align:center;color:var(--ink-2);font-size:12.5px;background:var(--surface-2)}
+.dm-drop b{display:block;color:var(--ink);margin-bottom:2px}
 /* ============ Onboarding styles (v42) ============
    A spotlight overlay dims the page, cuts a hole around the step target and
    parks a dark card beside it. Everything is built from the palette tokens. */
@@ -780,7 +855,7 @@ body{font-size:14px}
     <button data-view="monitor" data-roles="marketer approver admin cmo" data-grp="ops"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 17V9M11 17V5M16 17v-7M21 17v-4"/></svg><span class="nl">Journey Monitor</span></button>
     <button data-view="api" data-roles="admin" data-grp="ops"><svg viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 4l-4 16"/></svg><span class="nl">Decision API</span></button>
     <div class="grp" data-grp="admin">Administration</div>
-    <button disabled data-roles="admin" data-grp="admin"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 10h16M10 5v14"/></svg><span class="nl">Datamart</span></button>
+    <button data-view="datamart" data-roles="admin" data-grp="admin"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 10h16M10 5v14"/></svg><span class="nl">Datamart</span></button>
     <button data-view="content" data-roles="admin" data-grp="admin"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg><span class="nl">Templates (design)</span></button>
     <button data-view="parameters" data-roles="admin" data-grp="admin"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg><span class="nl">Parameters</span></button>
     <button data-view="about" data-roles="admin" data-grp="admin"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8h0M12 11v6"/></svg><span class="nl">Release &amp; licences</span></button>
@@ -791,6 +866,7 @@ body{font-size:14px}
     <div class="crumb" id="crumb">Plan &amp; build<b>›</b>Journey Builder</div>
 
     <!-- DASHBOARD (home; role presets) -->
+    <section class="view" id="view-datamart"><div class="card" id="dm-card" style="display:flex;flex-direction:column;overflow:auto;flex:1;min-height:0"></div><div class="dm-drawer" id="dm-drawer" hidden></div></section>
     <section class="view" id="view-start"><div class="card" id="start-card" style="display:flex;flex-direction:column;overflow:auto;flex:1;min-height:0"></div></section>
     <section class="view" id="view-dashboard"><div class="card" id="db-card" style="display:flex;flex-direction:column;overflow:auto;flex:1;min-height:0"></div></section>
 
@@ -1415,6 +1491,98 @@ The prototype runs three simulated days at load, so the monitor opens on
 
 ---
 
+## Datamarts (admin)
+
+**Administration › Datamart.** A catalogue of the data the platform can segment
+on: what exists, how fresh it is, what each column means, how datamarts relate
+and who depends on them. Admin only.
+
+### Find a datamart
+
+The list shows every datamart with its type, key column, size, last load and a
+health pill — **✓ fresh**, **stale** or **✕ failed**. Search by name,
+description or column name; narrow with the type and health chips.
+
+Each row says what uses it ("3 segments · 2 campaigns · 1 journey") — click that
+to jump to the Used by block. **Open** goes to the detail, **Preview data** goes
+straight to the Data tab, and **⋯** holds Load data, Duplicate, Export data
+dictionary and Delete. Delete is greyed with the reason when something depends
+on the datamart.
+
+### Document the columns
+
+**Columns** is the tab that matters. One row per attribute, grouped by area and
+collapsible, showing the label, type, roles, privacy, fill rate, distinct count
+and how many segments filter on it. Turn on **Show technical names** to swap the
+label and the database name.
+
+Click a row to open the drawer on the right and document that column:
+
+- **Identity** — the technical name (fixed), the EN and TR labels, a description
+  and the attribute group. The label is what marketers see in the segment
+  builder, so it is worth writing properly.
+- **Type & mapping** — the data type, and the predefined column it maps to
+  (`PHONE_NUMBER`, `E_MAIL`, `PUSH_TOKEN`) so channels know where to find the
+  address.
+- **Roles** — key, reference, output, sortable, nullable.
+- **Privacy** — privacy level, sensitivity and the GDPR masking rule, with a
+  live example of the masked value underneath.
+- **Profile** — fill rate, distinct count, top values and min/max, all computed
+  from the rows in front of you.
+- **Used by** — the segments that filter on it, and a warning if the column is a
+  personalisation placeholder in content.
+
+**Save column**. If segments filter on the column and you changed its type or
+its key role, it asks first and lists them.
+
+Select several rows with the checkboxes to **bulk edit** group, privacy or
+masking, or to mark them as categories.
+
+### Mark a category
+
+A text column with few distinct values gets a **Suggest: make this a category**
+chip. One click accepts it, or tick *Use as category* in the drawer and press
+**Fill from data** to collect the allowed values.
+
+It matters because of what happens in Segments: a category column's filter stops
+being a free-text box and becomes a **value list with the `in` operator**, so
+nobody has to remember whether the region is written "Kyiv" or "KYIV".
+
+### Define a relationship
+
+**Relationships › + Add relationship.** Pick the target datamart, the column on
+each side and the kind (many-to-one and so on). Both columns must have the same
+type — it says so if they do not.
+
+This is the only way a segment can join a second datamart. In the segment
+builder, **Join a second DataMart** offers only related datamarts and shows the
+real join columns.
+
+### Check freshness
+
+**Load & refresh** (a concept in the prototype) shows the source, the schedule
+and the load history — rows added, changed and failed, duration, and notes such
+as a newly detected column. **Run now** simulates a load.
+
+For query-based sources the page states the guard rails: the view is opened
+read-only, the preview is capped at 100k rows and a statement is cancelled after
+30 seconds.
+
+**Delete all records** is at the bottom, in red. It empties the datamart and
+keeps the column definitions, it asks you to type the datamart name, and it is
+blocked entirely on the default main datamart.
+
+### See the data
+
+**Data** previews the first 50 rows with a search and a column filter, and a
+profile card for whichever column you pick on the left.
+
+Values are **masked per column privacy**. As an admin you see them unmasked and
+the page says so; flip **View as marketer** to see exactly what a marketer
+would. **Export sample (CSV)** always writes the masked values.
+
+---
+
 ## Offers, Policies, Reports
 
 - **Offers** — the offer catalogue; **+** adds one. Journey and campaign offer
@@ -1437,7 +1605,7 @@ The prototype runs three simulated days at load, so the monitor opens on
   - **Channels & senders** — the channel list and sender IDs.
   - **Segment groups** — the groups segments are filed under.
   - **Pre-sent period** — moved here from the campaign form.
-- **Datamart** — the source tables and their columns.
+- **Datamart** — the data catalogue. See **Datamarts (admin)** above.
 - **Release & licences** — version and licence information.
 
 ---
@@ -1755,11 +1923,200 @@ const NODE_META = {
 
 /* ---------- DATAMART (30-row synthetic Kyivstar demo datamart — same rows as ECM_Demo_Datamart_Kyivstar.csv) ---------- */
 const TODAY='2026-09-14';
-const DM_COLS=[{k:'CUSTOMER_ID',t:'text'},{k:'FIRST_NAME',t:'text'},{k:'MSISDN',t:'text'},{k:'EMAIL',t:'text'},{k:'PUSH_TOKEN',t:'text'},{k:'CUSTOMER_TYPE',t:'text'},{k:'PLAN',t:'text'},{k:'PACKAGE_EXPIRY_DATE',t:'date'},{k:'BILLING_DATE',t:'date'},{k:'BALANCE_UAH',t:'num'},{k:'CHURN_RISK',t:'num'},{k:'REGION',t:'text'},{k:'LANGUAGE',t:'text'},{k:'APP_INSTALLED',t:'bool'},{k:'DEVICE_5G',t:'bool'},{k:'DATA_USAGE_GB',t:'num'},{k:'TENURE_DAYS',t:'num'},{k:'LAST_TOPUP_DATE',t:'date'},{k:'LAST_CAMPAIGN_DATE',t:'date'},{k:'ACCOUNT_ID',t:'text'},{k:'IS_TEST_CUSTOMER',t:'bool'}];
 const DATAMART_ROWS=[{"CUSTOMER_ID":"100001","FIRST_NAME":"Oksana","MSISDN":"380501810111","EMAIL":"test.oksana100001@ecm-demo.test","PUSH_TOKEN":"tok_100001","CUSTOMER_TYPE":"prepaid","PLAN":"Smart 5GB","PACKAGE_EXPIRY_DATE":"2026-09-16","BILLING_DATE":"2026-09-23","BALANCE_UAH":"1.4","CHURN_RISK":"0.72","REGION":"Kyiv","LANGUAGE":"en","APP_INSTALLED":"Y","DEVICE_5G":"N","DATA_USAGE_GB":"2.7","TENURE_DAYS":"120","LAST_TOPUP_DATE":"2026-09-09","LAST_CAMPAIGN_DATE":"2026-06-07","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100002","FIRST_NAME":"Andrii","MSISDN":"380678015764","EMAIL":"test.andrii100002@ecm-demo.test","PUSH_TOKEN":"","CUSTOMER_TYPE":"prepaid","PLAN":"Smart 5GB","PACKAGE_EXPIRY_DATE":"2026-09-16","BILLING_DATE":"2026-09-16","BALANCE_UAH":"0.8","CHURN_RISK":"0.68","REGION":"Kyiv","LANGUAGE":"uk","APP_INSTALLED":"N","DEVICE_5G":"Y","DATA_USAGE_GB":"2.6","TENURE_DAYS":"45","LAST_TOPUP_DATE":"2026-09-09","LAST_CAMPAIGN_DATE":"2026-06-07","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100003","FIRST_NAME":"Kateryna","MSISDN":"380672037872","EMAIL":"test.kateryna100003@ecm-demo.test","PUSH_TOKEN":"tok_100003","CUSTOMER_TYPE":"prepaid","PLAN":"Family 50GB","PACKAGE_EXPIRY_DATE":"2026-09-16","BILLING_DATE":"2026-09-16","BALANCE_UAH":"2.0","CHURN_RISK":"0.66","REGION":"Kyiv","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"N","DATA_USAGE_GB":"23.4","TENURE_DAYS":"3","LAST_TOPUP_DATE":"2026-08-12","LAST_CAMPAIGN_DATE":"2026-09-04","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100004","FIRST_NAME":"Dmytro","MSISDN":"380502976225","EMAIL":"test.dmytro100004@ecm-demo.test","PUSH_TOKEN":"tok_100004","CUSTOMER_TYPE":"prepaid","PLAN":"Kyiv 30GB","PACKAGE_EXPIRY_DATE":"2026-09-16","BILLING_DATE":"2026-09-23","BALANCE_UAH":"1.3","CHURN_RISK":"0.71","REGION":"Lviv","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"Y","DATA_USAGE_GB":"19.7","TENURE_DAYS":"7","LAST_TOPUP_DATE":"2026-09-09","LAST_CAMPAIGN_DATE":"2026-06-07","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100005","FIRST_NAME":"Olena","MSISDN":"380672634613","EMAIL":"test.olena100005@ecm-demo.test","PUSH_TOKEN":"tok_100005","CUSTOMER_TYPE":"prepaid","PLAN":"Smart 5GB","PACKAGE_EXPIRY_DATE":"2026-09-16","BILLING_DATE":"2026-09-23","BALANCE_UAH":"1.7","CHURN_RISK":"0.79","REGION":"Odesa","LANGUAGE":"uk","APP_INSTALLED":"N","DEVICE_5G":"N","DATA_USAGE_GB":"1.9","TENURE_DAYS":"7","LAST_TOPUP_DATE":"2026-08-26","LAST_CAMPAIGN_DATE":"2026-06-07","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100006","FIRST_NAME":"Taras","MSISDN":"380678603172","EMAIL":"test.taras100006@ecm-demo.test","PUSH_TOKEN":"","CUSTOMER_TYPE":"prepaid","PLAN":"Unlimited","PACKAGE_EXPIRY_DATE":"2026-09-16","BILLING_DATE":"2026-09-17","BALANCE_UAH":"2.8","CHURN_RISK":"0.75","REGION":"Dnipro","LANGUAGE":"en","APP_INSTALLED":"Y","DEVICE_5G":"Y","DATA_USAGE_GB":"7.5","TENURE_DAYS":"900","LAST_TOPUP_DATE":"2026-09-07","LAST_CAMPAIGN_DATE":"2026-09-04","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100007","FIRST_NAME":"Iryna","MSISDN":"380509306674","EMAIL":"test.iryna100007@ecm-demo.test","PUSH_TOKEN":"tok_100007","CUSTOMER_TYPE":"prepaid","PLAN":"Kyiv 30GB","PACKAGE_EXPIRY_DATE":"2026-09-16","BILLING_DATE":"2026-09-11","BALANCE_UAH":"2.7","CHURN_RISK":"0.64","REGION":"Kharkiv","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"N","DATA_USAGE_GB":"11.0","TENURE_DAYS":"120","LAST_TOPUP_DATE":"2026-09-09","LAST_CAMPAIGN_DATE":"2026-09-08","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100008","FIRST_NAME":"Yurii","MSISDN":"380676738744","EMAIL":"test.yurii100008@ecm-demo.test","PUSH_TOKEN":"tok_100008","CUSTOMER_TYPE":"prepaid","PLAN":"Smart 15GB","PACKAGE_EXPIRY_DATE":"2026-09-16","BILLING_DATE":"2026-09-19","BALANCE_UAH":"1.5","CHURN_RISK":"0.77","REGION":"Kharkiv","LANGUAGE":"uk","APP_INSTALLED":"N","DEVICE_5G":"Y","DATA_USAGE_GB":"10.4","TENURE_DAYS":"400","LAST_TOPUP_DATE":"2026-09-09","LAST_CAMPAIGN_DATE":"2026-06-07","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100009","FIRST_NAME":"Nataliia","MSISDN":"380676263809","EMAIL":"test.nataliia100009@ecm-demo.test","PUSH_TOKEN":"tok_100009","CUSTOMER_TYPE":"prepaid","PLAN":"Kyiv 30GB","PACKAGE_EXPIRY_DATE":"2026-09-16","BILLING_DATE":"2026-09-11","BALANCE_UAH":"7.9","CHURN_RISK":"0.79","REGION":"Vinnytsia","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"N","DATA_USAGE_GB":"8.7","TENURE_DAYS":"45","LAST_TOPUP_DATE":"2026-08-12","LAST_CAMPAIGN_DATE":"2026-08-01","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100010","FIRST_NAME":"Maksym","MSISDN":"380505528829","EMAIL":"test.maksym100010@ecm-demo.test","PUSH_TOKEN":"","CUSTOMER_TYPE":"prepaid","PLAN":"Family 50GB","PACKAGE_EXPIRY_DATE":"2026-09-16","BILLING_DATE":"2026-09-11","BALANCE_UAH":"0.8","CHURN_RISK":"0.64","REGION":"Poltava","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"Y","DATA_USAGE_GB":"16.1","TENURE_DAYS":"3","LAST_TOPUP_DATE":"2026-07-27","LAST_CAMPAIGN_DATE":"2026-08-21","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100011","FIRST_NAME":"Anna","MSISDN":"380678476611","EMAIL":"test.anna100011@ecm-demo.test","PUSH_TOKEN":"tok_100011","CUSTOMER_TYPE":"prepaid","PLAN":"Kyiv 30GB","PACKAGE_EXPIRY_DATE":"2026-09-12","BILLING_DATE":"2026-09-11","BALANCE_UAH":"8.9","CHURN_RISK":"0.81","REGION":"Zaporizhzhia","LANGUAGE":"en","APP_INSTALLED":"N","DEVICE_5G":"N","DATA_USAGE_GB":"9.6","TENURE_DAYS":"400","LAST_TOPUP_DATE":"2026-09-02","LAST_CAMPAIGN_DATE":"2026-09-08","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100012","FIRST_NAME":"Roman","MSISDN":"380672964541","EMAIL":"test.roman100012@ecm-demo.test","PUSH_TOKEN":"tok_100012","CUSTOMER_TYPE":"prepaid","PLAN":"Family 50GB","PACKAGE_EXPIRY_DATE":"2026-09-12","BILLING_DATE":"2026-09-16","BALANCE_UAH":"3.2","CHURN_RISK":"0.9","REGION":"Chernihiv","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"Y","DATA_USAGE_GB":"5.6","TENURE_DAYS":"12","LAST_TOPUP_DATE":"2026-09-07","LAST_CAMPAIGN_DATE":"2026-09-04","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100013","FIRST_NAME":"Sofiia","MSISDN":"380509330000","EMAIL":"test.sofiia100013@ecm-demo.test","PUSH_TOKEN":"tok_100013","CUSTOMER_TYPE":"prepaid","PLAN":"Smart 5GB","PACKAGE_EXPIRY_DATE":"2026-09-12","BILLING_DATE":"2026-09-16","BALANCE_UAH":"110.8","CHURN_RISK":"0.21","REGION":"Kyiv","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"N","DATA_USAGE_GB":"11.1","TENURE_DAYS":"120","LAST_TOPUP_DATE":"2026-09-02","LAST_CAMPAIGN_DATE":"2026-09-04","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100014","FIRST_NAME":"Bohdan","MSISDN":"380675671130","EMAIL":"test.bohdan100014@ecm-demo.test","PUSH_TOKEN":"","CUSTOMER_TYPE":"prepaid","PLAN":"Family 50GB","PACKAGE_EXPIRY_DATE":"2026-09-12","BILLING_DATE":"2026-09-17","BALANCE_UAH":"105.0","CHURN_RISK":"0.38","REGION":"Kyiv","LANGUAGE":"uk","APP_INSTALLED":"N","DEVICE_5G":"Y","DATA_USAGE_GB":"16.5","TENURE_DAYS":"45","LAST_TOPUP_DATE":"2026-09-07","LAST_CAMPAIGN_DATE":"2026-09-04","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100015","FIRST_NAME":"Mariia","MSISDN":"380674914729","EMAIL":"test.mariia100015@ecm-demo.test","PUSH_TOKEN":"tok_100015","CUSTOMER_TYPE":"prepaid","PLAN":"Smart 5GB","PACKAGE_EXPIRY_DATE":"2026-09-15","BILLING_DATE":"2026-09-19","BALANCE_UAH":"26.6","CHURN_RISK":"0.08","REGION":"Kyiv","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"N","DATA_USAGE_GB":"20.0","TENURE_DAYS":"7","LAST_TOPUP_DATE":"2026-09-02","LAST_CAMPAIGN_DATE":"2026-08-21","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100016","FIRST_NAME":"Ihor","MSISDN":"380507195046","EMAIL":"test.ihor100016@ecm-demo.test","PUSH_TOKEN":"tok_100016","CUSTOMER_TYPE":"prepaid","PLAN":"Kyiv 30GB","PACKAGE_EXPIRY_DATE":"2026-09-15","BILLING_DATE":"2026-09-16","BALANCE_UAH":"56.1","CHURN_RISK":"0.05","REGION":"Lviv","LANGUAGE":"en","APP_INSTALLED":"Y","DEVICE_5G":"Y","DATA_USAGE_GB":"16.7","TENURE_DAYS":"120","LAST_TOPUP_DATE":"2026-08-12","LAST_CAMPAIGN_DATE":"2026-09-08","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100017","FIRST_NAME":"Viktoriia","MSISDN":"380677583025","EMAIL":"test.viktoriia100017@ecm-demo.test","PUSH_TOKEN":"tok_100017","CUSTOMER_TYPE":"prepaid","PLAN":"Family 50GB","PACKAGE_EXPIRY_DATE":"2026-09-15","BILLING_DATE":"2026-09-19","BALANCE_UAH":"105.8","CHURN_RISK":"0.23","REGION":"Odesa","LANGUAGE":"uk","APP_INSTALLED":"N","DEVICE_5G":"N","DATA_USAGE_GB":"9.8","TENURE_DAYS":"45","LAST_TOPUP_DATE":"2026-07-27","LAST_CAMPAIGN_DATE":"2026-08-01","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100018","FIRST_NAME":"Oleh","MSISDN":"380674502465","EMAIL":"test.oleh100018@ecm-demo.test","PUSH_TOKEN":"","CUSTOMER_TYPE":"prepaid","PLAN":"Unlimited","PACKAGE_EXPIRY_DATE":"2026-09-15","BILLING_DATE":"2026-09-19","BALANCE_UAH":"17.4","CHURN_RISK":"0.07","REGION":"Dnipro","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"Y","DATA_USAGE_GB":"4.3","TENURE_DAYS":"12","LAST_TOPUP_DATE":"2026-08-12","LAST_CAMPAIGN_DATE":"2026-09-08","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100019","FIRST_NAME":"Yana","MSISDN":"380502702289","EMAIL":"test.yana100019@ecm-demo.test","PUSH_TOKEN":"tok_100019","CUSTOMER_TYPE":"prepaid","PLAN":"Kyiv 30GB","PACKAGE_EXPIRY_DATE":"2026-09-17","BILLING_DATE":"2026-09-23","BALANCE_UAH":"72.3","CHURN_RISK":"0.09","REGION":"Kharkiv","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"N","DATA_USAGE_GB":"1.1","TENURE_DAYS":"900","LAST_TOPUP_DATE":"2026-09-07","LAST_CAMPAIGN_DATE":"2026-06-07","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100020","FIRST_NAME":"Serhii","MSISDN":"380676828229","EMAIL":"test.serhii100020@ecm-demo.test","PUSH_TOKEN":"tok_100020","CUSTOMER_TYPE":"prepaid","PLAN":"Kyiv 30GB","PACKAGE_EXPIRY_DATE":"2026-09-17","BILLING_DATE":"2026-09-19","BALANCE_UAH":"79.8","CHURN_RISK":"0.2","REGION":"Kharkiv","LANGUAGE":"uk","APP_INSTALLED":"N","DEVICE_5G":"Y","DATA_USAGE_GB":"3.4","TENURE_DAYS":"900","LAST_TOPUP_DATE":"2026-08-26","LAST_CAMPAIGN_DATE":"2026-08-01","ACCOUNT_ID":"","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100021","FIRST_NAME":"Daryna","MSISDN":"380673417890","EMAIL":"test.daryna100021@ecm-demo.test","PUSH_TOKEN":"tok_100021","CUSTOMER_TYPE":"prepaid","PLAN":"Smart 5GB","PACKAGE_EXPIRY_DATE":"2026-09-17","BILLING_DATE":"2026-09-11","BALANCE_UAH":"44.3","CHURN_RISK":"0.24","REGION":"Vinnytsia","LANGUAGE":"en","APP_INSTALLED":"Y","DEVICE_5G":"N","DATA_USAGE_GB":"8.6","TENURE_DAYS":"12","LAST_TOPUP_DATE":"2026-08-26","LAST_CAMPAIGN_DATE":"2026-09-04","ACCOUNT_ID":"ACC-7004","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100022","FIRST_NAME":"Vitalii","MSISDN":"380509862688","EMAIL":"test.vitalii100022@ecm-demo.test","PUSH_TOKEN":"","CUSTOMER_TYPE":"prepaid","PLAN":"Kyiv 30GB","PACKAGE_EXPIRY_DATE":"2026-09-17","BILLING_DATE":"2026-09-16","BALANCE_UAH":"32.6","CHURN_RISK":"0.26","REGION":"Poltava","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"Y","DATA_USAGE_GB":"16.7","TENURE_DAYS":"3","LAST_TOPUP_DATE":"2026-07-02","LAST_CAMPAIGN_DATE":"2026-06-07","ACCOUNT_ID":"ACC-7004","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100023","FIRST_NAME":"Alina","MSISDN":"380672526903","EMAIL":"test.alina100023@ecm-demo.test","PUSH_TOKEN":"tok_100023","CUSTOMER_TYPE":"postpaid","PLAN":"Kyiv 30GB","PACKAGE_EXPIRY_DATE":"2026-09-20","BILLING_DATE":"2026-09-23","BALANCE_UAH":"80.7","CHURN_RISK":"0.17","REGION":"Zaporizhzhia","LANGUAGE":"uk","APP_INSTALLED":"N","DEVICE_5G":"N","DATA_USAGE_GB":"9.1","TENURE_DAYS":"7","LAST_TOPUP_DATE":"2026-09-02","LAST_CAMPAIGN_DATE":"2026-09-04","ACCOUNT_ID":"ACC-7004","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100024","FIRST_NAME":"Petro","MSISDN":"380676530860","EMAIL":"test.petro100024@ecm-demo.test","PUSH_TOKEN":"tok_100024","CUSTOMER_TYPE":"postpaid","PLAN":"Smart 15GB","PACKAGE_EXPIRY_DATE":"2026-09-20","BILLING_DATE":"2026-09-23","BALANCE_UAH":"95.7","CHURN_RISK":"0.26","REGION":"Chernihiv","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"Y","DATA_USAGE_GB":"19.6","TENURE_DAYS":"900","LAST_TOPUP_DATE":"2026-07-02","LAST_CAMPAIGN_DATE":"2026-09-04","ACCOUNT_ID":"ACC-7004","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100025","FIRST_NAME":"Liliia","MSISDN":"380504804057","EMAIL":"test.liliia100025@ecm-demo.test","PUSH_TOKEN":"tok_100025","CUSTOMER_TYPE":"postpaid","PLAN":"Smart 15GB","PACKAGE_EXPIRY_DATE":"2026-09-20","BILLING_DATE":"2026-09-23","BALANCE_UAH":"100.0","CHURN_RISK":"0.37","REGION":"Kyiv","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"N","DATA_USAGE_GB":"12.1","TENURE_DAYS":"400","LAST_TOPUP_DATE":"2026-09-09","LAST_CAMPAIGN_DATE":"2026-09-08","ACCOUNT_ID":"ACC-7004","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100026","FIRST_NAME":"Artem","MSISDN":"380674248823","EMAIL":"test.artem100026@ecm-demo.test","PUSH_TOKEN":"","CUSTOMER_TYPE":"postpaid","PLAN":"Kyiv 30GB","PACKAGE_EXPIRY_DATE":"2026-09-20","BILLING_DATE":"2026-09-19","BALANCE_UAH":"61.9","CHURN_RISK":"0.37","REGION":"Kyiv","LANGUAGE":"en","APP_INSTALLED":"N","DEVICE_5G":"Y","DATA_USAGE_GB":"19.5","TENURE_DAYS":"400","LAST_TOPUP_DATE":"2026-09-02","LAST_CAMPAIGN_DATE":"2026-08-21","ACCOUNT_ID":"ACC-7005","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100027","FIRST_NAME":"Tetiana","MSISDN":"380678886633","EMAIL":"test.tetiana100027@ecm-demo.test","PUSH_TOKEN":"tok_100027","CUSTOMER_TYPE":"postpaid","PLAN":"Smart 15GB","PACKAGE_EXPIRY_DATE":"2026-09-05","BILLING_DATE":"2026-09-17","BALANCE_UAH":"21.2","CHURN_RISK":"0.08","REGION":"Kyiv","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"N","DATA_USAGE_GB":"5.3","TENURE_DAYS":"120","LAST_TOPUP_DATE":"2026-08-12","LAST_CAMPAIGN_DATE":"2026-09-08","ACCOUNT_ID":"ACC-7005","IS_TEST_CUSTOMER":"N"},{"CUSTOMER_ID":"100028","FIRST_NAME":"Vasyl","MSISDN":"380502422346","EMAIL":"test.vasyl100028@ecm-demo.test","PUSH_TOKEN":"tok_100028","CUSTOMER_TYPE":"postpaid","PLAN":"Smart 5GB","PACKAGE_EXPIRY_DATE":"2026-09-05","BILLING_DATE":"2026-09-19","BALANCE_UAH":"81.8","CHURN_RISK":"0.24","REGION":"Lviv","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"Y","DATA_USAGE_GB":"18.9","TENURE_DAYS":"900","LAST_TOPUP_DATE":"2026-09-07","LAST_CAMPAIGN_DATE":"2026-08-01","ACCOUNT_ID":"ACC-7005","IS_TEST_CUSTOMER":"Y"},{"CUSTOMER_ID":"100029","FIRST_NAME":"Kristina","MSISDN":"380676578712","EMAIL":"test.kristina100029@ecm-demo.test","PUSH_TOKEN":"tok_100029","CUSTOMER_TYPE":"postpaid","PLAN":"Smart 5GB","PACKAGE_EXPIRY_DATE":"2026-09-05","BILLING_DATE":"2026-09-11","BALANCE_UAH":"57.7","CHURN_RISK":"0.41","REGION":"Odesa","LANGUAGE":"uk","APP_INSTALLED":"N","DEVICE_5G":"N","DATA_USAGE_GB":"9.8","TENURE_DAYS":"45","LAST_TOPUP_DATE":"2026-07-27","LAST_CAMPAIGN_DATE":"2026-09-08","ACCOUNT_ID":"ACC-7005","IS_TEST_CUSTOMER":"Y"},{"CUSTOMER_ID":"100030","FIRST_NAME":"Denys","MSISDN":"380673131350","EMAIL":"test.denys100030@ecm-demo.test","PUSH_TOKEN":"","CUSTOMER_TYPE":"postpaid","PLAN":"Smart 5GB","PACKAGE_EXPIRY_DATE":"2026-09-05","BILLING_DATE":"2026-09-16","BALANCE_UAH":"28.7","CHURN_RISK":"0.34","REGION":"Dnipro","LANGUAGE":"uk","APP_INSTALLED":"Y","DEVICE_5G":"Y","DATA_USAGE_GB":"14.4","TENURE_DAYS":"45","LAST_TOPUP_DATE":"2026-07-02","LAST_CAMPAIGN_DATE":"2026-09-04","ACCOUNT_ID":"ACC-7005","IS_TEST_CUSTOMER":"Y"}];
 /* event (feedback) datamart: one row per delivery result, refreshed from the delivery_result table */
-const EVENT_DM_COLS=[{k:'CUSTOMER_ID',t:'text'},{k:'MSISDN',t:'text'},{k:'CAMPAIGN_ID',t:'text'},{k:'CAMPAIGN_NAME',t:'text'},{k:'CHANNEL',t:'text'},{k:'DELIVERY_STATUS',t:'text'},{k:'SENT_DATE',t:'date'},{k:'OPENED',t:'bool'},{k:'CLICKED',t:'bool'},{k:'RESPONSE_DATE',t:'date'}];
 const EVENT_ROWS=[{"CUSTOMER_ID":"100001","MSISDN":"380501810111","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"delivered","SENT_DATE":"2026-09-13","OPENED":"Y","CLICKED":"N","RESPONSE_DATE":"2026-09-13"},{"CUSTOMER_ID":"100002","MSISDN":"380678015764","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"delivered","SENT_DATE":"2026-09-13","OPENED":"N","CLICKED":"N","RESPONSE_DATE":""},{"CUSTOMER_ID":"100003","MSISDN":"380672037872","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"delivered","SENT_DATE":"2026-09-13","OPENED":"Y","CLICKED":"N","RESPONSE_DATE":"2026-09-13"},{"CUSTOMER_ID":"100004","MSISDN":"380502976225","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"delivered","SENT_DATE":"2026-09-13","OPENED":"Y","CLICKED":"N","RESPONSE_DATE":"2026-09-13"},{"CUSTOMER_ID":"100005","MSISDN":"380672634613","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"delivered","SENT_DATE":"2026-09-13","OPENED":"N","CLICKED":"N","RESPONSE_DATE":""},{"CUSTOMER_ID":"100006","MSISDN":"380678603172","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"delivered","SENT_DATE":"2026-09-13","OPENED":"Y","CLICKED":"Y","RESPONSE_DATE":"2026-09-13"},{"CUSTOMER_ID":"100007","MSISDN":"380509306674","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"delivered","SENT_DATE":"2026-09-13","OPENED":"Y","CLICKED":"Y","RESPONSE_DATE":"2026-09-13"},{"CUSTOMER_ID":"100008","MSISDN":"380676738744","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"not delivered","SENT_DATE":"2026-09-13","OPENED":"N","CLICKED":"N","RESPONSE_DATE":""},{"CUSTOMER_ID":"100009","MSISDN":"380676263809","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"delivered","SENT_DATE":"2026-09-13","OPENED":"N","CLICKED":"N","RESPONSE_DATE":""},{"CUSTOMER_ID":"100010","MSISDN":"380505528829","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"delivered","SENT_DATE":"2026-09-13","OPENED":"Y","CLICKED":"N","RESPONSE_DATE":"2026-09-13"},{"CUSTOMER_ID":"100015","MSISDN":"380674914729","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"delivered","SENT_DATE":"2026-09-13","OPENED":"Y","CLICKED":"Y","RESPONSE_DATE":"2026-09-13"},{"CUSTOMER_ID":"100016","MSISDN":"380507195046","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"delivered","SENT_DATE":"2026-09-13","OPENED":"Y","CLICKED":"Y","RESPONSE_DATE":"2026-09-13"},{"CUSTOMER_ID":"100017","MSISDN":"380677583025","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"delivered","SENT_DATE":"2026-09-13","OPENED":"N","CLICKED":"N","RESPONSE_DATE":""},{"CUSTOMER_ID":"100018","MSISDN":"380674502465","CAMPAIGN_ID":"433","CAMPAIGN_NAME":"Package renewal — SMS","CHANNEL":"sms","DELIVERY_STATUS":"delivered","SENT_DATE":"2026-09-13","OPENED":"Y","CLICKED":"Y","RESPONSE_DATE":"2026-09-13"}];
+
+/* ============ DATAMART CATALOGUE (v43) =====================================
+   A datamart is a documented, profiled, access-controlled data product, and
+   segments consume it. This catalogue is the single source of column metadata:
+   DM_COLS / EVENT_DM_COLS / colsOf() are derived from it, so the segment
+   builder keeps working off the same definitions the admin edits. */
+const ATTR_GROUPS=['Identity & contact','Plan & product','Usage','Value & balance','Scores & models','Device & app','Engagement','Campaign feedback','Other'];
+const PRIVACY=['Internal','Personal','Sensitive'];
+const MASKINGS=['None','Show last 4','Hash','Redact'];
+const PREDEFINED=['','PHONE_NUMBER','E_MAIL','PUSH_TOKEN','CUSTOMER_KEY','LANGUAGE'];
+const REL_KINDS=['many-to-one','one-to-one','one-to-many'];
+
+/* col(name, type, group, EN, TR, description, overrides) */
+const col=(name,type,group,en,tr,desc,o)=>Object.assign({
+  name,label:{en,tr},type,group,desc,
+  roles:['output'],privacy:'Internal',sensitivity:'Low',masking:'None',predefined:'',
+  nullable:true,sortable:true,category:false,allowed:[]},o||{});
+
+const MAIN_COLUMNS=[
+  col('CUSTOMER_ID','text','Identity & contact','Customer ID','Müşteri No','Unique subscriber id from BSS.',{roles:['key','reference','output'],nullable:false}),
+  col('ACCOUNT_ID','text','Identity & contact','Account ID','Hesap No','Billing account the subscriber belongs to.',{roles:['reference','output']}),
+  col('FIRST_NAME','text','Identity & contact','First name','Ad','Given name, used in personalisation.',{privacy:'Personal',sensitivity:'Medium',masking:'Redact'}),
+  col('MSISDN','text','Identity & contact','Mobile number','Cep Telefonu','Subscriber MSISDN in international format.',{roles:['reference','output'],privacy:'Personal',sensitivity:'High',masking:'Show last 4',predefined:'PHONE_NUMBER',nullable:false}),
+  col('EMAIL','text','Identity & contact','E-mail','E-posta','Contact e-mail address.',{privacy:'Personal',sensitivity:'High',masking:'Hash',predefined:'E_MAIL'}),
+  col('PUSH_TOKEN','text','Identity & contact','Push token','Push Anahtarı','Device token for mobile push delivery.',{privacy:'Personal',sensitivity:'High',masking:'Hash',predefined:'PUSH_TOKEN'}),
+  col('REGION','text','Identity & contact','Region','Bölge','Region the subscriber is registered in.',{category:true}),
+  col('LANGUAGE','text','Identity & contact','Language','Dil','Preferred communication language.',{category:true,predefined:'LANGUAGE'}),
+  col('CUSTOMER_TYPE','text','Plan & product','Customer type','Müşteri Tipi','Prepaid or postpaid.',{category:true}),
+  col('PLAN','text','Plan & product','Plan','Tarife','Current tariff plan name.',{roles:['reference','output'],category:true}),
+  col('PACKAGE_EXPIRY_DATE','date','Plan & product','Package expiry','Paket Bitiş','When the current package runs out — drives renewal campaigns.'),
+  col('BILLING_DATE','date','Plan & product','Billing date','Fatura Tarihi','Next invoice date for postpaid subscribers.'),
+  col('DATA_USAGE_GB','num','Usage','Data usage (GB)','Veri Kullanımı (GB)','Data consumed in the current billing cycle.'),
+  col('TENURE_DAYS','num','Usage','Tenure (days)','Müşteri Yaşı (gün)','Days since activation.'),
+  col('LAST_TOPUP_DATE','date','Usage','Last top-up','Son Yükleme','Most recent prepaid top-up.'),
+  col('BALANCE_UAH','num','Value & balance','Balance (UAH)','Bakiye (UAH)','Current prepaid balance.'),
+  col('CHURN_RISK','num','Scores & models','Churn risk','Kayıp Riski','Model score between 0 and 1; higher means likelier to leave.'),
+  col('APP_INSTALLED','bool','Device & app','App installed','Uygulama Kurulu','Whether the self-care app is installed.',{category:true}),
+  col('DEVICE_5G','bool','Device & app','5G device','5G Cihaz','Whether the handset supports 5G.',{category:true}),
+  col('LAST_CAMPAIGN_DATE','date','Engagement','Last campaign','Son Kampanya','When this subscriber was last contacted.'),
+  col('IS_TEST_CUSTOMER','bool','Other','Test customer','Test Müşterisi','Excluded from production sends.',{category:true})
+];
+const EVENT_COLUMNS=[
+  col('CUSTOMER_ID','text','Identity & contact','Customer ID','Müşteri No','Subscriber the delivery went to — joins the main datamart.',{roles:['key','reference','output'],nullable:false}),
+  col('MSISDN','text','Identity & contact','Mobile number','Cep Telefonu','Address the message was sent to.',{privacy:'Personal',sensitivity:'High',masking:'Show last 4',predefined:'PHONE_NUMBER'}),
+  col('CAMPAIGN_ID','text','Campaign feedback','Campaign ID','Kampanya No','Campaign that produced the delivery.',{roles:['reference','output'],category:true}),
+  col('CAMPAIGN_NAME','text','Campaign feedback','Campaign name','Kampanya Adı','Readable campaign name at send time.'),
+  col('CHANNEL','text','Campaign feedback','Channel','Kanal','Channel the delivery used.',{category:true}),
+  col('DELIVERY_STATUS','text','Campaign feedback','Delivery status','Teslim Durumu','Outcome reported by the gateway.',{category:true}),
+  col('SENT_DATE','date','Campaign feedback','Sent date','Gönderim Tarihi','When the delivery left the platform.'),
+  col('OPENED','bool','Engagement','Opened','Açıldı','Whether the message was opened.',{category:true}),
+  col('CLICKED','bool','Engagement','Clicked','Tıklandı','Whether a link was clicked.',{category:true}),
+  col('RESPONSE_DATE','date','Engagement','Response date','Yanıt Tarihi','When the subscriber reacted.')
+];
+/* A small lookup datamart, generated so the catalogue has a third shape. */
+const CATALOG_ROWS=[
+  ['Smart 5GB',149,5,500,'N'],['Smart 10GB',199,10,750,'N'],['Smart 20GB',279,20,1200,'Y'],
+  ['Unlimited 5G',399,999,9999,'Y'],['Start 2GB',99,2,250,'N'],['Data Only 15GB',229,15,0,'Y']
+].map(r=>({PLAN:r[0],PRICE_UAH:r[1],DATA_GB:r[2],MINUTES:r[3],IS_5G:r[4]}));
+const CATALOG_COLUMNS=[
+  col('PLAN','text','Plan & product','Plan','Tarife','Tariff plan name — joins the main datamart.',{roles:['key','reference','output'],category:true,nullable:false}),
+  col('PRICE_UAH','num','Value & balance','Price (UAH)','Fiyat (UAH)','Monthly recurring charge.'),
+  col('DATA_GB','num','Plan & product','Data (GB)','Veri (GB)','Included data allowance.'),
+  col('MINUTES','num','Plan & product','Minutes','Dakika','Included voice minutes.'),
+  col('IS_5G','bool','Plan & product','5G plan','5G Tarife','Whether the plan carries 5G access.',{category:true})
+];
+/* Three more so the list shows every health state and an unused datamart. */
+const genRows=(n,f)=>Array.from({length:n},(_,i)=>f(i));
+const PROSPECT_ROWS=genRows(18,i=>({PROSPECT_ID:'P-'+(9100+i),MSISDN:'38067'+String(1000000+i*37),SCORE:Math.round((0.3+((i*17)%60)/100)*100)/100,SOURCE:['Digital Twin','Web form','Retail'][i%3]}));
+const PROSPECT_COLUMNS=[
+  col('PROSPECT_ID','text','Identity & contact','Prospect ID','Aday No','Identifier from the Digital Twin insight export.',{roles:['key','output'],nullable:false}),
+  col('MSISDN','text','Identity & contact','Mobile number','Cep Telefonu','Contact number.',{privacy:'Personal',sensitivity:'High',masking:'Show last 4',predefined:'PHONE_NUMBER'}),
+  col('SCORE','num','Scores & models','Propensity','Eğilim Skoru','Likelihood to accept an acquisition offer.'),
+  col('SOURCE','text','Other','Source','Kaynak','Where the prospect came from.',{category:true})
+];
+const PMEMAIL_ROWS=genRows(9,i=>({EMAIL:'pm'+i+'@ecm-demo.test',SEGMENT_TAG:['A','B','C'][i%3]}));
+const PMEMAIL_COLUMNS=[
+  col('EMAIL','text','Identity & contact','E-mail','E-posta','Uploaded address list.',{roles:['key','output'],privacy:'Personal',sensitivity:'High',masking:'Hash',predefined:'E_MAIL',nullable:false}),
+  col('SEGMENT_TAG','text','Other','Tag','Etiket','Tag from the uploaded file.',{category:true})
+];
+const INSURANCE_ROWS=genRows(12,i=>({CUSTOMER_ID:String(100001+i),POLICY:'INS-'+(200+i),PREMIUM_UAH:60+i*7}));
+const INSURANCE_COLUMNS=[
+  col('CUSTOMER_ID','text','Identity & contact','Customer ID','Müşteri No','Subscriber the policy belongs to.',{roles:['key','reference','output'],nullable:false}),
+  col('POLICY','text','Other','Policy','Poliçe','Insurance policy number.'),
+  col('PREMIUM_UAH','num','Value & balance','Premium (UAH)','Prim (UAH)','Monthly premium.')
+];
+
+const DATAMARTS=[
+  {id:'DM-1',key:'Main',name:'MAIN DATAMART',type:'Customer',
+   desc:'One row per subscriber — profile, plan, usage, scores.',owner:'Etiya data team',
+   isDefaultMain:true,keyColumn:'CUSTOMER_ID',rows:()=>DATAMART_ROWS,columns:MAIN_COLUMNS,
+   source:{kind:'DB sync',detail:'BSS replica · view CVM_CUSTOMER_V',schedule:'Daily 03:00'},
+   relationships:[],
+   loads:[{at:'2026-09-14 03:00',status:'ok',added:0,changed:412,failed:0,secs:94},
+          {at:'2026-09-13 03:00',status:'ok',added:37,changed:388,failed:0,secs:91},
+          {at:'2026-09-12 03:00',status:'ok',added:12,changed:401,failed:2,secs:96,note:'+1 column NPS_SCORE detected — review'}]},
+  {id:'DM-2',key:'Event',name:'EVENT DATAMART',type:'Event',
+   desc:'One row per delivery — what was sent, what came back.',owner:'Etiya data team',
+   keyColumn:'CUSTOMER_ID',rows:()=>EVENT_ROWS,columns:EVENT_COLUMNS,
+   source:{kind:'DB sync',detail:'Delivery feedback stream · view CVM_DELIVERY_V',schedule:'Hourly'},
+   relationships:[{to:'DM-1',on:[['CUSTOMER_ID','CUSTOMER_ID']],kind:'many-to-one'}],
+   loads:[{at:'2026-09-14 08:00',status:'ok',added:126,changed:0,failed:0,secs:22},
+          {at:'2026-09-14 07:00',status:'ok',added:98,changed:0,failed:0,secs:19}]},
+  {id:'DM-3',key:'Catalog',name:'PRODUCT CATALOG',type:'Lookup',
+   desc:'Tariff plans with price and allowances — lookup for offers and content.',owner:'Product management',
+   keyColumn:'PLAN',rows:()=>CATALOG_ROWS,columns:CATALOG_COLUMNS,
+   source:{kind:'API',detail:'Product catalogue API · /v1/offerings',schedule:'Daily 02:00'},
+   relationships:[{to:'DM-1',on:[['PLAN','PLAN']],kind:'one-to-many'}],
+   loads:[{at:'2026-09-14 02:00',status:'ok',added:0,changed:6,failed:0,secs:4}]},
+  {id:'DM-4',key:'Prospects',name:'KYIVSTAR PROSPECTS',type:'Customer',
+   desc:'Digital Twin insight export — acquisition candidates, not subscribers yet.',owner:'CVM analytics',
+   keyColumn:'PROSPECT_ID',rows:()=>PROSPECT_ROWS,columns:PROSPECT_COLUMNS,
+   source:{kind:'File upload',detail:'digital_twin_prospects.csv',schedule:'Manual'},
+   relationships:[],
+   loads:[{at:'2026-08-29 11:20',status:'ok',added:18,changed:0,failed:0,secs:3}]},
+  {id:'DM-5',key:'PmEmails',name:'PM EMAILS',type:'Customer',
+   desc:'Address list uploaded by product management for a one-off mailing.',owner:'Product management',
+   keyColumn:'EMAIL',rows:()=>PMEMAIL_ROWS,columns:PMEMAIL_COLUMNS,
+   source:{kind:'File upload',detail:'pm_emails_sept.xlsx',schedule:'Manual'},
+   relationships:[],
+   loads:[{at:'2026-09-13 16:42',status:'failed',added:0,changed:0,failed:9,secs:2,note:'Column EMAIL contained 9 malformed addresses — load rejected'},
+          {at:'2026-09-01 10:05',status:'ok',added:9,changed:0,failed:0,secs:2}]},
+  {id:'DM-6',key:'Insurance',name:'MARKETING INSURANCE',type:'Customer',
+   desc:'Policy holders from the insurance partner. Never used in a segment.',owner:'Partnerships',
+   keyColumn:'CUSTOMER_ID',rows:()=>INSURANCE_ROWS,columns:INSURANCE_COLUMNS,
+   source:{kind:'API',detail:'Partner API · /policies',schedule:'Weekly Mon 04:00'},
+   relationships:[{to:'DM-1',on:[['CUSTOMER_ID','CUSTOMER_ID']],kind:'many-to-one'}],
+   loads:[{at:'2026-09-07 04:00',status:'ok',added:12,changed:0,failed:0,secs:5}]}
+];
+const dmById=id=>DATAMARTS.find(d=>d.id===id);
+const dmByKey=k=>DATAMARTS.find(d=>d.key===k);
+const dmRows=d=>{ try{ return d.rows()||[]; }catch(e){ return []; } };
+/* derived — the rest of the app keeps using these */
+const DM_COLS=MAIN_COLUMNS.map(c=>({k:c.name,t:c.type}));
+const EVENT_DM_COLS=EVENT_COLUMNS.map(c=>({k:c.name,t:c.type}));
+const dmColMeta=(dmKey,name)=>{ const d=dmByKey(dmKey); return d&&d.columns.find(c=>c.name===name); };
+
+/* ---- health -------------------------------------------------------------- */
+const dmLastLoad=d=>(d.loads||[])[0]||null;
+function dmHealth(d){
+  const l=dmLastLoad(d); if(!l) return 'stale';
+  if(l.status==='failed') return 'failed';
+  const hrs=(new Date(TODAY+'T12:00:00')-new Date(l.at.replace(' ','T')))/36e5;
+  return hrs<26?'fresh':'stale';
+}
+const HEALTH_LBL={fresh:'fresh',stale:'stale',failed:'failed'};
+const healthPill=h=>`<span class="pill ${h==='fresh'?'ok':h==='failed'?'bad':'warn'}">${h==='fresh'?'✓ ':h==='failed'?'✕ ':''}${HEALTH_LBL[h]}</span>`;
+
+/* ---- profiling (computed from the rows, memoised) ------------------------ */
+const _profCache={};
+function dmProfile(d,colName){
+  const key=d.id+'|'+colName; if(_profCache[key]) return _profCache[key];
+  const rows=dmRows(d), meta=d.columns.find(c=>c.name===colName)||{type:'text'};
+  const vals=rows.map(r=>r[colName]).filter(v=>v!==undefined&&v!==null&&String(v).trim()!=='');
+  const counts={}; vals.forEach(v=>{ const s=String(v); counts[s]=(counts[s]||0)+1; });
+  const distinct=Object.keys(counts).length;
+  const top=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([v,n])=>({v,n}));
+  const p={fill:rows.length?Math.round(vals.length/rows.length*100):0,filled:vals.length,total:rows.length,distinct,top,min:null,max:null,mean:null};
+  if(meta.type==='num'){ const ns=vals.map(Number).filter(n=>!isNaN(n));
+    if(ns.length){ p.min=Math.min(...ns); p.max=Math.max(...ns); p.mean=Math.round(ns.reduce((a,b)=>a+b,0)/ns.length*100)/100; } }
+  else if(meta.type==='date'){ const ds=vals.map(v=>String(v).slice(0,10)).filter(Boolean).sort();
+    if(ds.length){ p.min=ds[0]; p.max=ds[ds.length-1]; } }
+  return _profCache[key]=p;
+}
+const dmProfileReset=d=>Object.keys(_profCache).forEach(k=>{ if(!d||k.startsWith(d.id+'|')) delete _profCache[k]; });
+
+/* ---- usage --------------------------------------------------------------- */
+function dmUsage(dmId){
+  const d=dmById(dmId); if(!d) return {segments:[],campaigns:[],journeys:[]};
+  const segs=MLS.filter(m=>m.dm===d.key||m.dm2===d.key);
+  const ids=new Set(segs.map(m=>m.id));
+  const camps=CAMPAIGNS.filter(c=>(c.lists||[]).some(l=>ids.has(l.id)));
+  const jrns=JOURNEYS.filter(j=>(j.nodes||[]).some(n=>n.cfg&&ids.has(String(n.cfg.segment||'').split(' ')[0])));
+  return {segments:segs,campaigns:camps,journeys:jrns};
+}
+function colUsage(dmId,colName){
+  const d=dmById(dmId); if(!d) return {segments:[],param:false};
+  const segs=MLS.filter(m=>(m.dm===d.key||m.dm2===d.key)&&(m.filters||[]).some(f=>f.col===colName));
+  return {segments:segs,param:PARAMS.includes(colName)};
+}
+const usageText=u=>[[u.segments.length,'segment'],[u.campaigns.length,'campaign'],[u.journeys.length,'journey']]
+  .filter(x=>x[0]).map(([n,w])=>`${n} ${w}${n===1?'':'s'}`).join(' · ')||'not used';
+
+/* ---- masking ------------------------------------------------------------- */
+function maskValue(c,v){
+  if(v===undefined||v===null||v==='') return '';
+  const s=String(v);
+  if(c.masking==='Show last 4') return s.length>4?'•'.repeat(Math.max(3,s.length-4))+s.slice(-4):s;
+  if(c.masking==='Hash') return 'sha256:'+Math.abs([...s].reduce((h,ch)=>((h<<5)-h+ch.charCodeAt(0))|0,7)).toString(16).padStart(8,'0').slice(0,8);
+  if(c.masking==='Redact') return '—';
+  return s;
+}
 const msisdnFmt=m=>`${m.slice(0,3)} ${m.slice(3,5)} ${m.slice(5,8)} ${m.slice(8,10)} ${m.slice(10)}`;
 const CUSTOMERS = DATAMART_ROWS.map(r=>({
   id:msisdnFmt(r.MSISDN), cid:r.CUSTOMER_ID, name:r.FIRST_NAME, seg:`${r.CUSTOMER_TYPE} · ${r.PLAN}`,
@@ -2230,7 +2587,7 @@ function showView(v){ curView=v; document.querySelectorAll('.view').forEach(s=>s
      time the builder is shown rather than at boot. Later visits keep the pan
      and zoom the user left behind. */
   if(v==='journeys'&&!jFitted){ jFitted=true; fitView(); setTimeout(fitView,200); } }
-function render(){ renderCanvas(); renderNodePanel(); renderOffers(); renderPolicies(); renderMonitor(); renderApi(); renderSegmentation(); renderCampaigns(); renderContent(); renderParameters(); renderReports(); renderDashboard(); renderPrograms(); renderStart(); }
+function render(){ renderCanvas(); renderNodePanel(); renderOffers(); renderPolicies(); renderMonitor(); renderApi(); renderSegmentation(); renderCampaigns(); renderContent(); renderParameters(); renderReports(); renderDashboard(); renderPrograms(); renderDatamart(); renderStart(); }
 
 document.querySelectorAll('.nav button[data-view]').forEach(b=>b.onclick=()=>showView(b.dataset.view));
 
@@ -2712,15 +3069,32 @@ let segQ='';
 let segMode='list';
 function segShow(mode){ segMode=mode; document.getElementById('seg-listcard').hidden=mode!=='list'; document.getElementById('segsplit').hidden=mode!=='edit'; if(curView==='segmentation') setCrumb(mode==='edit'?(segEdit?segEdit:'New segment'):''); }
 function segLoad(m){ segShow('edit'); segEdit=m?m.id:null; segDraft=m?JSON.parse(JSON.stringify({name:m.name,desc:m.desc||'',group:m.group,dm:m.dm,dm2:m.dm2||'',method:m.method,logic:m.logic,excl:m.excl,exclCh:m.exclCh||[],filters:m.filters})):segBlank(); segResult=null; document.getElementById('seg-saved').hidden=true; document.getElementById('seg-prevwrap').open=false; renderSegForm(); renderSegList(); }
+/* Datamarts the admin has related to this one, in either direction. */
+function segJoinable(key){
+  const me=dmByKey(key); if(!me) return [];
+  const out=new Set((me.relationships||[]).map(r=>r.to));
+  DATAMARTS.forEach(x=>{ if((x.relationships||[]).some(r=>r.to===me.id)) out.add(x.id); });
+  return [...out].map(dmById).filter(Boolean);
+}
+function segJoinText(a,b){
+  const A=dmByKey(a), B=dmByKey(b); if(!A||!B) return '';
+  const r=(A.relationships||[]).find(x=>x.to===B.id);
+  if(r) return r.on.map(p=>p[0]+' = '+p[1]).join(', ');
+  const r2=(B.relationships||[]).find(x=>x.to===A.id);
+  return r2?r2.on.map(p=>p[1]+' = '+p[0]).join(', '):'no relationship';
+}
 function segCols(){ const a=colsOf(segDraft.dm).map(c=>({k:c.k,t:c.t,src:segDraft.dm})); if(segDraft.dm2&&segDraft.dm2!==segDraft.dm){ colsOf(segDraft.dm2).forEach(c=>{ if(!a.some(x=>x.k===c.k)) a.push({k:c.k,t:c.t,src:segDraft.dm2}); }); } return a; }
 function renderSegForm(){
   const g=id=>document.getElementById(id);
   g('seg-title').textContent=segEdit?`Segment · ${segEdit}`:'New segment'; if(curView==='segmentation') setCrumb(segEdit?segEdit:'New segment');
   g('seg-name').value=segDraft.name; g('seg-desc').value=segDraft.desc||''; g('seg-group').value=segDraft.group; g('seg-dm').value=segDraft.dm; g('seg-method').value=segDraft.method; g('seg-logic').value=segDraft.logic; g('seg-excl').checked=!!segDraft.excl;
-  // second DataMart (join) — labeled action instead of an anonymous "+"
-  const other=segDraft.dm==='Main'?'Event':'Main';
-  g('seg-dm2wrap').innerHTML=segDraft.dm2?`<div class="fld"><div class="row" style="align-items:flex-end"><div class="fld" style="flex:1.4"><label>Joined DataMart</label><select id="seg-dm2"><option value="Main" ${segDraft.dm2==='Main'?'selected':''}>Main DataMart (customer)</option><option value="Event" ${segDraft.dm2==='Event'?'selected':''}>Event DataMart (delivery feedback)</option></select></div><div class="fld"><label>Join on <span style="color:var(--ink-3)">(reference column, set by admin)</span></label><input readonly value="CUSTOMER_ID = CUSTOMER_ID"></div><button class="btn sm outline" id="seg-dm2rm" style="flex:0 0 auto;margin-bottom:1px">Remove</button></div></div>`
-    :`<div><button class="btn sm outline" id="seg-dm2add" style="white-space:nowrap">+ Join a second DataMart</button></div>`;
+  // second DataMart — only datamarts the admin has related to this one, and the
+  // join text comes from the relationship rather than being hard-coded.
+  const joinable=segJoinable(segDraft.dm);
+  const other=(joinable[0]||{}).key||'';
+  g('seg-dm2wrap').innerHTML=segDraft.dm2?`<div class="fld"><div class="row" style="align-items:flex-end"><div class="fld" style="flex:1.4"><label>Joined DataMart</label><select id="seg-dm2">${joinable.map(j=>`<option value="${esc(j.key)}" ${segDraft.dm2===j.key?'selected':''}>${esc(j.name)}</option>`).join('')}</select></div><div class="fld"><label>Join on <span style="color:var(--ink-3)">(relationship, set by admin)</span></label><input readonly value="${esc(segJoinText(segDraft.dm,segDraft.dm2))}"></div><button class="btn sm outline" id="seg-dm2rm" style="flex:0 0 auto;margin-bottom:1px">Remove</button></div></div>`
+    :(joinable.length?`<div><button class="btn sm outline" id="seg-dm2add" style="white-space:nowrap">+ Join a second DataMart</button></div>`
+      :`<div style="font-size:12px;color:var(--ink-3)">No datamart is related to this one — an admin defines relationships in Administration › Datamart.</div>`);
   if(g('seg-dm2add')) g('seg-dm2add').onclick=()=>{ segDraft.dm2=other; renderSegForm(); };
   if(g('seg-dm2rm')) g('seg-dm2rm').onclick=()=>{ segDraft.dm2=''; segDraft.filters=segDraft.filters.filter(f=>colsOf(segDraft.dm).some(c=>c.k===f.col)); renderSegForm(); };
   if(g('seg-dm2')) g('seg-dm2').onchange=e=>{ segDraft.dm2=e.target.value; renderSegForm(); };
@@ -2729,9 +3103,46 @@ function renderSegForm(){
   g('seg-src-query').hidden=segDraft.method!=='Dynamic query'; g('seg-src-file').hidden=segDraft.method!=='Static (file upload)'; g('seg-src-sql').hidden=segDraft.method!=='SQL';
   // filters
   const cols=segCols();
-  const opt=(f)=>{ const bySrc={}; cols.forEach(c=>{ (bySrc[c.src]=bySrc[c.src]||[]).push(c); }); return Object.keys(bySrc).length>1?Object.keys(bySrc).map(s=>`<optgroup label="${s} DataMart">${bySrc[s].map(c=>`<option ${c.k===f.col?'selected':''}>${c.k}</option>`).join('')}</optgroup>`).join(''):cols.map(c=>`<option ${c.k===f.col?'selected':''}>${c.k}</option>`).join(''); };
-  g('seg-filters').innerHTML=segDraft.filters.map((f,i)=>`<div class="fld"><div class="row" style="align-items:center"><select data-i="${i}" data-k="col" style="flex:1.3">${opt(f)}</select><select data-i="${i}" data-k="op">${opsFor(segDraft.dm,f.col).map(o=>`<option ${o===f.op?'selected':''}>${o}</option>`).join('')}</select><input data-i="${i}" data-k="val" value="${esc(f.val)}" placeholder="${/^(in|not in)$/.test(f.op)?'a, b, c':'value'}" ${/null/.test(f.op)?'disabled':''} style="flex:.9"><button class="btn sm outline" data-del="${i}" style="flex:0 0 auto">Remove</button></div>${i<segDraft.filters.length-1?`<div style="font-size:11px;color:var(--ink-3);padding-left:4px">${segDraft.logic}</div>`:''}</div>`).join('') || '<div class="empty" style="padding:8px">No filters — the segment would contain every row of the DataMart.</div>';
-  document.querySelectorAll('#seg-filters [data-k]').forEach(el=>el.onchange=el.oninput=()=>{ const f=segDraft.filters[+el.dataset.i]; f[el.dataset.k]=el.value; if(el.dataset.k==='col'){ const ops=opsFor(segDraft.dm,f.col); if(!ops.includes(f.op)) f.op=ops[0]; renderSegForm(); } else if(el.dataset.k==='op') renderSegForm(); else renderSegInsight(); });
+  /* The picker is grouped by attribute group and labelled from the Datamart
+     catalogue, so it stays usable at 500 columns. "Recently used" sits on top. */
+  const segMeta=(c)=>dmColMeta(c.src,c.k)||{label:{en:c.k},group:'Other',privacy:'Internal'};
+  const segOptText=(c)=>{ const m=segMeta(c); const p=m.privacy!=='Internal'?' · personal':'';
+    return `${m.label.en} — ${c.k}${cols.some(x=>x.k===c.k&&x.src!==c.src)?' ('+c.src+')':''}${p}`; };
+  const segFq=(segDraft.__fq||'').trim().toLowerCase();
+  const opt=(f)=>{
+    let list=cols.filter(c=>!segFq||(c.k+' '+segMeta(c).label.en+' '+segMeta(c).group).toLowerCase().includes(segFq));
+    if(!list.some(c=>c.k===f.col)){ const cur=cols.find(c=>c.k===f.col); if(cur) list=[cur,...list]; }
+    const recent=dmRecentCols.map(k=>list.find(c=>c.k===k)).filter(Boolean);
+    const o=c=>`<option value="${esc(c.k)}" ${c.k===f.col?'selected':''}>${esc(segOptText(c))}</option>`;
+    let html=recent.length?`<optgroup label="Recently used">${recent.map(o).join('')}</optgroup>`:'';
+    ATTR_GROUPS.forEach(g=>{ const gc=list.filter(c=>segMeta(c).group===g); if(gc.length) html+=`<optgroup label="${esc(g)}">${gc.map(o).join('')}</optgroup>`; });
+    const rest=list.filter(c=>!ATTR_GROUPS.includes(segMeta(c).group));
+    if(rest.length) html+=`<optgroup label="Other">${rest.map(o).join('')}</optgroup>`;
+    return html||'<option value="">No column matches</option>';
+  };
+  /* a category column filters by picking values, not by typing them */
+  const valInput=(f,i)=>{
+    const c=cols.find(x=>x.k===f.col), m=c&&dmColMeta(c.src,c.k);
+    if(/null/.test(f.op)) return `<input data-i="${i}" data-k="val" value="${esc(f.val)}" disabled style="flex:.9">`;
+    if(m&&m.category&&(m.allowed||[]).length&&/^(in|not in|equals|not equals)$/.test(f.op)){
+      const picked=String(f.val||'').split(',').map(x=>x.trim()).filter(Boolean);
+      const multi=/^(in|not in)$/.test(f.op);
+      return `<select data-i="${i}" data-k="val" ${multi?'multiple size="3"':''} style="flex:.9">${multi?'':'<option value="">— pick a value</option>'}${m.allowed.map(v=>`<option ${picked.includes(String(v))?'selected':''}>${esc(v)}</option>`).join('')}</select>`;
+    }
+    return `<input data-i="${i}" data-k="val" value="${esc(f.val)}" placeholder="${/^(in|not in)$/.test(f.op)?'a, b, c':'value'}" style="flex:.9">`;
+  };
+  g('seg-filters').innerHTML=(segDraft.filters.length>3||segFq?`<div class="fld" style="margin-bottom:2px"><input id="seg-fq" placeholder="Find a column…" value="${esc(segDraft.__fq||'')}" style="max-width:260px"></div>`:'')+segDraft.filters.map((f,i)=>`<div class="fld"><div class="row" style="align-items:center"><select data-i="${i}" data-k="col" style="flex:1.3">${opt(f)}</select><select data-i="${i}" data-k="op">${opsFor(segDraft.dm,f.col).map(o=>`<option ${o===f.op?'selected':''}>${o}</option>`).join('')}</select>${valInput(f,i)}<button class="btn sm outline" data-del="${i}" style="flex:0 0 auto">Remove</button></div>${i<segDraft.filters.length-1?`<div style="font-size:11px;color:var(--ink-3);padding-left:4px">${segDraft.logic}</div>`:''}</div>`).join('') || '<div class="empty" style="padding:8px">No filters — the segment would contain every row of the DataMart.</div>';
+  const fq=g('seg-fq'); if(fq) fq.oninput=e=>{ segDraft.__fq=e.target.value; const v=e.target.value; renderSegForm(); const i=g('seg-fq'); if(i){ i.focus(); i.setSelectionRange(v.length,v.length); } };
+  document.querySelectorAll('#seg-filters [data-k]').forEach(el=>el.onchange=el.oninput=()=>{ const f=segDraft.filters[+el.dataset.i];
+    if(el.dataset.k==='val'&&el.multiple){ f.val=[...el.selectedOptions].map(o=>o.value).join(', '); renderSegInsight(); return; }
+    f[el.dataset.k]=el.value;
+    if(el.dataset.k==='col'){
+      dmRecentCols=[f.col,...dmRecentCols.filter(k=>k!==f.col)].slice(0,5);
+      const cl=segCols().find(x=>x.k===f.col), m=cl&&dmColMeta(cl.src,cl.k);
+      const ops=opsFor(segDraft.dm,f.col);
+      if(m&&m.category&&ops.includes('in')) f.op='in'; else if(!ops.includes(f.op)) f.op=ops[0];
+      f.val=''; renderSegForm();
+    } else if(el.dataset.k==='op') renderSegForm(); else renderSegInsight(); });
   document.querySelectorAll('#seg-filters [data-del]').forEach(b=>b.onclick=()=>{ segDraft.filters.splice(+b.dataset.del,1); renderSegForm(); });
   // exclusion channels
   g('seg-exclwrap').hidden=!segDraft.excl;
@@ -2913,7 +3324,10 @@ let dbRange=30, dbHidden=new Set();
 const DB_PANELS=[['live','Live now'],['att','Needs attention'],['trend','Delivered per day'],['conv','Conversions per day'],['funnel','Funnel & eliminations'],['chan','By channel'],['cat','By category'],['top','Top campaigns'],['jrn','Top journeys'],['cg','Control group uplift']];
 function dbPreset(){ return ROLE==='marketer'?'Marketer':ROLE==='admin'?'Ops':'Executive'; }
 function dbRows(){ const saved=rpRange; rpRange=dbRange; const rows=rpRows(); rpRange=saved; return rows.map(r=>{ const h=[...r.c.id].reduce((t,ch)=>t+ch.charCodeAt(0),0); const hasCG=r.c.cg&&r.c.cg!=='No Control Group'; const rate=r.del?r.conv/r.del:0; const cgRate=hasCG?rate*(0.35+(h%5)/20):null; const incr=hasCG?Math.max(0,Math.round(r.conv-cgRate*r.del)):null; const targeted=Math.round(r.sent*(1.18+(h%7)/50)); return Object.assign(r,{hasCG,rate,cgRate,incr,targeted,elim:targeted-r.sent}); }); }
-function renderDashboard(){ const card=document.getElementById('db-card'); if(!card) return; const rows=dbRows(); const preset=dbPreset(); const exec=preset==='Executive'; const T=k=>rows.reduce((t,r)=>t+(r[k]||0),0); const pct=(a,b)=>b?Math.round(1000*a/b)/10+'%':'—'; const fmt=n=>Number(n).toLocaleString();
+/* Data freshness belongs in the admin's queue: a stale datamart quietly makes
+   every segment built on it wrong. */
+const dmStale=()=>DATAMARTS.filter(d=>dmHealth(d)!=='fresh'&&dmUsage(d.id).segments.length>0);
+function renderDashboard(){ const staleDms=dmStale(); const card=document.getElementById('db-card'); if(!card) return; const rows=dbRows(); const preset=dbPreset(); const exec=preset==='Executive'; const T=k=>rows.reduce((t,r)=>t+(r[k]||0),0); const pct=(a,b)=>b?Math.round(1000*a/b)/10+'%':'—'; const fmt=n=>Number(n).toLocaleString();
   const seedD=(i,k)=>((i*37+k*11)%50)/50; const prev=k=>Math.round(T(k)*(0.86+seedD(k.length,dbRange)*0.3)); const delta=(cur,pv,inv)=>{ if(!pv) return ''; const d=Math.round(1000*(cur-pv)/pv)/10; const up=d>=0; return `<b class="${(up!==!!inv)?'up':'dn'}">${up?'▲':'▼'} ${Math.abs(d)}%</b><span>vs prev. ${dbRange} d</span>`; };
   const reached=Math.round(T('del')*0.78), conv=T('conv'), incr=rows.filter(r=>r.hasCG).reduce((t,r)=>t+r.incr,0), rev=Math.round(incr*186);
   const active=CAMPAIGNS.filter(c=>c.status==='Active'), pending=CAMPAIGNS.filter(c=>c.status==='Pending approval'), drafts=CAMPAIGNS.filter(c=>c.status==='Draft'), jlive=JOURNEYS.filter(j=>j.status==='Active');
@@ -2959,7 +3373,8 @@ function renderDashboard(){ const card=document.getElementById('db-card'); if(!c
         ${soon.map(c=>`<li data-go="campaigns:${c.id}"><i></i><div><b>${esc(c.name)}</b> ends on ${c.end.slice(0,10)}<small>${c.id} · extend the period or plan the follow-up</small></div></li>`).join('')}
         ${highElim.map(r=>`<li data-go="campaigns:${r.c.id}"><i></i><div><b>${esc(r.c.name)}</b>: ${pct(r.elim,r.targeted)} of the target is removed by communication rules<small>${r.c.id} · mostly cooldown and consent — the audience may be over-contacted</small></div></li>`).join('')}
         ${preset==='Marketer'?drafts.slice(0,3).map(c=>`<li class="info" data-go="campaigns:${c.id}"><i></i><div><b>${esc(c.name)}</b> is still a draft · readiness ${campReady(c).done}/${campReady(c).total}<small>${c.id} · continue where you left off</small></div></li>`).join(''):''}
-        ${!pending.length&&!under.length&&!soon.length&&!highElim.length?'<li class="info"><i></i><div>Nothing needs attention right now.</div></li>':''}
+        ${preset==='Ops'?staleDms.map(d=>`<li class="${dmHealth(d)==='failed'?'bad':''}" data-godm="${d.id}"><i></i><div><b>${esc(d.name)}</b> ${dmHealth(d)==='failed'?'failed to load':'has not refreshed'}<small>${dmLastLoad(d)?'last load '+esc(dmLastLoad(d).at):'never loaded'} · segments built on it may be matching old data</small></div></li>`).join(''):''}
+        ${!pending.length&&!under.length&&!soon.length&&!highElim.length&&!(preset==='Ops'&&staleDms.length)?'<li class="info"><i></i><div>Nothing needs attention right now.</div></li>':''}
       </ul>`,'what to look at first')}
       ${P('trend','Delivered per day','w6',cols(bars,true),'last '+days.length+' days')}
       ${P('conv','Conversions per day','w6',cols(cbars,true),'offer accepted / renewed')}
@@ -2977,6 +3392,7 @@ function renderDashboard(){ const card=document.getElementById('db-card'); if(!c
   card.querySelectorAll('[data-hide]').forEach(b=>b.onclick=()=>{ dbHidden.add(b.dataset.hide); renderDashboard(); });
   card.querySelectorAll('[data-show]').forEach(b=>b.onclick=()=>{ dbHidden.delete(b.dataset.show); renderDashboard(); });
   card.querySelector('#db-add').onclick=()=>{ if(!dbHidden.size){ toast('All panels are shown','Hide a panel with × to customise; hidden panels reappear at the bottom.'); return; } card.querySelector('.db-add').scrollIntoView({behavior:'smooth'}); };
+  card.querySelectorAll('[data-godm]').forEach(el=>el.onclick=()=>{ showView('datamart'); dmOpen(el.dataset.godm,'load'); });
   card.querySelectorAll('[data-go]').forEach(el=>el.onclick=()=>{ const [v,arg]=el.dataset.go.split(':'); if(v==='campaigns'){ showView('campaigns'); if(arg&&CAMPAIGNS.some(c=>c.id===arg)) campOpen(arg); else if(arg){ campFilter.status=arg; campMode='list'; campPage=1; renderCampaigns(); } } else showView(v); });
 }
 /* static form labels (segment editor) get their tooltips once */
@@ -3020,6 +3436,502 @@ function renderSegmentation(){ renderSegList(); if(curView==='segmentation') set
 })();
 
 JOURNEYS.forEach(j=>j.nodes.forEach(n=>{ n.y=Math.round(n.y*1.75); n.x=Math.round(n.x*1.32); }));
+
+/* ---- Datamart module state ----------------------------------------------- */
+let dmMode='list', dmSel=null, dmTab='overview', dmQ='', dmType='All', dmHealthF='All';
+let dmColQ='', dmColGrp='All', dmColRole='All', dmTech=false, dmPicked=[], dmClosedGrps={};
+let dmDrawerCol=null, dmDraft=null, dmDataCol=null, dmDataQ='', dmDataFCol='', dmDataFVal='', dmAsMarketer=false, dmBusy=false;
+let dmRecentCols=[];
+
+const dmCard=()=>document.getElementById('dm-card');
+function dmOpen(id,tab){ dmMode='detail'; dmSel=id; dmTab=tab||'overview'; dmDrawerCol=null; dmPicked=[]; dmDataCol=null; renderDatamart(); }
+function dmBack(){ dmMode='list'; dmSel=null; dmDrawerCol=null; renderDatamart(); }
+function dmFiltered(){
+  const q=dmQ.trim().toLowerCase();
+  return DATAMARTS.filter(d=>{
+    if(dmType!=='All'&&d.type!==dmType) return false;
+    if(dmHealthF!=='All'&&dmHealth(d)!==dmHealthF.toLowerCase()) return false;
+    if(!q) return true;
+    return (d.name+' '+d.desc+' '+d.columns.map(c=>c.name+' '+c.label.en).join(' ')).toLowerCase().includes(q);
+  });
+}
+const dmRelText=d=>(d.relationships||[]).map(r=>{ const t=dmById(r.to); return t?`Joins ${t.name} on ${r.on.map(p=>p[0]===p[1]?p[0]:p.join(' = ')).join(', ')}`:''; }).filter(Boolean).join(' · ')||'—';
+
+function renderDatamart(){
+  const card=dmCard(); if(!card) return;
+  if(curView==='datamart') setCrumb(dmMode==='detail'&&dmSel?dmById(dmSel).name:'');
+  const dr=document.getElementById('dm-drawer');
+  if(dr&&(dmMode!=='detail'||dmTab!=='columns'||!dmDrawerCol)) dr.hidden=true;
+  if(dmMode==='list') dmRenderList(card); else dmRenderDetail(card);
+}
+
+/* ---- list ---------------------------------------------------------------- */
+function dmRenderList(card){
+  const list=dmFiltered();
+  const chip=(k,v,cur)=>`<button class="fchip ${cur===v?'on':''}" data-${k}="${esc(v)}">${esc(v)}</button>`;
+  card.innerHTML=`
+    <div class="card-h"><h2>Datamarts</h2><div class="grow" style="flex:1"></div><button class="btn primary" id="dm-new" style="white-space:nowrap">+ New datamart</button>
+      <p>What data exists, how fresh it is, what each column means and who depends on it. Segments consume these; nothing here sends anything.</p></div>
+    <div class="toolrow">
+      <label class="search-in"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="dm-q" placeholder="Search name, description or column…" value="${esc(dmQ)}"></label>
+      <div class="chipbar"><span style="color:var(--ink-3);font-size:11px">TYPE</span>${['All','Customer','Event','Lookup'].map(v=>chip('t',v,dmType)).join('')}</div>
+      <div class="chipbar"><span style="color:var(--ink-3);font-size:11px">HEALTH</span>${['All','Fresh','Stale','Failed'].map(v=>chip('h',v,dmHealthF)).join('')}</div>
+    </div>
+    <div style="overflow:auto;padding:0 20px 8px"><table class="tbl dm-tbl">
+      <thead><tr><th>Datamart</th><th>Size</th><th>Last load</th><th>Used by</th><th>Relationships</th><th>Actions</th></tr></thead>
+      <tbody>${list.map(d=>{ const u=dmUsage(d.id), l=dmLastLoad(d), h=dmHealth(d), rows=dmRows(d);
+        return `<tr data-dm="${d.id}">
+          <td><span class="nm"><b>${esc(d.name)}</b>${d.isDefaultMain?' <span class="pill acc">Default main</span>':''} <span class="chip">${esc(d.type)}</span><small>${esc(d.desc)}</small><small>key <span class="mono">${esc(d.keyColumn)}</span> · owner ${esc(d.owner)}</small></span></td>
+          <td class="num" style="white-space:nowrap">${rows.length} rows<br><span style="color:var(--ink-3)">${d.columns.length} cols</span></td>
+          <td class="num" style="white-space:nowrap">${l?esc(l.at):'never'}<br>${healthPill(h)}</td>
+          <td>${u.segments.length||u.campaigns.length||u.journeys.length?`<a class="lnk" href="#" data-used="${d.id}">${usageText(u)}</a>`:'<span style="color:var(--ink-3)">not used</span>'}</td>
+          <td class="rel">${esc(dmRelText(d))}</td>
+          <td><span class="act"><button class="btn sm outline" data-open="${d.id}">Open</button><button class="btn sm outline" data-prev="${d.id}">Preview data</button><span class="dm-menu"><button class="btn sm outline" data-more="${d.id}" title="More actions">⋯</button><div class="pop" hidden></div></span></span></td>
+        </tr>`; }).join('')||'<tr><td colspan="6" class="empty">No datamart matches. Clear the search or the chips.</td></tr>'}</tbody>
+    </table></div>`;
+  const g=id=>card.querySelector('#'+id);
+  g('dm-q').oninput=e=>{ dmQ=e.target.value; const v=e.target.value; dmRenderList(card); const i=card.querySelector('#dm-q'); i.focus(); i.setSelectionRange(v.length,v.length); };
+  card.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{ dmType=b.dataset.t; dmRenderList(card); });
+  card.querySelectorAll('[data-h]').forEach(b=>b.onclick=()=>{ dmHealthF=b.dataset.h; dmRenderList(card); });
+  g('dm-new').onclick=dmNew;
+  card.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>dmOpen(b.dataset.open));
+  card.querySelectorAll('[data-prev]').forEach(b=>b.onclick=()=>dmOpen(b.dataset.prev,'data'));
+  card.querySelectorAll('[data-used]').forEach(a=>a.onclick=e=>{ e.preventDefault(); dmOpen(a.dataset.used,'overview'); setTimeout(()=>{ const el=document.getElementById('dm-usedby'); if(el) el.scrollIntoView({block:'center',behavior:'smooth'}); },60); });
+  card.querySelectorAll('[data-more]').forEach(b=>b.onclick=e=>{ e.stopPropagation(); dmMoreMenu(b); });
+  document.addEventListener('click',dmCloseMenus);
+}
+function dmCloseMenus(){ document.querySelectorAll('.dm-menu .pop').forEach(p=>p.hidden=true); }
+function dmMoreMenu(btn){
+  const d=dmById(btn.dataset.more), pop=btn.parentElement.querySelector('.pop'), open=pop.hidden;
+  dmCloseMenus(); if(!open) return;
+  const u=dmUsage(d.id), used=u.segments.length+u.campaigns.length+u.journeys.length;
+  pop.innerHTML=`<button data-a="load">Load data <span style="color:var(--ink-3)">(concept)</span></button>
+    <button data-a="dup">Duplicate</button>
+    <button data-a="dict">Export data dictionary (CSV)</button><hr>
+    <button class="danger" data-a="del" ${used?`disabled title="Used by ${usageText(u)} — remove them first"`:''}>Delete datamart</button>`;
+  pop.hidden=false;
+  pop.querySelectorAll('button').forEach(b=>b.onclick=ev=>{ ev.stopPropagation(); dmCloseMenus();
+    const a=b.dataset.a;
+    if(a==='load') dmOpen(d.id,'load');
+    else if(a==='dup') dmDuplicate(d);
+    else if(a==='dict') dmExportDict(d);
+    else if(a==='del') dmDelete(d);
+  });
+}
+function dmDuplicate(d){
+  const copy=JSON.parse(JSON.stringify({id:'DM-'+(DATAMARTS.length+1),key:d.key+'Copy',name:d.name+' (copy)',type:d.type,desc:d.desc,owner:d.owner,keyColumn:d.keyColumn,columns:d.columns,source:d.source,relationships:[],loads:[]}));
+  copy.isDefaultMain=false; copy.rows=()=>[];
+  DATAMARTS.push(copy); renderDatamart();
+  toast('Datamart duplicated',`${copy.name} created with ${copy.columns.length} columns and no rows. Load data to fill it.`);
+}
+function dmExportDict(d){
+  const head=['technical_name','label_en','label_tr','type','group','roles','privacy','sensitivity','masking','predefined','category','nullable','description'];
+  const rows=d.columns.map(c=>[c.name,c.label.en,c.label.tr,c.type,c.group,(c.roles||[]).join('|'),c.privacy,c.sensitivity,c.masking,c.predefined,c.category?'yes':'no',c.nullable?'yes':'no',c.desc]);
+  dmDownloadCsv(`${d.key.toLowerCase()}-data-dictionary.csv`,[head,...rows]);
+  toast('Data dictionary exported',`${d.columns.length} columns written to CSV.`);
+}
+function dmDownloadCsv(fname,rows){
+  const csv=rows.map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\n');
+  try{
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download=fname;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+  }catch(e){ toast('Export','This environment blocks downloads — the file was not written.','warn'); }
+}
+function dmDelete(d){
+  if(!confirm(`Delete ${d.name}?\n\nIts ${d.columns.length} documented columns and ${dmRows(d).length} rows go with it. This cannot be undone.`)) return;
+  const i=DATAMARTS.indexOf(d); if(i>=0) DATAMARTS.splice(i,1);
+  dmBack(); toast('Datamart deleted',`${d.name} is gone.`,'warn');
+}
+function dmNew(){
+  const d={id:'DM-'+(DATAMARTS.length+1),key:'New'+DATAMARTS.length,name:'NEW DATAMART',type:'Customer',
+    desc:'',owner:'Etiya data team',keyColumn:'',columns:[],relationships:[],loads:[],
+    source:{kind:'File upload',detail:'',schedule:'Manual'},rows:()=>[],isNew:true};
+  DATAMARTS.push(d); dmOpen(d.id,'overview');
+  toast('New datamart','Describe it on Overview, then load a file to detect its columns.');
+}
+
+/* ---- detail shell -------------------------------------------------------- */
+const DM_TABS=[['overview','Overview'],['columns','Columns'],['data','Data'],['rels','Relationships'],['load','Load & refresh']];
+function dmRenderDetail(card){
+  const d=dmById(dmSel); if(!d){ dmBack(); return; }
+  const l=dmLastLoad(d), rows=dmRows(d);
+  card.innerHTML=`
+    <div class="dm-hd" style="padding-top:16px">
+      <button class="back" id="dm-back">‹ Datamarts</button>
+      <h3>${esc(d.name)}</h3>
+      <span class="chip">${esc(d.type)}</span>${d.isDefaultMain?'<span class="pill acc">Default main</span>':''}${healthPill(dmHealth(d))}
+    </div>
+    <div class="dm-sub"><b>${rows.length}</b> rows · <b>${d.columns.length}</b> columns · last load ${l?esc(l.at)+' ('+l.secs+'s)':'never'}</div>
+    <div class="tabs" style="margin:0 20px">${DM_TABS.map(([k,t])=>`<button class="${dmTab===k?'on':''}" data-dmtab="${k}">${t}${k==='load'?' <span class="pill grey" style="margin-left:4px">concept</span>':''}</button>`).join('')}</div>
+    <div id="dm-body" style="flex:1;overflow:auto;min-height:0"></div>`;
+  card.querySelector('#dm-back').onclick=dmBack;
+  card.querySelectorAll('[data-dmtab]').forEach(b=>b.onclick=()=>{ dmTab=b.dataset.dmtab; dmDrawerCol=null; renderDatamart(); });
+  const body=card.querySelector('#dm-body');
+  ({overview:dmTabOverview,columns:dmTabColumns,data:dmTabData,rels:dmTabRels,load:dmTabLoad}[dmTab]||dmTabOverview)(body,d);
+}
+
+/* ---- Overview ------------------------------------------------------------ */
+function dmTabOverview(body,d){
+  const u=dmUsage(d.id), l=dmLastLoad(d), rows=dmRows(d);
+  const personal=d.columns.filter(c=>c.privacy!=='Internal').length;
+  const tile=(lbl,val,sub,cls)=>`<div class="tile ${cls||''}"><div class="l">${lbl}</div><div class="v">${val}</div><div class="d">${sub||''}</div></div>`;
+  body.innerHTML=`
+    <div class="db-hd" style="padding-top:12px">
+      ${tile('Rows',rows.length,esc(d.type)+' datamart')}
+      ${tile('Columns',d.columns.length,ATTR_GROUPS.filter(g=>d.columns.some(c=>c.group===g)).length+' groups')}
+      ${tile('Personal data',personal,personal?'masked for non-admins':'nothing personal',personal?'warn':'')}
+      ${tile('Last load',l?esc(l.at.slice(11)):'—',l?esc(l.at.slice(0,10))+' · '+l.secs+'s':'never loaded')}
+      ${tile('Used by',u.segments.length,usageText(u))}
+    </div>
+    <div class="form2" style="padding-top:4px">
+      <div class="fld"><label class="req">Name ${tip('Shown everywhere a datamart is picked — in Segments, in campaign filters and in this list.')}</label><input data-dk="name" value="${esc(d.name)}"></div>
+      <div class="fld"><label>Owner ${tip('The team answerable for the content and the refresh. Not a permission.')}</label><input data-dk="owner" value="${esc(d.owner)}"></div>
+      <div class="fld span2"><label>Description</label><input data-dk="desc" value="${esc(d.desc)}" placeholder="One line: what one row means."></div>
+      <div class="fld"><label>Type ${tip('Customer — one row per subscriber. Event — one row per thing that happened. Lookup — reference data joined for its attributes.')}</label><select data-dk="type">${['Customer','Event','Lookup'].map(t=>`<option ${d.type===t?'selected':''}>${t}</option>`).join('')}</select></div>
+      <div class="fld"><label>Key column ${tip('The column that identifies a row. Joins and de-duplication use it.')}</label><select data-dk="keyColumn"><option value="">— pick a column</option>${d.columns.map(c=>`<option ${d.keyColumn===c.name?'selected':''}>${esc(c.name)}</option>`).join('')}</select></div>
+      <div class="fld span2"><label class="ck" style="gap:8px"><input type="checkbox" data-dk="isDefaultMain" ${d.isDefaultMain?'checked':''}> <span>Default main datamart ${tip('The one new segments start from. Only one datamart can hold this.')}</span></label></div>
+    </div>
+    <div class="grid2" style="padding-top:4px">
+      <div class="db-p w12" id="dm-usedby" style="grid-column:auto"><div class="ph">Used by</div><div class="pb">
+        ${u.segments.length||u.campaigns.length||u.journeys.length?`
+          ${dmUseList('Segments',u.segments,m=>`${m.id} · ${m.name}`,'seg')}
+          ${dmUseList('Campaigns',u.campaigns,c=>`${c.id} · ${c.name}`,'camp')}
+          ${dmUseList('Journeys',u.journeys,j=>`${j.id} · ${j.name}`,'jrn')}`
+        :'<div class="empty">Nothing uses this datamart yet. Build a segment on it and campaigns can target it.</div>'}
+      </div></div>
+      <div class="db-p w12" style="grid-column:auto"><div class="ph">Relationships</div><div class="pb">${dmDiagram(d)}</div></div>
+    </div>`;
+  body.querySelectorAll('[data-dk]').forEach(el=>{ const h=()=>{
+      const k=el.dataset.dk;
+      if(k==='isDefaultMain'){
+        if(el.checked){ const cur=DATAMARTS.find(x=>x.isDefaultMain&&x!==d);
+          if(cur&&!confirm(`Make ${d.name} the default main datamart?\n\n${cur.name} loses the flag. New segments will start from ${d.name}.`)){ el.checked=false; return; }
+          DATAMARTS.forEach(x=>x.isDefaultMain=false); }
+        d.isDefaultMain=el.checked; renderDatamart(); return;
+      }
+      d[k]=el.value;
+      if(k==='name'||k==='type') renderDatamart();
+    }; el.onchange=h; if(el.type==='text') el.oninput=()=>{ d[el.dataset.dk]=el.value; }; });
+  body.querySelectorAll('[data-go-seg]').forEach(b=>b.onclick=()=>{ showView('segmentation'); segLoad(b.dataset.goSeg); });
+  body.querySelectorAll('[data-go-camp]').forEach(b=>b.onclick=()=>{ showView('campaigns'); campOpen(b.dataset.goCamp); });
+  body.querySelectorAll('[data-go-jrn]').forEach(b=>b.onclick=()=>{ curJ=b.dataset.goJrn; const s=document.getElementById('jsel'); if(s) s.value=curJ; showView('journeys'); });
+}
+const dmUseList=(title,arr,fmt,kind)=>arr.length?`<div class="sec" style="padding-top:4px">${title} <span style="color:var(--ink-3);font-weight:400">${arr.length}</span></div>
+  <div class="chips" style="gap:6px">${arr.map(x=>`<button class="btn sm outline" data-go-${kind}="${esc(x.id)}">${esc(fmt(x))}</button>`).join('')}</div>`:'';
+
+function dmDiagram(d){
+  const rels=[...(d.relationships||[]).map(r=>({r,other:dmById(r.to),dir:'out'})),
+    ...DATAMARTS.filter(x=>x!==d).flatMap(x=>(x.relationships||[]).filter(r=>r.to===d.id).map(r=>({r,other:x,dir:'in'})))];
+  if(!rels.length) return '<div class="empty">No relationships yet — add one on the Relationships tab so segments can join this datamart.</div>';
+  const W=560, boxW=170, boxH=42, cx=(W-boxW)/2, rowH=78, H=40+rels.length*rowH;
+  const parts=rels.map((x,i)=>{ const y=40+i*rowH+18, left=i%2===0;
+    const ox=left?12:W-boxW-12;
+    return `<line x1="${cx+boxW/2}" y1="34" x2="${ox+boxW/2}" y2="${y}"></line>
+      <rect x="${ox}" y="${y}" width="${boxW}" height="${boxH}"></rect>
+      <text x="${ox+10}" y="${y+17}">${esc((x.other||{name:'?'}).name)}</text>
+      <text class="m" x="${ox+10}" y="${y+31}">${esc(x.r.on.map(p=>p.join('=')).join(', '))} · ${esc(x.r.kind)}</text>`; }).join('');
+  return `<div class="dm-diagram"><svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="Relationship diagram">
+    ${parts}<rect class="me" x="${cx}" y="8" width="${boxW}" height="${boxH-8}"></rect>
+    <text x="${cx+10}" y="26" style="font-weight:600">${esc(d.name)}</text></svg></div>`;
+}
+
+/* ---- Columns ------------------------------------------------------------- */
+const ROLE_CHIPS=['All','Key','Reference','Output','Category','Personal'];
+function dmColMatches(d,c){
+  const q=dmColQ.trim().toLowerCase();
+  if(q&&!(c.name+' '+c.label.en+' '+c.label.tr+' '+c.desc).toLowerCase().includes(q)) return false;
+  if(dmColGrp!=='All'&&c.group!==dmColGrp) return false;
+  if(dmColRole==='Category') return c.category;
+  if(dmColRole==='Personal') return c.privacy!=='Internal';
+  if(dmColRole!=='All') return (c.roles||[]).includes(dmColRole.toLowerCase());
+  return true;
+}
+const dmSuggestCat=(d,c)=>{ if(c.type!=='text'||c.category) return false;
+  if((c.roles||[]).includes('key')||(c.roles||[]).includes('reference')) return false; /* ids are not categories */
+  const p=dmProfile(d,c.name); return p.distinct>1&&p.distinct<=Math.min(20,Math.max(2,p.total*0.4)); };
+function dmTabColumns(body,d){
+  const cols=d.columns.filter(c=>dmColMatches(d,c));
+  const groups=ATTR_GROUPS.filter(g=>cols.some(c=>c.group===g));
+  body.innerHTML=`
+    <div class="toolrow">
+      <label class="search-in"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="dm-cq" placeholder="Search label, technical name or description…" value="${esc(dmColQ)}"></label>
+      <select id="dm-cgrp"><option>All</option>${ATTR_GROUPS.map(g=>`<option ${dmColGrp===g?'selected':''}>${esc(g)}</option>`).join('')}</select>
+      <div class="chipbar">${ROLE_CHIPS.map(r=>`<button class="fchip ${dmColRole===r?'on':''}" data-crole="${r}">${r}</button>`).join('')}</div>
+      <div class="grow" style="flex:1"></div>
+      <label class="ck"><input type="checkbox" id="dm-tech" ${dmTech?'checked':''}> Show technical names</label>
+    </div>
+    ${dmPicked.length?`<div class="dm-bulk"><b>${dmPicked.length} selected</b>
+      <select id="bk-grp"><option value="">Set group…</option>${ATTR_GROUPS.map(g=>`<option>${esc(g)}</option>`).join('')}</select>
+      <select id="bk-priv"><option value="">Set privacy…</option>${PRIVACY.map(p=>`<option>${p}</option>`).join('')}</select>
+      <select id="bk-mask"><option value="">Set masking…</option>${MASKINGS.map(m=>`<option>${m}</option>`).join('')}</select>
+      <button class="btn sm outline" id="bk-cat">Mark as category</button>
+      <div class="grow" style="flex:1"></div><button class="btn sm outline" id="bk-none">Clear selection</button></div>`:''}
+    <div style="padding:0 20px 16px">${groups.length?`<table class="tbl dm-cols"><thead><tr><th style="width:28px"></th><th>Column</th><th>Type</th><th>Roles</th><th>Privacy</th><th>Fill</th><th class="num">Distinct</th><th>Used by</th></tr></thead><tbody>${groups.map(g=>{
+      const gc=cols.filter(c=>c.group===g), closed=dmClosedGrps[g];
+      return `<tr class="dm-grp-row"><td colspan="8"><div class="dm-grp ${closed?'closed':''}" data-grp="${esc(g)}"><span class="caret">▾</span>${esc(g)}<span class="n">${gc.length}</span></div></td></tr>
+      ${closed?'':`${gc.map(c=>{ const p=dmProfile(d,c.name), cu=colUsage(d.id,c.name);
+          return `<tr class="dm-col-row ${dmDrawerCol===c.name?'sel':''}" data-col="${esc(c.name)}">
+            <td><input type="checkbox" data-pick="${esc(c.name)}" ${dmPicked.includes(c.name)?'checked':''}></td>
+            <td><span class="lbl"><b>${esc(dmTech?c.name:c.label.en)}</b><small>${esc(dmTech?c.label.en:c.name)}</small></span>${dmSuggestCat(d,c)?` <span class="dm-sug" data-sug="${esc(c.name)}" title="${p.distinct} distinct values — a category enables the IN filter and a value list in Segments">Suggest: make this a category</span>`:''}</td>
+            <td><span class="chip">${c.type}</span></td>
+            <td>${(c.roles||[]).map(r=>`<span class="chip">${r}</span>`).join(' ')}${c.category?' <span class="chip">category</span>':''}</td>
+            <td>${c.privacy==='Internal'?'<span class="pill grey">Internal</span>':`<span class="pill warn">${esc(c.privacy)}</span>`}</td>
+            <td><span class="dm-fill"><i><b class="${p.fill<80?'lo':''}" style="width:${p.fill}%"></b></i>${p.fill}%</span></td>
+            <td class="num">${p.distinct}</td>
+            <td>${cu.segments.length?`<span class="chip">${cu.segments.length} segment${cu.segments.length===1?'':'s'}</span>`:'<span style="color:var(--ink-3)">—</span>'}${cu.param?' <span class="chip" title="Used as a personalisation placeholder in content">param</span>':''}</td>
+          </tr>`; }).join('')}`}`; }).join('')}</tbody></table>`
+      :'<div class="empty">No column matches. Clear the search or the filters.</div>'}</div>`;
+  const g=id=>body.querySelector('#'+id);
+  g('dm-cq').oninput=e=>{ dmColQ=e.target.value; const v=e.target.value; dmTabColumns(body,d); const i=body.querySelector('#dm-cq'); i.focus(); i.setSelectionRange(v.length,v.length); };
+  g('dm-cgrp').onchange=e=>{ dmColGrp=e.target.value; dmTabColumns(body,d); };
+  g('dm-tech').onchange=e=>{ dmTech=e.target.checked; dmTabColumns(body,d); };
+  body.querySelectorAll('[data-crole]').forEach(b=>b.onclick=()=>{ dmColRole=b.dataset.crole; dmTabColumns(body,d); });
+  body.querySelectorAll('.dm-grp').forEach(h=>h.onclick=()=>{ const k=h.dataset.grp; dmClosedGrps[k]=!dmClosedGrps[k]; dmTabColumns(body,d); });
+  body.querySelectorAll('[data-pick]').forEach(cb=>cb.onclick=e=>{ e.stopPropagation(); const n=cb.dataset.pick;
+    if(cb.checked){ if(!dmPicked.includes(n)) dmPicked.push(n); } else dmPicked=dmPicked.filter(x=>x!==n);
+    dmTabColumns(body,d); });
+  body.querySelectorAll('[data-sug]').forEach(b=>b.onclick=e=>{ e.stopPropagation();
+    const c=d.columns.find(x=>x.name===b.dataset.sug); c.category=true; c.allowed=dmProfile(d,c.name).top.map(t=>t.v);
+    const all=[...new Set(dmRows(d).map(r=>String(r[c.name])).filter(v=>v&&v!=='undefined'))]; c.allowed=all.slice(0,30);
+    dmTabColumns(body,d); toast('Marked as category',`${c.label.en} now offers an IN filter and a value list in Segments.`); });
+  body.querySelectorAll('.dm-col-row').forEach(tr=>tr.onclick=()=>dmOpenDrawer(d,tr.dataset.col));
+  if(dmPicked.length){
+    const bulk=(sel,fn)=>{ const el=g(sel); if(el) el.onchange=()=>{ if(!el.value) return; dmPicked.forEach(n=>{ const c=d.columns.find(x=>x.name===n); if(c) fn(c,el.value); }); const n=dmPicked.length; dmPicked=[]; dmTabColumns(body,d); toast('Bulk edit',`${n} columns updated.`); }; };
+    bulk('bk-grp',(c,v)=>c.group=v); bulk('bk-priv',(c,v)=>c.privacy=v); bulk('bk-mask',(c,v)=>c.masking=v);
+    g('bk-cat').onclick=()=>{ dmPicked.forEach(n=>{ const c=d.columns.find(x=>x.name===n); if(c&&c.type==='text'){ c.category=true; c.allowed=[...new Set(dmRows(d).map(r=>String(r[c.name])).filter(Boolean))].slice(0,30); } }); const n=dmPicked.length; dmPicked=[]; dmTabColumns(body,d); toast('Bulk edit',`${n} columns marked as category where the type allows it.`); };
+    g('bk-none').onclick=()=>{ dmPicked=[]; dmTabColumns(body,d); };
+  }
+}
+
+/* ---- column drawer ------------------------------------------------------- */
+function dmOpenDrawer(d,name){
+  const c=d.columns.find(x=>x.name===name); if(!c) return;
+  dmDrawerCol=name; dmDraft=JSON.parse(JSON.stringify(c));
+  dmRenderDrawer(d);
+  const card=dmCard(); if(card&&dmTab==='columns') dmTabColumns(card.querySelector('#dm-body'),d);
+}
+function dmCloseDrawer(){ dmDrawerCol=null; dmDraft=null; const dr=document.getElementById('dm-drawer'); if(dr) dr.hidden=true; const card=dmCard(); if(card&&dmMode==='detail'&&dmTab==='columns') dmTabColumns(card.querySelector('#dm-body'),dmById(dmSel)); }
+function dmRenderDrawer(d){
+  const dr=document.getElementById('dm-drawer'); if(!dr||!dmDraft) return;
+  const c=dmDraft, p=dmProfile(d,c.name), cu=colUsage(d.id,c.name);
+  const sample=(dmRows(d).map(r=>r[c.name]).find(v=>v!==undefined&&v!==''))||'';
+  const roleCk=(k,l,t)=>`<label class="ck" style="padding:2px 0"><input type="checkbox" data-role="${k}" ${(c.roles||[]).includes(k)?'checked':''}> <span>${l}${t?' '+tip(t):''}</span></label>`;
+  dr.hidden=false;
+  dr.innerHTML=`
+    <div class="dh"><div style="flex:1;min-width:0"><h4>${esc(c.label.en||c.name)}</h4><span class="mono" style="font-size:11.5px">${esc(c.name)}</span></div>
+      <button class="btn sm outline" id="dm-dx">Close</button></div>
+    <div class="db">
+      <div class="sec">Identity</div>
+      <div class="fld"><label>Technical name</label><input readonly value="${esc(c.name)}"></div>
+      <div class="fld"><label>Label (EN)</label><input data-f="label.en" value="${esc(c.label.en)}"></div>
+      <div class="fld"><label>Label (TR)</label><input data-f="label.tr" value="${esc(c.label.tr)}"></div>
+      <div class="fld"><label>Description</label><textarea data-f="desc" style="font-family:var(--sans);font-size:12.5px;min-height:56px">${esc(c.desc)}</textarea></div>
+      <div class="fld"><label>Group</label><select data-f="group">${ATTR_GROUPS.map(g=>`<option ${c.group===g?'selected':''}>${esc(g)}</option>`).join('')}</select></div>
+      <div class="sec">Type &amp; mapping</div>
+      <div class="fld"><label>Type ${tip('Changing the type changes which operators segments can use on it.')}</label><select data-f="type">${['text','num','date','bool'].map(t=>`<option ${c.type===t?'selected':''}>${t}</option>`).join('')}</select></div>
+      <div class="fld"><label>Predefined column ${tip('Maps this column to a platform role so channels know where to find the address.')}</label><select data-f="predefined">${PREDEFINED.map(v=>`<option value="${v}" ${c.predefined===v?'selected':''}>${v||'— none'}</option>`).join('')}</select></div>
+      <div class="sec">Roles</div>
+      ${roleCk('key','Key','Identifies the row. Joins and de-duplication use it.')}
+      ${roleCk('reference','Reference','Can be used to join another datamart.')}
+      ${roleCk('output','Output','Available in exports and delivery files.')}
+      <label class="ck" style="padding:2px 0"><input type="checkbox" data-b="sortable" ${c.sortable?'checked':''}> <span>Sortable</span></label>
+      <label class="ck" style="padding:2px 0"><input type="checkbox" data-b="nullable" ${c.nullable?'checked':''}> <span>Nullable</span></label>
+      <label class="ck" style="padding:2px 0"><input type="checkbox" data-b="category" ${c.category?'checked':''}> <span>Use as category ${tip('Enables the IN filter and a value list in Segments, instead of free text.')}</span></label>
+      <div class="fld" id="dm-allowed" ${c.category?'':'hidden'}><label>Allowed values <span style="color:var(--ink-3)">(from the data)</span></label>
+        <div class="chips">${(c.allowed||[]).slice(0,20).map(v=>`<span class="chip">${esc(v)}</span>`).join('')||'<span style="color:var(--ink-3);font-size:12px">none yet</span>'}</div>
+        <button class="btn sm outline" id="dm-fillvals" style="align-self:flex-start;margin-top:6px">Fill from data (${p.distinct} distinct)</button></div>
+      <div class="sec">Privacy</div>
+      <div class="fld"><label>Privacy</label><select data-f="privacy">${PRIVACY.map(v=>`<option ${c.privacy===v?'selected':''}>${v}</option>`).join('')}</select></div>
+      <div class="fld"><label>Sensitivity</label><select data-f="sensitivity">${['Low','Medium','High'].map(v=>`<option ${c.sensitivity===v?'selected':''}>${v}</option>`).join('')}</select></div>
+      <div class="fld"><label>GDPR masking ${tip('How the value looks to anyone who is not an admin.')}</label><select data-f="masking">${MASKINGS.map(v=>`<option ${c.masking===v?'selected':''}>${v}</option>`).join('')}</select></div>
+      <div class="dm-mask-eg">${esc(String(sample).slice(0,28)||'—')} → ${esc(maskValue(c,sample)||'—')}</div>
+      <div class="sec">Profile <span style="color:var(--ink-3);font-weight:400">computed from ${p.total} rows</span></div>
+      <div class="kv"><dt>Fill rate</dt><dd>${p.fill}% <span style="color:var(--ink-3)">(${p.filled} of ${p.total})</span></dd>
+        <dt>Distinct</dt><dd>${p.distinct}</dd>
+        ${p.min!==null?`<dt>Min / Max</dt><dd>${esc(String(p.min))} / ${esc(String(p.max))}</dd>`:''}
+        ${p.mean!==null?`<dt>Mean</dt><dd>${p.mean}</dd>`:''}</div>
+      ${p.top.length?`<div class="chart" style="margin-top:4px"><div class="ct">Top values</div>${p.top.map(t=>`<div class="hbar"><span class="lb" title="${esc(t.v)}">${esc(t.v)}</span><span class="tr"><i style="width:${Math.round(t.n/p.top[0].n*100)}%"></i></span><span class="n">${t.n}</span></div>`).join('')}</div>`:''}
+      <div class="sec">Used by</div>
+      ${cu.segments.length?`<div class="chips">${cu.segments.map(m=>`<button class="btn sm outline" data-go-seg="${esc(m.id)}">${esc(m.id)} · ${esc(m.name)}</button>`).join('')}</div>`:'<div style="color:var(--ink-3);font-size:12.5px">No segment filters on this column.</div>'}
+      ${cu.param?'<div class="note" style="margin-top:8px">This column is a personalisation placeholder in content. Renaming or masking it changes what recipients see.</div>':''}
+    </div>
+    <div class="df"><button class="btn outline" id="dm-cancel">Cancel</button><span class="grow"></span><button class="btn primary" id="dm-save">Save column</button></div>`;
+  const q=sel=>dr.querySelector(sel);
+  dr.querySelectorAll('[data-f]').forEach(el=>el.oninput=el.onchange=()=>{ const path=el.dataset.f;
+    if(path==='label.en'||path==='label.tr') dmDraft.label[path.split('.')[1]]=el.value; else dmDraft[path]=el.value;
+    if(path==='masking'||path==='type') dmRenderDrawer(d); });
+  dr.querySelectorAll('[data-role]').forEach(el=>el.onchange=()=>{ const k=el.dataset.role;
+    dmDraft.roles=(dmDraft.roles||[]).filter(r=>r!==k); if(el.checked) dmDraft.roles.push(k); });
+  dr.querySelectorAll('[data-b]').forEach(el=>el.onchange=()=>{ dmDraft[el.dataset.b]=el.checked;
+    if(el.dataset.b==='category'){ if(el.checked&&!(dmDraft.allowed||[]).length) dmDraft.allowed=[...new Set(dmRows(d).map(r=>String(r[dmDraft.name])).filter(v=>v&&v!=='undefined'))].slice(0,30); dmRenderDrawer(d); } });
+  const fv=q('#dm-fillvals'); if(fv) fv.onclick=()=>{ dmDraft.allowed=[...new Set(dmRows(d).map(r=>String(r[dmDraft.name])).filter(v=>v&&v!=='undefined'))].slice(0,30); dmRenderDrawer(d); };
+  q('#dm-dx').onclick=dmCloseDrawer; q('#dm-cancel').onclick=dmCloseDrawer;
+  dr.querySelectorAll('[data-go-seg]').forEach(b=>b.onclick=()=>{ dmCloseDrawer(); showView('segmentation'); segLoad(b.dataset.goSeg); });
+  q('#dm-save').onclick=()=>dmSaveColumn(d);
+}
+function dmSaveColumn(d){
+  const c=d.columns.find(x=>x.name===dmDraft.name); if(!c) return;
+  if(!String(dmDraft.label.en||'').trim()){ toast('Label is required','Give the column a readable English label — it is what marketers see.','bad'); return; }
+  const cu=colUsage(d.id,c.name);
+  const typeChanged=c.type!==dmDraft.type, keyChanged=(c.roles||[]).includes('key')!==(dmDraft.roles||[]).includes('key');
+  if((typeChanged||keyChanged)&&cu.segments.length){
+    const what=[typeChanged?`type ${c.type} → ${dmDraft.type}`:'',keyChanged?'key role':''].filter(Boolean).join(' and ');
+    if(!confirm(`Change the ${what} of ${c.name}?\n\nThese segments filter on it and may stop matching:\n${cu.segments.map(m=>'• '+m.id+' · '+m.name).join('\n')}`)) return;
+  }
+  Object.assign(c,JSON.parse(JSON.stringify(dmDraft)));
+  /* the flat specs the rest of the app reads are derived from these objects */
+  dmSyncDerived(); dmProfileReset(d);
+  toast('Column saved',`${c.label.en} — the segment builder shows the new label straight away.`);
+  dmCloseDrawer();
+}
+function dmSyncDerived(){
+  const main=dmByKey('Main'), ev=dmByKey('Event');
+  if(main){ DM_COLS.length=0; main.columns.forEach(c=>DM_COLS.push({k:c.name,t:c.type})); }
+  if(ev){ EVENT_DM_COLS.length=0; ev.columns.forEach(c=>EVENT_DM_COLS.push({k:c.name,t:c.type})); }
+}
+
+/* ---- Data ---------------------------------------------------------------- */
+const dmShow=(c,v)=>dmAsMarketer?maskValue(c,v):(v===undefined||v===null?'':String(v));
+function dmTabData(body,d){
+  const rows=dmRows(d);
+  let view=rows;
+  const q=dmDataQ.trim().toLowerCase();
+  if(q) view=view.filter(r=>Object.values(r).some(v=>String(v).toLowerCase().includes(q)));
+  if(dmDataFCol&&dmDataFVal.trim()) view=view.filter(r=>String(r[dmDataFCol]??'').toLowerCase().includes(dmDataFVal.trim().toLowerCase()));
+  const page=view.slice(0,50);
+  const groups=ATTR_GROUPS.filter(g=>d.columns.some(c=>c.group===g));
+  const sel=dmDataCol&&d.columns.find(c=>c.name===dmDataCol);
+  body.innerHTML=`
+    <div class="hintline" style="padding:10px 20px 0">
+      ${dmAsMarketer?'<span class="pill warn">masked · as a marketer sees it</span>':'<span class="pill ok">unmasked (admin)</span>'}
+      <label class="ck" style="margin-left:4px"><input type="checkbox" id="dm-asmk" ${dmAsMarketer?'checked':''}> View as marketer</label>
+      <span style="color:var(--ink-3)">Masking follows each column's privacy rule.</span>
+    </div>
+    <div class="dm-data" style="padding-top:10px">
+      <div class="cl"><div style="padding:6px 8px;border-bottom:1px solid var(--line-2)"><input id="dm-dcq" placeholder="Find a column…" style="width:100%;border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:12.5px"></div>
+        <div class="list">${groups.map(g=>{ const gc=d.columns.filter(c=>c.group===g); return `<div class="dm-grp" style="cursor:default;border-top:0">${esc(g)}<span class="n">${gc.length}</span></div>${gc.map(c=>`<button data-dcol="${esc(c.name)}" class="${dmDataCol===c.name?'on':''}">${esc(c.label.en)}<small>${esc(c.name)}</small></button>`).join('')}`; }).join('')}</div></div>
+      <div>
+        ${sel?dmProfileCard(d,sel):''}
+        <div class="toolrow" style="padding:0 0 10px">
+          <label class="search-in" style="min-width:200px"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="dm-dq" placeholder="Search all columns…" value="${esc(dmDataQ)}"></label>
+          <select id="dm-dfc" style="max-width:190px"><option value="">Filter column…</option>${d.columns.map(c=>`<option value="${esc(c.name)}" ${dmDataFCol===c.name?'selected':''}>${esc(c.label.en)}</option>`).join('')}</select>
+          <input id="dm-dfv" placeholder="value" value="${esc(dmDataFVal)}" style="max-width:150px;border:1px solid var(--line);border-radius:6px;padding:7px 10px;font-size:12.5px">
+          <div class="grow" style="flex:1"></div>
+          <button class="btn sm outline" id="dm-csv">Export sample (CSV)</button>
+        </div>
+        <div class="dm-prev"><table class="tbl"><thead><tr>${d.columns.map(c=>`<th title="${esc(c.name)}">${esc(c.label.en)}${c.privacy!=='Internal'?' <span class="pill warn" style="font-size:9.5px">P</span>':''}</th>`).join('')}</tr></thead>
+          <tbody>${page.map(r=>`<tr>${d.columns.map(c=>{ const raw=r[c.name]; const out=dmShow(c,c.type==='date'?String(raw??'').slice(0,10):raw);
+            return `<td class="${dmAsMarketer&&c.masking!=='None'?'dm-masked':''}">${esc(out)}</td>`; }).join('')}</tr>`).join('')||`<tr><td colspan="${d.columns.length}" class="empty">No row matches. Clear the search or the filter.</td></tr>`}</tbody></table></div>
+        <div class="dm-sub" style="padding:8px 0 0">Showing ${page.length} of ${view.length} rows${view.length!==rows.length?` (filtered from ${rows.length})`:''}</div>
+      </div>
+    </div>`;
+  const g=id=>body.querySelector('#'+id);
+  g('dm-asmk').onchange=e=>{ dmAsMarketer=e.target.checked; dmTabData(body,d); };
+  g('dm-dq').oninput=e=>{ dmDataQ=e.target.value; const v=e.target.value; dmTabData(body,d); const i=body.querySelector('#dm-dq'); i.focus(); i.setSelectionRange(v.length,v.length); };
+  g('dm-dfc').onchange=e=>{ dmDataFCol=e.target.value; dmTabData(body,d); };
+  g('dm-dfv').oninput=e=>{ dmDataFVal=e.target.value; const v=e.target.value; dmTabData(body,d); const i=body.querySelector('#dm-dfv'); i.focus(); i.setSelectionRange(v.length,v.length); };
+  g('dm-dcq').oninput=e=>{ const v=e.target.value.toLowerCase(); body.querySelectorAll('[data-dcol]').forEach(b=>{ b.hidden=!!v&&!(b.dataset.dcol+' '+b.textContent).toLowerCase().includes(v); }); };
+  body.querySelectorAll('[data-dcol]').forEach(b=>b.onclick=()=>{ dmDataCol=dmDataCol===b.dataset.dcol?null:b.dataset.dcol; dmTabData(body,d); });
+  g('dm-csv').onclick=()=>{ dmDownloadCsv(`${d.key.toLowerCase()}-sample.csv`,
+      [d.columns.map(c=>c.name),...page.map(r=>d.columns.map(c=>maskValue(c,r[c.name])))]);
+    toast('Sample exported',`${page.length} rows, masked per column privacy.`); };
+}
+function dmProfileCard(d,c){
+  const p=dmProfile(d,c.name);
+  return `<div class="db-p w12" style="margin-bottom:10px"><div class="ph">${esc(c.label.en)} <small class="mono">${esc(c.name)}</small><span class="grow" style="flex:1"></span><span class="chip">${c.type}</span></div>
+    <div class="pb"><div style="font-size:12.5px;color:var(--ink-2)">${esc(c.desc)}</div>
+    <div class="kv" style="margin-top:4px"><dt>Fill rate</dt><dd>${p.fill}% (${p.filled} of ${p.total})</dd><dt>Distinct</dt><dd>${p.distinct}</dd>
+      ${p.min!==null?`<dt>Min / Max</dt><dd>${esc(String(p.min))} / ${esc(String(p.max))}</dd>`:''}${p.mean!==null?`<dt>Mean</dt><dd>${p.mean}</dd>`:''}</div>
+    ${p.top.length?p.top.map(t=>`<div class="hbar"><span class="lb" title="${esc(t.v)}">${esc(t.v)}</span><span class="tr"><i style="width:${Math.round(t.n/p.top[0].n*100)}%"></i></span><span class="n">${t.n}</span></div>`).join(''):''}</div></div>`;
+}
+
+/* ---- Relationships ------------------------------------------------------- */
+function dmTabRels(body,d){
+  const rels=(d.relationships||[]);
+  body.innerHTML=`
+    <div class="toolrow"><div class="grow" style="flex:1"></div><button class="btn primary sm" id="dm-addrel">+ Add relationship</button></div>
+    <div id="dm-relform"></div>
+    <div style="padding:0 20px 8px"><table class="tbl"><thead><tr><th>From</th><th>To</th><th>Join columns</th><th>Kind</th><th>Used by</th><th></th></tr></thead>
+      <tbody>${rels.map((r,i)=>{ const t=dmById(r.to); const segs=MLS.filter(m=>(m.dm===d.key&&m.dm2===(t||{}).key)||(m.dm===(t||{}).key&&m.dm2===d.key));
+        return `<tr><td>${esc(d.name)}</td><td>${esc((t||{name:'—'}).name)}</td><td class="mono">${esc(r.on.map(p=>p.join(' = ')).join(', '))}</td><td><span class="chip">${esc(r.kind)}</span></td>
+        <td>${segs.length?`${segs.length} segment${segs.length===1?'':'s'}`:'<span style="color:var(--ink-3)">—</span>'}</td>
+        <td><button class="btn sm outline" data-relrm="${i}">Remove</button></td></tr>`; }).join('')
+        ||'<tr><td colspan="6" class="empty">No relationships yet — add one so segments can join this datamart.</td></tr>'}</tbody></table></div>
+    <div class="padx"><div class="note">Segments can join a second datamart only through a relationship defined here.</div></div>`;
+  body.querySelector('#dm-addrel').onclick=()=>dmRelForm(body,d);
+  body.querySelectorAll('[data-relrm]').forEach(b=>b.onclick=()=>{ const i=+b.dataset.relrm;
+    if(!confirm('Remove this relationship?\n\nSegments that join through it will lose the joined columns.')) return;
+    d.relationships.splice(i,1); dmTabRels(body,d); toast('Relationship removed','Segments can no longer join through it.','warn'); });
+}
+function dmRelForm(body,d){
+  const others=DATAMARTS.filter(x=>x!==d);
+  const host=body.querySelector('#dm-relform');
+  const tgt=others[0];
+  host.innerHTML=`<div class="form2" style="padding:0 20px 8px;align-items:end">
+    <div class="fld"><label class="req">Target datamart</label><select id="rl-to">${others.map(o=>`<option value="${o.id}">${esc(o.name)}</option>`).join('')}</select></div>
+    <div class="fld"><label class="req">Kind ${tip('How many rows on each side: many deliveries to one customer is many-to-one.')}</label><select id="rl-kind">${REL_KINDS.map(k=>`<option>${k}</option>`).join('')}</select></div>
+    <div class="fld"><label class="req">This datamart's column</label><select id="rl-a">${d.columns.map(c=>`<option value="${esc(c.name)}">${esc(c.label.en)} (${c.type})</option>`).join('')}</select></div>
+    <div class="fld"><label class="req">Target column</label><select id="rl-b"></select></div>
+    <div class="fld span2" style="flex-direction:row;gap:8px"><button class="btn primary sm" id="rl-save">Add relationship</button><button class="btn outline sm" id="rl-cancel">Cancel</button><span id="rl-err" style="color:var(--bad);font-size:12px;align-self:center"></span></div>
+  </div>`;
+  const g=id=>host.querySelector('#'+id);
+  const fillB=()=>{ const t=dmById(g('rl-to').value); g('rl-b').innerHTML=t.columns.map(c=>`<option value="${esc(c.name)}">${esc(c.label.en)} (${c.type})</option>`).join(''); };
+  fillB(); g('rl-to').onchange=fillB;
+  g('rl-cancel').onclick=()=>{ host.innerHTML=''; };
+  g('rl-save').onclick=()=>{
+    const t=dmById(g('rl-to').value), a=d.columns.find(c=>c.name===g('rl-a').value), b=t.columns.find(c=>c.name===g('rl-b').value);
+    if(!a||!b){ g('rl-err').textContent='Pick a column on both sides.'; return; }
+    if(a.type!==b.type){ g('rl-err').textContent=`Types differ: ${a.name} is ${a.type}, ${b.name} is ${b.type}. A join needs the same type.`; return; }
+    d.relationships=d.relationships||[]; d.relationships.push({to:t.id,on:[[a.name,b.name]],kind:g('rl-kind').value});
+    host.innerHTML=''; dmTabRels(body,d); toast('Relationship added',`Segments on ${d.name} can now join ${t.name} on ${a.name}.`);
+  };
+}
+
+/* ---- Load & refresh ------------------------------------------------------ */
+function dmTabLoad(body,d){
+  const src=d.source||{kind:'File upload',detail:'',schedule:'Manual'};
+  body.innerHTML=`
+    <div class="form2" style="padding-top:12px">
+      <div class="fld"><label>Source kind</label><select data-sk="kind">${['File upload','DB sync','API'].map(k=>`<option ${src.kind===k?'selected':''}>${k}</option>`).join('')}</select></div>
+      <div class="fld"><label>Schedule</label><input data-sk="schedule" value="${esc(src.schedule)}"></div>
+      <div class="fld span2"><label>Detail ${tip('The view, file or endpoint the rows come from.')}</label><input data-sk="detail" value="${esc(src.detail)}" placeholder="e.g. BSS replica · view CVM_CUSTOMER_V"></div>
+      <div class="fld span2" style="flex-direction:row;gap:8px;align-items:center"><button class="btn primary" id="dm-run" ${dmBusy?'disabled':''}>${dmBusy?'Loading…':'Run now'}</button>
+        <span style="color:var(--ink-2);font-size:12.5px">Simulated — no data leaves the browser.</span></div>
+      ${d.columns.length?'':'<div class="fld span2"><div class="dm-drop"><b>Load a file to detect columns</b>Drop a CSV or XLSX here. Columns, types and a first profile are detected, then you document them on the Columns tab. (Concept — no upload in the prototype.)</div></div>'}
+    </div>
+    ${src.kind!=='File upload'?`<div class="padx"><div class="note">Guard rails for query-based sources: the view is opened <b>read-only</b>, the preview is capped at <b>100k rows</b>, and a statement is cancelled after <b>30 s</b>.</div></div>`:''}
+    <div class="h4">Load history</div>
+    <div style="padding:0 20px 8px"><table class="tbl"><thead><tr><th>When</th><th>Status</th><th class="num">Added</th><th class="num">Changed</th><th class="num">Failed</th><th class="num">Duration</th><th>Notes</th></tr></thead>
+      <tbody>${(d.loads||[]).map(l=>`<tr><td class="num">${esc(l.at)}</td><td><span class="pill ${l.status==='ok'?'ok':'bad'}">${l.status==='ok'?'✓ ok':'✕ failed'}</span></td>
+        <td class="num">${l.added}</td><td class="num">${l.changed}</td><td class="num">${l.failed?`<span style="color:var(--bad)">${l.failed}</span>`:0}</td><td class="num">${l.secs}s</td>
+        <td style="font-size:12px;color:var(--ink-2)">${esc(l.note||'')}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">Never loaded. Run a load to populate this datamart.</td></tr>'}</tbody></table></div>
+    <div class="dm-danger">
+      <b>Delete all records</b>
+      <div style="font-size:12.5px;color:var(--ink-2);margin:4px 0 8px">Empties the datamart and keeps the column definitions. ${d.isDefaultMain?'<b>Blocked:</b> this is the default main datamart — every new segment starts from it.':`Type <b>${esc(d.name)}</b> to confirm.`}</div>
+      ${d.isDefaultMain?'':`<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><input id="dm-delname" placeholder="${esc(d.name)}"><button class="btn" id="dm-delall" style="background:var(--bad);color:#fff" disabled>Delete all records</button></div>`}
+    </div>`;
+  body.querySelectorAll('[data-sk]').forEach(el=>el.onchange=()=>{ d.source=d.source||{}; d.source[el.dataset.sk]=el.value; dmTabLoad(body,d); });
+  body.querySelector('#dm-run').onclick=()=>dmRunLoad(body,d);
+  const inp=body.querySelector('#dm-delname'), btn=body.querySelector('#dm-delall');
+  if(inp&&btn){ inp.oninput=()=>{ btn.disabled=inp.value.trim()!==d.name; };
+    btn.onclick=()=>{ if(inp.value.trim()!==d.name) return;
+      const n=dmRows(d).length; d.rows=()=>[]; dmProfileReset(d);
+      (d.loads=d.loads||[]).unshift({at:TODAY+' '+new Date().toTimeString().slice(0,5),status:'ok',added:0,changed:0,failed:0,secs:1,note:`All ${n} records deleted by the admin`});
+      renderDatamart(); toast('Records deleted',`${d.name} is empty. Its ${d.columns.length} column definitions are kept.`,'warn'); }; }
+}
+function dmRunLoad(body,d){
+  if(dmBusy) return; dmBusy=true; dmTabLoad(body,d);
+  setTimeout(()=>{
+    dmBusy=false;
+    const n=dmRows(d).length;
+    (d.loads=d.loads||[]).unshift({at:TODAY+' '+new Date().toTimeString().slice(0,5),status:'ok',
+      added:0,changed:n,failed:0,secs:Math.max(2,Math.round(n/3)),note:'Simulated load — no rows changed'});
+    dmProfileReset(d); renderDatamart();
+    toast('Load finished',`${d.name} refreshed · ${n} rows checked. This is a simulation.`);
+  },1100);
+}
+
 /* ============ Onboarding: guided tours + Getting started (v42) =============
    A tour is a list of steps. Each step points at an element, explains it, and
    either waits for a Next click or for the user to actually do the thing. The
