@@ -11,6 +11,18 @@ Version numbers follow the published artifact versions.
 - The prototype opens on the **Dashboard** instead of the Journey Builder, matching how the Dashboard is described everywhere else. The journey canvas is now fitted the first time the builder is opened rather than at boot, because `fitView` measures the SVG and it is 0x0 while the view is hidden; later visits keep the pan and zoom the user left behind.
 - **Escape** now closes the segment assistant dialog, like every other dialog in the prototype.
 
+## v43 — 22 Sept 2026
+**Datamart catalogue.** Administration › Datamart was a disabled placeholder; it is now a data catalogue rather than a table-settings screen.
+- **List** of every datamart with type, key column, size, last load and a health pill (fresh / stale / failed), what uses it, and its relationships in plain words. Labelled actions; Delete is disabled with the reason when something depends on it.
+- **Overview** — KPIs, the editable description, "used by" links into the real segments, campaigns and journeys, and a small relationship diagram.
+- **Columns** — the core screen. One row per attribute, grouped and collapsible, with label, type, roles, privacy, fill rate, distinct count and usage. A side drawer documents one column: labels EN/TR, group, type, predefined mapping, roles, category + allowed values, privacy and masking with a live example, a profile computed from the rows, and who filters on it. Bulk edit for group, privacy, masking and category.
+- **Data** — preview with a column profile, search and filter. Masking follows each column's privacy, with a "View as marketer" toggle; the admin otherwise sees values unmasked.
+- **Relationships** — defined here and validated on type; segments can only join through them.
+- **Load & refresh** (concept) — source, schedule, simulated run, load history with schema-change notes, and a danger zone that needs the datamart name typed and is blocked on the default main.
+- **Segments read the catalogue**: the filter column picker is grouped by attribute group, shows the label with the technical name, marks personal columns and keeps a "recently used" group, so it stays usable at 500 columns. A column marked as a category switches its filter to `in` with a value list.
+- **Dashboard**: the admin preset lists stale or failed datamarts under "Needs attention", linking to their Load & refresh tab.
+- Profiles (fill %, distinct, top values, min/max/mean) are computed from the demo rows, not hard-coded. `DM_COLS` / `EVENT_DM_COLS` / `colsOf()` are now derived from the catalogue.
+
 ## v42 — 22 Sept 2026
 **Guided tours + Getting started.** An onboarding layer over the existing screens; nothing about the product itself changed.
 - **Getting started** page under Home, per role, with a progress bar. Items tick themselves off from real app state — a segment you actually saved, a campaign that actually reached *Pending approval* — not merely from having watched a tour. Journey and Program items are listed as "coming soon".
