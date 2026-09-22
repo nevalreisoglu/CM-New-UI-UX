@@ -8,7 +8,7 @@
  * window.startTour — auto-start is suppressed under automation because the
  * prototype checks navigator.webdriver, so nothing would appear on its own.
  *
- * Drives "Create your first campaign" with nothing but "Fill for me" and
+ * Drives "Create your first campaign" with nothing but "Do it for me" and
  * "Next", then asserts the campaign really reached Pending approval and that
  * the Getting started checklist noticed. Screenshots land in tests/shots/.
  */
@@ -81,7 +81,7 @@ async function driveFirstCampaign(page, { shots = false } = {}) {
   fs.mkdirSync(SHOTS, { recursive: true });
   const browser = await chromium.launch();
 
-  console.log('\ntour A — create your first campaign, using only "Fill for me" and "Next"');
+  console.log('\ntour A — create your first campaign, using only "Do it for me" and "Next"');
   {
     const page = await newPage(browser);
     const seen = await driveFirstCampaign(page, { shots: true });

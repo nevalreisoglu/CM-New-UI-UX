@@ -75,15 +75,18 @@ The page dims, one control stays lit with an orange outline, and a dark card
 beside it explains that control. The card shows which step you are on, a
 progress bar, **Back**, **Skip tour**, and the main button.
 
-The tours are **interactive**: on a step that asks you to do something, the
-button reads **Show me** — press it and the target pulses — and the tour moves
-on by itself **once you actually do it**. Type the name and it advances; pick a
-channel and it advances. You do not press Next on those steps.
+The tours are **interactive**: on a step that asks you to do something, the tour
+moves on by itself **once you actually do it**. Type the name and it advances;
+pick a channel and it advances. You do not press Next on those steps.
 
-If you would rather watch than type, every such step has a **Fill for me** link
-that does the step for you with sample data. Using only *Fill for me* and
-*Next*, the campaign tour runs end to end and leaves a real campaign waiting for
-approval.
+On those steps the main button reads **Do it for me** and performs the step for
+you with sample data, so you can watch rather than type. Using only *Do it for
+me* and *Next*, the campaign tour runs end to end and leaves a real campaign
+waiting for approval.
+
+Next to the hint there is also **Show me where**, which flashes a ring around
+the control the step is talking about — useful when the highlight is somewhere
+you are not looking.
 
 The lit control stays fully usable — you can click it and type in it; the rest
 of the page is simply out of the way.

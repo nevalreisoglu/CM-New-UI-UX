@@ -14,7 +14,7 @@ Version numbers follow the published artifact versions.
 ## v42 — 22 Sept 2026
 **Guided tours + Getting started.** An onboarding layer over the existing screens; nothing about the product itself changed.
 - **Getting started** page under Home, per role, with a progress bar. Items tick themselves off from real app state — a segment you actually saved, a campaign that actually reached *Pending approval* — not merely from having watched a tour. Journey and Program items are listed as "coming soon".
-- **Guided tours**: a dimmed page, a spotlight on the element, and a dark card with the explanation, a step counter and a progress bar. Tours are interactive — they move on when you do the step, not when you press Next. Every waiting step has a **Fill for me** link so the whole thing can be demoed end to end.
+- **Guided tours**: a dimmed page, a spotlight on the element, and a dark card with the explanation, a step counter and a progress bar. Tours are interactive — they move on when you do the step, not when you press Next. On a waiting step the primary button is **Do it for me** and performs the step, so the whole tour can be demoed end to end; **Show me where** flashes the control instead.
 - Five tours: *Create your first campaign* (16 steps, marketer), *Create a segment*, *Review and approve a campaign* (approver), *Read the dashboard*, *Admin setup*.
 - **?** button in the top bar: tour list with status and restart, Getting started, the user manual, and a "Show tips on first visit" switch.
 - First visit per role shows a welcome card; a tour left halfway offers to resume. Progress is kept in `localStorage` under `ecm-tours-v1`, with an in-memory fallback when storage is unavailable.
