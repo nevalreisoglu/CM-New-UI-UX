@@ -2,6 +2,10 @@
 
 Version numbers follow the published artifact versions.
 
+## v41 — 22 Sept 2026
+- Brand name corrected to ETIYA everywhere (logo, footer, campaign labels, role names).
+- Journey Builder and Journey Monitor: simulation controls moved into a marked "Simulation · demo only" strip so demo clock/event controls are not mistaken for product features.
+
 ## v40 — 21 Sept 2026
 - Program module: list, Overview, Timeline (Gantt), Members picker, Settings (goal, contact cap, summary report).
 - Dashboard: Opened / Clicked headline KPIs (8-tile strip).
@@ -27,4 +31,4 @@ Version numbers follow the published artifact versions.
 - Segments two-screen; groups in Parameters; campaign flow flattened (Channel & content · Rules · Schedule as steps); Offer skipped for Info; promo code; execution log removed; Copy-target and event-triggered removed from campaign.
 
 ## v20s — 16–17 Sept 2026 (meeting 1)
-- Role views, collapsible menu and panels, breadcrumb, labelled actions, readiness layer, Etya palette, exclusion redesign, NL filter assistant.
+- Role views, collapsible menu and panels, breadcrumb, labelled actions, readiness layer, Etiya palette, exclusion redesign, NL filter assistant.

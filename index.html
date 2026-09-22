@@ -3,7 +3,7 @@
 <title>ECM Journey Studio</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Single-theme by design: Etya commercial palette — navy primary, dark-orange accent, neutral greys. --green keeps its variable name for compatibility but now carries the navy primary; status greens live in --ok. */
+/* Single-theme by design: Etiya commercial palette — navy primary, dark-orange accent, neutral greys. --green keeps its variable name for compatibility but now carries the navy primary; status greens live in --ok. */
 :root{
   --bg:#F3F5F8; --surface:#FFFFFF; --surface-2:#F6F8FA; --ink:#1E2B3A; --ink-2:#6B7280; --ink-3:#9AA1AC;
   --line:#E5E7EB; --line-2:#EEF0F3;
@@ -552,6 +552,15 @@ body{font-size:14px}
 .kv dt{font-weight:600;color:var(--ink-2)}
 .tip{width:15px;height:15px;font-size:9.5px}
 #camp-table td:first-child{min-width:200px}
+/* simulation strip — demo-only controls, visibly separated from product UI */
+.simbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 12px;margin:0 20px 10px;border:1.5px dashed #C9B8F0;background:repeating-linear-gradient(135deg,#F7F3FF 0 10px,#F2ECFD 10px 20px);border-radius:8px;font-size:12.5px}
+.ctool.simbar{margin:0;border-radius:0;border-left:0;border-right:0}
+.simbar .simtag{display:inline-flex;align-items:center;gap:5px;background:#6A3FB5;color:#fff;font-weight:700;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap}
+.simbar .btn{background:#fff;border:1px solid #C9B8F0;color:#4B2A8C}
+.simbar .btn:hover{background:#EFE8FC}
+.simbar .pill{background:#fff;border-color:#C9B8F0;color:#4B2A8C}
+.simbar .hint{color:#6B5A8E;font-size:11.5px}
+.simbar select{border:1px solid #C9B8F0;border-radius:4px;padding:5px 8px;background:#fff}
 /* programs */
 .gantt{display:grid;grid-template-columns:230px 1fr;font-size:12.5px}
 .gantt .gh{padding:6px 10px;color:var(--ink-3);font-size:11px;border-bottom:1px solid var(--line-2)}
@@ -618,7 +627,7 @@ body{font-size:14px}
 
 <div class="app">
   <header class="topbar">
-    <div class="logo"><span class="mark"></span><span class="w"><b>ETYA</b><small>Marketing Cloud</small></span></div>
+    <div class="logo"><span class="mark"></span><span class="w"><b>ETIYA</b><small>Marketing Cloud</small></span></div>
     <button class="burger" id="btn-nav" aria-label="Collapse or expand the menu" title="Collapse menu"><i></i></button>
     <div class="proto"><span class="pill" title="Prototype — not a product version">Prototype</span></div>
     <div class="tright">
@@ -681,15 +690,15 @@ body{font-size:14px}
                 <div class="grow"></div>
                 <button class="btn sm outline" id="btn-report">Execution report</button>
               </div>
-              <div class="ctool evbar">
-                <span style="font-weight:600;color:var(--ink-2)">Simulate</span>
+              <div class="ctool evbar simbar" title="Demo only — not part of the product">
+                <span class="simtag">⚗ Simulation · demo only</span>
                 <label for="ev-name" style="color:var(--ink-2)">event</label><select id="ev-name"></select>
                 <label for="ev-cust" style="color:var(--ink-2)">for</label><select id="ev-cust"></select>
-                <button class="btn sm primary" id="btn-send-event">Send event</button>
+                <button class="btn sm" id="btn-send-event">Send event</button>
                 <span style="color:var(--ink-3)">·</span>
-                <button class="btn sm outline" id="btn-tick-j">Advance 1 day</button>
+                <button class="btn sm" id="btn-tick-j" title="Move the simulated clock one day forward">Advance 1 day</button>
                 <span class="pill" id="daypill-j">Day 0</span>
-                <span class="hint" style="color:var(--ink-3);font-size:11.5px">Immediate steps run as soon as the event arrives; Timer and Wait steps progress with "Advance 1 day".</span>
+                <span class="hint">The prototype has no real clock or sends. Events run immediate steps at once; Timer and Wait steps move with "Advance 1 day". Not a product control.</span>
               </div>
               <div class="ctool">
                 <button class="ic" title="Help"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17h0"/></svg><span>Help</span></button>
@@ -850,14 +859,18 @@ body{font-size:14px}
     <section class="view" id="view-monitor">
       <div class="split" style="grid-template-columns:1fr 0;gap:0">
         <div class="card left">
-          <div class="card-h"><h2>Journey Monitor</h2><p>Per-customer journey state, funnel by step, and point-in-time participant lists. The simulator advances one day per tick with mock delivery outcomes and events.</p></div>
+          <div class="card-h"><h2>Journey Monitor</h2><p>Per-customer journey state, funnel by step, and point-in-time participant lists.</p></div>
           <div class="toolrow">
             <label for="msel" style="color:var(--ink-2)">Journey</label>
             <select id="msel"></select>
-            <button class="btn sm primary" id="btn-tick">Advance 1 day</button>
-            <button class="btn sm grey" id="btn-tick5">Advance 5 days</button>
-            <button class="btn sm outline" id="btn-reset">Reset</button>
+          </div>
+          <div class="simbar" title="Demo only — not part of the product">
+            <span class="simtag">⚗ Simulation · demo only</span>
+            <button class="btn sm" id="btn-tick" title="Move the simulated clock one day forward: timers expire, mock delivery outcomes are generated, customers move on">Advance 1 day</button>
+            <button class="btn sm" id="btn-tick5" title="Five days at once">Advance 5 days</button>
+            <button class="btn sm" id="btn-reset" title="Back to day 0; participants reloaded from the entry segment">Reset</button>
             <span class="pill" id="daypill">Day 0</span>
+            <span class="hint">The prototype has no real clock or sends — these buttons move a simulated clock so you can watch customers progress. In the product the monitor updates on its own.</span>
           </div>
           <div class="h4">Journeys — status, version and activation</div>
           <div class="padx" style="padding-bottom:8px">
@@ -999,7 +1012,7 @@ body{font-size:14px}
       <div class="padx" style="overflow:auto;padding-top:8px"><table class="tbl" id="jlist-table"><thead><tr><th>Journey</th><th>Status</th><th>Version</th><th>Entry</th><th>Steps</th><th>Participants</th><th>Activated</th><th>Created</th><th></th></tr></thead><tbody></tbody></table></div>
     </div>
   </div>
-  <footer class="footer"><div class="logo"><span class="mark"></span><span class="w"><b>ETYA</b><small>Marketing Cloud</small></span></div><div class="c">2026 © ETYA ALL RIGHTS RESERVED</div></footer>
+  <footer class="footer"><div class="logo"><span class="mark"></span><span class="w"><b>ETIYA</b><small>Marketing Cloud</small></span></div><div class="c">2026 © ETIYA ALL RIGHTS RESERVED</div></footer>
 </div>
 
 <script>
@@ -1081,22 +1094,22 @@ const CAMPAIGNS = [
   {id:'434',name:'Renewal opened → app push follow-up',type:'Event',status:'Active',category:'Retention',sub:'Package renewal',label:'KYIVSTAR-DEMO',program:'Package renewal',createdBy:'Neval Reisoğlu',updatedBy:'Neval Reisoğlu',created:'2026-09-09',updated:'2026-09-12',start:'2026-09-14T00:00',end:'2026-09-30T23:59',datamart:'Event DataMart',cg:'No Control Group',presend:'1 day',priority:14,cbd:true,alarms:false,objective:'Customers who opened the renewal SMS but did not renew get a push with one-tap renewal.',desc:'Follow-up to customers who opened the renewal SMS (segment on the Event DataMart).',strategy:'Manual',lists:[{id:'ML-2203',mode:'Include'}],offers:['OFR-1042'],channels:['push'],contents:['PSH-401'],sortCol:'',sortDir:''},
   {id:'435',name:'Renewal — last day reminder',type:'Info',status:'Active',category:'Retention',sub:'Package renewal',label:'KYIVSTAR-DEMO',program:'Package renewal',createdBy:'Neval Reisoğlu',updatedBy:'Neval Reisoğlu',created:'2026-09-09',updated:'2026-09-12',start:'2026-09-14T00:00',end:'2026-09-30T23:59',datamart:'Main DataMart',cg:'5% Control Group',presend:'1 day',priority:8,cbd:true,alarms:false,objective:'Info message on the expiry day for customers still not renewed.',desc:'Scheduled at 10:00 local; pre-sent period prevents duplicate sends.',strategy:'Manual',lists:[{id:'ML-2202',mode:'Include'},{id:'ML-2203',mode:'Exclude'},{id:'ML-2210',mode:'Exclude'}],offers:[],channels:['sms'],contents:['SMS-303'],sortCol:'',sortDir:''},
   {id:'436',name:'Data add-on cross-sell after renewal',type:'Offer',status:'Draft',category:'Upsell',sub:'Data add-on',label:'KYIVSTAR-DEMO',program:'Package renewal',createdBy:'Neval Reisoğlu',updatedBy:'',created:'2026-09-12',updated:'2026-09-12',start:'2026-09-15T00:00',end:'2026-10-15T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'7 days',priority:6,cbd:true,alarms:false,objective:'Offer 5 GB add-on to renewed high-usage customers; Campaign Type overlap rule keeps it behind 433.',desc:'',strategy:'NBO',lists:[{id:'ML-2402',mode:'Include'}],offers:['OFR-1043'],channels:['push','sms'],contents:['PSH-403','SMS-320'],sortCol:'DATA_USAGE_GB',sortDir:'Descending'},
-  {id:'3310',name:'Top-up bonus 10%',type:'Offer',status:'Active',category:'Retention',sub:'Top-up',label:'ETYA',program:'Churn prevention',createdBy:'Neval Reisoğlu',updatedBy:'Neval Reisoğlu',created:'2026-08-30',updated:'2026-09-05',start:'2026-09-01T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'5% Control Group',presend:'3 days',priority:10,cbd:true,alarms:false,objective:'Bonus on next top-up for churn-risk prepaid.',desc:'',strategy:'NBO',lists:[{id:'ML-2201',mode:'Include'}],offers:['OFR-1042'],channels:['sms','push'],contents:['SMS-302','PSH-401'],sortCol:'CHURN_RISK',sortDir:'Descending'},
-  {id:'3311',name:'Bonus reminder',type:'Info',status:'Active',category:'Retention',sub:'Top-up',label:'ETYA',program:'Churn prevention',createdBy:'Neval Reisoğlu',updatedBy:'',created:'2026-08-30',updated:'2026-08-30',start:'2026-09-01T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'1 day',priority:5,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2201',mode:'Include'}],offers:[],channels:['push'],contents:['PSH-402'],sortCol:'',sortDir:''},
-  {id:'3312',name:'Retention personal offer',type:'Offer',status:'Active',category:'Retention',sub:'Assisted',label:'ETYA',program:'Churn prevention',createdBy:'Burcu Şahin',updatedBy:'',created:'2026-08-21',updated:'2026-08-21',start:'2026-09-01T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'30 days',priority:18,cbd:true,alarms:true,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2201',mode:'Include'}],offers:['OFR-1060'],channels:['tm'],contents:['TM-601'],sortCol:'',sortDir:''},
-  {id:'2001',name:'Welcome',type:'Info',status:'Active',category:'Onboarding',sub:'Welcome',label:'ETYA',program:'Onboarding',createdBy:'Burcu Şahin',updatedBy:'Neval Reisoğlu',created:'2026-07-02',updated:'2026-08-11',start:'2026-07-05T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'365 days',priority:9,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2301',mode:'Include'}],offers:[],channels:['email'],contents:['EML-201'],sortCol:'',sortDir:''},
-  {id:'2002',name:'Get the app',type:'Info',status:'Active',category:'Onboarding',sub:'App adoption',label:'ETYA',program:'Onboarding',createdBy:'Burcu Şahin',updatedBy:'',created:'2026-07-02',updated:'2026-07-02',start:'2026-07-05T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'30 days',priority:4,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2301',mode:'Include'}],offers:[],channels:['sms'],contents:['SMS-310'],sortCol:'',sortDir:''},
-  {id:'2003',name:'5G first month free',type:'Offer',status:'Active',category:'Upsell',sub:'5G',label:'ETYA',program:'Growth',createdBy:'Ali Yasin Çiçek',updatedBy:'',created:'2026-07-20',updated:'2026-07-20',start:'2026-08-01T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'10% Control Group',presend:'60 days',priority:7,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2402',mode:'Include'}],offers:['OFR-1051'],channels:['email','push'],contents:['EML-211','PSH-403'],sortCol:'',sortDir:''},
-  {id:'2410',name:'Data add-on 5GB',type:'Offer',status:'Expired',category:'Upsell',sub:'Data add-on',label:'ETYA',program:'Growth',createdBy:'Ali Yasin Çiçek',updatedBy:'',created:'2026-05-02',updated:'2026-05-02',start:'2026-05-05T00:00',end:'2026-06-30T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'30 days',priority:6,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2402',mode:'Include'}],offers:['OFR-1043'],channels:['email'],contents:['EML-212'],sortCol:'',sortDir:''},
-  {id:'2511',name:'NPS survey — day 30',type:'Survey',status:'Active',category:'Experience',sub:'NPS',label:'ETYA',program:'Onboarding',createdBy:'Burcu Şahin',updatedBy:'',created:'2026-06-14',updated:'2026-06-14',start:'2026-07-01T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'90 days',priority:2,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2301',mode:'Include'}],offers:[],channels:['email'],contents:['EML-230'],sortCol:'',sortDir:''},
-  {id:'2612',name:'Win-back 20% discount',type:'Offer',status:'Expired',category:'Win-back',sub:'Discount',label:'ETYA',program:'Churn prevention',createdBy:'Neval Reisoğlu',updatedBy:'',created:'2026-04-10',updated:'2026-04-10',start:'2026-04-15T00:00',end:'2026-05-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'30 days',priority:15,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2201',mode:'Include'}],offers:['OFR-1042'],channels:['sms'],contents:['SMS-302'],sortCol:'',sortDir:''},
-  {id:'374',name:'Budget Conscious Streamers Retention',type:'Offer',status:'Active',category:'Retention',sub:'Streaming',label:'ETYA',program:'',createdBy:'Buket Vatansever',updatedBy:'Buket Vatansever',created:'2026-08-07',updated:'2026-08-09',start:'2026-08-10T00:00',end:'2026-10-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'7 days',priority:5,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2201',mode:'Include'}],offers:['OFR-1043'],channels:['push'],contents:['PSH-401'],sortCol:'',sortDir:''},
-  {id:'372',name:'High-Value Gamers Content Plus Value Pack',type:'Offer',status:'Active',category:'Upsell',sub:'Content',label:'ETYA',program:'',createdBy:'Berk Demir',updatedBy:'Berk Demir',created:'2026-08-06',updated:'2026-08-06',start:'2026-08-10T00:00',end:'2026-10-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'7 days',priority:5,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2402',mode:'Include'}],offers:['OFR-1043'],channels:['email'],contents:['EML-212'],sortCol:'',sortDir:''},
-  {id:'365',name:'ecm_auto_Campaign20260807478',type:'Info',status:'Expired',category:'Test',sub:'Automation',label:'ETYA',program:'',createdBy:'Ali Yasin Çiçek',updatedBy:'',created:'2026-08-07',updated:'2026-08-07',start:'2026-08-07T00:00',end:'2026-08-07T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'1 day',priority:1,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[],offers:[],channels:['sms'],contents:['SMS-310'],sortCol:'',sortDir:''},
+  {id:'3310',name:'Top-up bonus 10%',type:'Offer',status:'Active',category:'Retention',sub:'Top-up',label:'ETIYA',program:'Churn prevention',createdBy:'Neval Reisoğlu',updatedBy:'Neval Reisoğlu',created:'2026-08-30',updated:'2026-09-05',start:'2026-09-01T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'5% Control Group',presend:'3 days',priority:10,cbd:true,alarms:false,objective:'Bonus on next top-up for churn-risk prepaid.',desc:'',strategy:'NBO',lists:[{id:'ML-2201',mode:'Include'}],offers:['OFR-1042'],channels:['sms','push'],contents:['SMS-302','PSH-401'],sortCol:'CHURN_RISK',sortDir:'Descending'},
+  {id:'3311',name:'Bonus reminder',type:'Info',status:'Active',category:'Retention',sub:'Top-up',label:'ETIYA',program:'Churn prevention',createdBy:'Neval Reisoğlu',updatedBy:'',created:'2026-08-30',updated:'2026-08-30',start:'2026-09-01T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'1 day',priority:5,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2201',mode:'Include'}],offers:[],channels:['push'],contents:['PSH-402'],sortCol:'',sortDir:''},
+  {id:'3312',name:'Retention personal offer',type:'Offer',status:'Active',category:'Retention',sub:'Assisted',label:'ETIYA',program:'Churn prevention',createdBy:'Burcu Şahin',updatedBy:'',created:'2026-08-21',updated:'2026-08-21',start:'2026-09-01T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'30 days',priority:18,cbd:true,alarms:true,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2201',mode:'Include'}],offers:['OFR-1060'],channels:['tm'],contents:['TM-601'],sortCol:'',sortDir:''},
+  {id:'2001',name:'Welcome',type:'Info',status:'Active',category:'Onboarding',sub:'Welcome',label:'ETIYA',program:'Onboarding',createdBy:'Burcu Şahin',updatedBy:'Neval Reisoğlu',created:'2026-07-02',updated:'2026-08-11',start:'2026-07-05T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'365 days',priority:9,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2301',mode:'Include'}],offers:[],channels:['email'],contents:['EML-201'],sortCol:'',sortDir:''},
+  {id:'2002',name:'Get the app',type:'Info',status:'Active',category:'Onboarding',sub:'App adoption',label:'ETIYA',program:'Onboarding',createdBy:'Burcu Şahin',updatedBy:'',created:'2026-07-02',updated:'2026-07-02',start:'2026-07-05T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'30 days',priority:4,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2301',mode:'Include'}],offers:[],channels:['sms'],contents:['SMS-310'],sortCol:'',sortDir:''},
+  {id:'2003',name:'5G first month free',type:'Offer',status:'Active',category:'Upsell',sub:'5G',label:'ETIYA',program:'Growth',createdBy:'Ali Yasin Çiçek',updatedBy:'',created:'2026-07-20',updated:'2026-07-20',start:'2026-08-01T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'10% Control Group',presend:'60 days',priority:7,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2402',mode:'Include'}],offers:['OFR-1051'],channels:['email','push'],contents:['EML-211','PSH-403'],sortCol:'',sortDir:''},
+  {id:'2410',name:'Data add-on 5GB',type:'Offer',status:'Expired',category:'Upsell',sub:'Data add-on',label:'ETIYA',program:'Growth',createdBy:'Ali Yasin Çiçek',updatedBy:'',created:'2026-05-02',updated:'2026-05-02',start:'2026-05-05T00:00',end:'2026-06-30T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'30 days',priority:6,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2402',mode:'Include'}],offers:['OFR-1043'],channels:['email'],contents:['EML-212'],sortCol:'',sortDir:''},
+  {id:'2511',name:'NPS survey — day 30',type:'Survey',status:'Active',category:'Experience',sub:'NPS',label:'ETIYA',program:'Onboarding',createdBy:'Burcu Şahin',updatedBy:'',created:'2026-06-14',updated:'2026-06-14',start:'2026-07-01T00:00',end:'2026-12-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'90 days',priority:2,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2301',mode:'Include'}],offers:[],channels:['email'],contents:['EML-230'],sortCol:'',sortDir:''},
+  {id:'2612',name:'Win-back 20% discount',type:'Offer',status:'Expired',category:'Win-back',sub:'Discount',label:'ETIYA',program:'Churn prevention',createdBy:'Neval Reisoğlu',updatedBy:'',created:'2026-04-10',updated:'2026-04-10',start:'2026-04-15T00:00',end:'2026-05-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'30 days',priority:15,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2201',mode:'Include'}],offers:['OFR-1042'],channels:['sms'],contents:['SMS-302'],sortCol:'',sortDir:''},
+  {id:'374',name:'Budget Conscious Streamers Retention',type:'Offer',status:'Active',category:'Retention',sub:'Streaming',label:'ETIYA',program:'',createdBy:'Buket Vatansever',updatedBy:'Buket Vatansever',created:'2026-08-07',updated:'2026-08-09',start:'2026-08-10T00:00',end:'2026-10-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'7 days',priority:5,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2201',mode:'Include'}],offers:['OFR-1043'],channels:['push'],contents:['PSH-401'],sortCol:'',sortDir:''},
+  {id:'372',name:'High-Value Gamers Content Plus Value Pack',type:'Offer',status:'Active',category:'Upsell',sub:'Content',label:'ETIYA',program:'',createdBy:'Berk Demir',updatedBy:'Berk Demir',created:'2026-08-06',updated:'2026-08-06',start:'2026-08-10T00:00',end:'2026-10-31T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'7 days',priority:5,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[{id:'ML-2402',mode:'Include'}],offers:['OFR-1043'],channels:['email'],contents:['EML-212'],sortCol:'',sortDir:''},
+  {id:'365',name:'ecm_auto_Campaign20260807478',type:'Info',status:'Expired',category:'Test',sub:'Automation',label:'ETIYA',program:'',createdBy:'Ali Yasin Çiçek',updatedBy:'',created:'2026-08-07',updated:'2026-08-07',start:'2026-08-07T00:00',end:'2026-08-07T23:59',datamart:'Main DataMart',cg:'No Control Group',presend:'1 day',priority:1,cbd:true,alarms:false,objective:'',desc:'',strategy:'Manual',lists:[],offers:[],channels:['sms'],contents:['SMS-310'],sortCol:'',sortDir:''},
 ];
 const CAMP_TYPES=['Offer','Info'];
 const CAMP_CATS={Retention:['Package renewal','Top-up','Assisted','Streaming'],Upsell:['Data add-on','5G','Content'],Onboarding:['Welcome','App adoption'],'Win-back':['Discount'],Experience:['NPS'],Test:['Automation']};
-const CAMP_LABELS=['KYIVSTAR-DEMO','ETYA','B2B','PARTNER'];
+const CAMP_LABELS=['KYIVSTAR-DEMO','ETIYA','B2B','PARTNER'];
 /* meeting 3: optional Info fields are configuration (per customer / version); single-brand customers never see the brand field */
 const CAMP_CFG={objective:true,desc:false,multiBrand:false};
 const CAMP_STATUS_CLS={Active:'ok',Draft:'grey','Pending approval':'warn',Paused:'warn',Expired:'bad',Stopped:'bad',Rejected:'bad'};
@@ -1735,7 +1748,7 @@ function render(){ renderCanvas(); renderNodePanel(); renderOffers(); renderPoli
 document.querySelectorAll('.nav button[data-view]').forEach(b=>b.onclick=()=>showView(b.dataset.view));
 
 /* role view — pages and actions follow the signed-in role (persona decision from the UX meeting) */
-const ROLE_NAMES={marketer:'Marketer',approver:'Approver',admin:'Etya Admin',cmo:'CMO / Executive'};
+const ROLE_NAMES={marketer:'Marketer',approver:'Approver',admin:'Etiya Admin',cmo:'CMO / Executive'};
 let ROLE='marketer';
 function applyRole(r){ ROLE=r; document.getElementById('role-lbl').textContent=ROLE_NAMES[r];
   document.querySelectorAll('.nav button[data-roles]').forEach(b=>{ b.hidden=!b.dataset.roles.split(' ').includes(r); });

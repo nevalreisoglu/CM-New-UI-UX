@@ -1,12 +1,12 @@
 # ECM Journey Studio — UX/UI redesign prototype
 
-Single-file, click-through prototype of the redesigned Etya Campaign Management (ECM) user experience.
+Single-file, click-through prototype of the redesigned Etiya Campaign Management (ECM) user experience.
 Iterated after each UX/UI redesign meeting (16–18 Sept 2026) and the follow-up sessions.
 
 **Open it:** download `index.html` and open it in a browser — no build, no server, no external calls (fonts are optional).
 With GitHub Pages enabled on this repo it is served at the repo's Pages URL.
 
-## What is in the prototype (v40)
+## What is in the prototype (v41)
 
 - **Roles:** Marketer · Approver (maker/checker) · Admin · CMO/Executive — pages and actions follow the role.
 - **Dashboard** with role presets, 8 headline KPIs, live counters, "needs attention", funnel & eliminations, control-group uplift.
@@ -16,7 +16,7 @@ With GitHub Pages enabled on this repo it is served at the repo's Pages URL.
 - **Segments** workbench: definition + query builder + live audience insight; channel-scoped exclusion lists; Segment Groups in Parameters.
 - **Templates (design)** per channel — admin only; content is written inside deliveries.
 - **Reports**, **Parameters** (campaign form switches, rule defaults, channels & senders), **Release & licences**.
-- Etya commercial palette; tooltips on every meaningful field.
+- Etiya commercial palette; tooltips on every meaningful field.
 
 Demo data only (30 customers, 16 campaigns, 3 journeys). Nothing is sent.
 
