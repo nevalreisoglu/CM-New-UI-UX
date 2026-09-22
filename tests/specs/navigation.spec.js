@@ -14,11 +14,11 @@ const PAGES = [
 ];
 
 test.describe('navigation', () => {
-  test('the prototype boots on the Journey Builder as a marketer', async ({ app }) => {
-    // The boot sequence is showView('journeys') then applyRole('marketer').
-    await expect(app.locator('.view.active')).toHaveId('view-journeys');
-    await expect(app.locator('.nav button.active')).toHaveAttribute('data-view', 'journeys');
+  test('the prototype boots on the Dashboard as a marketer', async ({ app }) => {
+    await expect(app.locator('.view.active')).toHaveId('view-dashboard');
+    await expect(app.locator('.nav button.active')).toHaveAttribute('data-view', 'dashboard');
     await expect(app.locator('#role-lbl')).toHaveText('Marketer');
+    await expect(app.locator('#crumb .cur')).toHaveText('Dashboard');
   });
 
   test('Dashboard is the first page in the menu, under Home', async ({ app }) => {

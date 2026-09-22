@@ -50,6 +50,12 @@ test.describe('segment workbench', () => {
 
     await app.locator('#seg-nl-close').click();
     await expect(app.locator('#seg-nl-modal')).toBeHidden();
+
+    // Escape closes it too, like every other dialog in the prototype.
+    await app.locator('#seg-nl-open').click();
+    await expect(app.locator('#seg-nl-modal')).toBeVisible();
+    await app.keyboard.press('Escape');
+    await expect(app.locator('#seg-nl-modal')).toBeHidden();
   });
 
   test('the assistant turns a sentence into filters the user can still edit', async ({ app }) => {

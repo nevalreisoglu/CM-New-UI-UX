@@ -40,7 +40,7 @@ in the prototype, so it works offline and travels with the file — close it wit
 
 ## Dashboard
 
-The landing overview. Eight headline KPIs across the top, then:
+The page the prototype opens on. Eight headline KPIs across the top, then:
 
 - **Live counters** — click one to jump to what it counts.
 - **Needs attention** — campaigns waiting for approval, journeys with failures,
@@ -175,7 +175,7 @@ distribution by the columns you filtered, reachability per channel.
 **✦ Assistant** opens a dialog. Describe the audience in a sentence —
 *"prepaid customers in Kyiv or Odesa whose package expires in 2 days"* — and
 **Build filters** turns it into filters in the query builder, which you then
-review and edit. Close it with **Close**.
+review and edit. Close it with **Close** or **Esc**.
 
 **Search** pulls the matching customer rows and opens the result list. Counts
 update without it; rows need it, because pulling rows on every keystroke would
@@ -258,7 +258,6 @@ The prototype runs three simulated days at load, so the monitor opens on
 - **Nothing is saved.** Reloading starts over from the sample data.
 - **Nothing is sent.** Test sends and CSV exports raise a toast instead.
 - The sample data is 30 customers, 16 campaigns and 3 journeys.
-- **Esc** closes the report, new-journey and journey-list dialogs. The segment
-  assistant dialog closes with its **Close** button.
-- The prototype opens on the **Journey Builder**; the Dashboard is the first
-  entry in the menu.
+- **Esc** closes any dialog: the manual, the report, new journey, the journey
+  list and the segment assistant.
+- The prototype opens on the **Dashboard**.

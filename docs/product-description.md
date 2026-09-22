@@ -160,7 +160,7 @@ Both carry a **simulation strip** (see §9).
 
 ## 8. Dashboard, Program and Reports
 
-- **Dashboard** — eight headline KPIs, live counters, a "needs attention" list
+- **Dashboard** — the page the prototype opens on: eight headline KPIs, live counters, a "needs attention" list
   that links straight to the thing that needs attention, trend, funnel and
   eliminations, channel and category breakdowns, top campaigns and journeys, and
   control-group uplift. Presets per role, and panels can be dismissed.
@@ -205,8 +205,5 @@ collapsing the menu moves each label into a tooltip.
 
 ## 11. Known gaps in the prototype
 
-- The prototype opens on the Journey Builder rather than the Dashboard.
-- The assistant dialog closes with its Close button; the global Escape handler
-  covers the other dialogs but not this one.
 - Reports is a layout with sample numbers, not a reporting engine.
 - Nothing is persisted: a reload starts over.

@@ -5,7 +5,11 @@ Version numbers follow the published artifact versions.
 ## Unreleased — 22 Sept 2026
 - **User manual in the prototype**: a button in the top right opens `docs/user-manual.md`, rendered in a dialog with a contents list. The markdown is embedded in `index.html`, so a downloaded single file carries its manual with no server and no network. `tools/embed-manual.js` re-embeds it after an edit and the test suite fails if the two drift apart.
 - `docs/`: product description, user manual, and the meeting notes (Turkish) behind each iteration.
-- `tests/`: Playwright regression suite (54 specs) over `index.html` plus reference screenshots of the main screens.
+- `tests/`: Playwright regression suite (56 specs) over `index.html` plus reference screenshots of the main screens.
+
+### Fixed
+- The prototype opens on the **Dashboard** instead of the Journey Builder, matching how the Dashboard is described everywhere else. The journey canvas is now fitted the first time the builder is opened rather than at boot, because `fitView` measures the SVG and it is 0x0 while the view is hidden; later visits keep the pan and zoom the user left behind.
+- **Escape** now closes the segment assistant dialog, like every other dialog in the prototype.
 
 ## v41 — 22 Sept 2026
 - Brand name corrected to ETIYA everywhere (logo, footer, campaign labels, role names).

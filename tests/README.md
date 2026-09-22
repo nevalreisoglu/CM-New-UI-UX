@@ -65,15 +65,18 @@ the screens it touches.
 
 These surprised us once, so they are asserted rather than assumed:
 
-- The prototype **boots on the Journey Builder**, not the Dashboard.
+- The prototype **boots on the Dashboard**, and the journey canvas is therefore
+  fitted the first time the builder is opened rather than at boot — `fitView`
+  measures the SVG, which is 0x0 while the view is hidden. `fitView` also has a
+  zoom floor of 0.45, so a wide journey can still run off the right edge.
 - The Journey Monitor opens on **day 3**: the prototype runs three simulated days
   at load so the monitor has something to show.
 - The **Offer step is not removed** for an Info campaign — it stays in the
   stepper, disabled and marked `–`.
 - The **readiness panel refreshes when the step changes**, not on every
   keystroke, so that typing in a field never steals focus.
-- The assistant dialog closes with its **Close button**; the global Escape
-  handler does not cover it. (The manual dialog does close on Escape.)
+- Every dialog closes on **Escape**, including the segment assistant and the
+  manual.
 
 ## The embedded user manual
 

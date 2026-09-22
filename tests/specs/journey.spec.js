@@ -9,6 +9,29 @@ test.describe('journey builder and monitor', () => {
     expect(await app.locator('#canvas .edge').count()).toBeGreaterThan(0);
   });
 
+  test('the canvas is fitted the first time the builder is opened', async ({ app }) => {
+    // The prototype boots on the Dashboard, so the canvas is measured and fitted
+    // when the builder is first shown — not at boot, where the hidden SVG
+    // measures 0x0. fitView has a zoom floor of 0.45, so a wide journey can
+    // still run off the right edge; what must hold is that the journey starts
+    // at the top left of the viewport rather than somewhere off screen.
+    await expect(app.locator('.view.active')).toHaveId('view-dashboard');
+    await app.locator('.nav button[data-view="journeys"]').click();
+
+    const placed = await app.evaluate(() => {
+      const c = document.getElementById('canvas').getBoundingClientRect();
+      const first = document.querySelector('#canvas .node').getBoundingClientRect();
+      return {
+        insetLeft: Math.round(first.left - c.left),
+        insetTop: Math.round(first.top - c.top),
+        inside: first.right <= c.right && first.bottom <= c.bottom,
+      };
+    });
+    expect(placed.inside, 'the first step is fully inside the canvas').toBe(true);
+    expect(placed.insetLeft, 'the first step sits near the left edge').toBeLessThan(120);
+    expect(placed.insetTop, 'the first step sits near the top edge').toBeLessThan(160);
+  });
+
   test('the step palette collapses to icons', async ({ app }) => {
     await app.locator('.nav button[data-view="journeys"]').click();
     const jb = app.locator('#jb');
