@@ -21,7 +21,8 @@ With GitHub Pages enabled on this repo it is served at the repo's Pages URL.
 - **Reports**, **Parameters** (campaign form switches, rule defaults, channels & senders), **Release & licences**.
 - **Getting started** checklist per role, and **guided tours** with spotlight coachmarks — the campaign tour is interactive and ends with a real campaign waiting for approval.
 - **User manual** behind a button in the top bar — embedded in the file, so it works offline.
-- Etiya commercial palette; tooltips on every meaningful field.
+- **Etiya brand kit** — navy and lilac primary, orange as accent, turquoise as action, Roboto throughout. Palette, token map and contrast rules in [`docs/brand.md`](docs/brand.md); `tests/brand-audit.js` checks every rendered text node against AA.
+- Tooltips on every meaningful field.
 
 Demo data only (30 customers, 16 campaigns, 3 journeys). Nothing is sent.
 
@@ -35,6 +36,7 @@ docs/meetings/                    meeting notes (Turkish) that drove each iterat
 tests/specs/                      Playwright regression specs
 tests/screenshots/                reference screenshots of the main screens
 tests/README.md                   how to run them and what they cover
+docs/brand.md                     palette, token map, type scale, contrast rules
 tools/embed-manual.js             copies the user manual into index.html
 tests/tour.js                     standalone regression run for the guided tours
 tests/dm.js                       standalone regression run for the Datamart catalogue
@@ -66,6 +68,12 @@ The Datamart module has its own run, which documents a column and checks the seg
 
 ```bash
 cd tests && node dm.js
+```
+
+The brand audit measures the rendered contrast of every text node on every page:
+
+```bash
+cd tests && node brand-audit.js
 ```
 
 `docs/user-manual.md` is embedded in the prototype. After editing it, run `node tools/embed-manual.js`

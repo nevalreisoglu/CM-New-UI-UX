@@ -11,6 +11,15 @@ Version numbers follow the published artifact versions.
 - The prototype opens on the **Dashboard** instead of the Journey Builder, matching how the Dashboard is described everywhere else. The journey canvas is now fitted the first time the builder is opened rather than at boot, because `fitView` measures the SVG and it is 0x0 while the view is hidden; later visits keep the pan and zoom the user left behind.
 - **Escape** now closes the segment assistant dialog, like every other dialog in the prototype.
 
+## v44 — 23 Sept 2026
+**Etiya brand kit applied.** A visual re-skin through the CSS custom properties: no layout, wording, flow or behaviour changed.
+- **Colour**: primary navy `#242441` and lilac `#5D5D8D`, secondary orange `#F58220`, complimentary turquoise, and the kit's grey family. The top bar and footer are lilac, the left menu is navy with a lilac active row and an orange left bar. **Orange is accent, turquoise is action** — orange never carries white text, turquoise backgrounds only in the darkened CTA shades.
+- **Type**: Roboto 400/500/700 replaces Open Sans, on the kit's scale (body 14/20, card titles 22/28 medium, section headings 16/24 medium, labels 12–14 medium, 700 only for numbers that must dominate).
+- Journey step tints, chart series, the Gantt, e-mail and phone previews, code blocks and the simulation strip were all re-toned into the palette; no old palette value survives anywhere in the file.
+- **Three kit values were darkened** because they do not reach AA as text backgrounds: the CTA `#00879A` → `#00818F` (4.26 → 4.63:1), the orange ink `#B3610F` → `#9E560D` (4.04 → 4.94:1), and status ok `#2E7D32` → `#2A7230`.
+- `tests/brand-audit.js` measures the rendered contrast of every text node across every page at two widths with the menu open and collapsed: 8047 nodes, all AA.
+- See `docs/brand.md` for the palette, the token map and the type scale.
+
 ## v43 — 22 Sept 2026
 **Datamart catalogue.** Administration › Datamart was a disabled placeholder; it is now a data catalogue rather than a table-settings screen.
 - **List** of every datamart with type, key column, size, last load and a health pill (fresh / stale / failed), what uses it, and its relationships in plain words. Labelled actions; Delete is disabled with the reason when something depends on it.
