@@ -21,7 +21,7 @@ With GitHub Pages enabled on this repo it is served at the repo's Pages URL.
 - **Reports**, **Parameters** (campaign form switches, rule defaults, channels & senders), **Release & licences**.
 - **Getting started** checklist per role, and **guided tours** with spotlight coachmarks — the campaign tour is interactive and ends with a real campaign waiting for approval.
 - **User manual** behind a button in the top bar — embedded in the file, so it works offline.
-- **Etiya brand kit** — navy and lilac primary, orange as accent, turquoise as action, Roboto throughout. Palette, token map and contrast rules in [`docs/brand.md`](docs/brand.md); `tests/brand-audit.js` checks every rendered text node against AA.
+- **Etiya brand kit** — navy and lilac primary on light, translucent chrome, orange as accent, turquoise as action, Roboto throughout. Palette, token map and contrast rules in [`docs/brand.md`](docs/brand.md); `tests/brand-audit.js` checks every rendered text node against AA.
 - Tooltips on every meaningful field.
 
 Demo data only (30 customers, 16 campaigns, 3 journeys). Nothing is sent.

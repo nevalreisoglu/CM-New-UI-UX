@@ -30,17 +30,29 @@ const probe = () => {
      above or below their bar, so the bar is their DOM parent and not their
      visual background. */
   const overlaps = (a, b) => !(a.right <= b.left || a.left >= b.right || a.bottom <= b.top || a.top >= b.bottom);
+  /* Translucent surfaces (the menu and bars are washes over the page) are
+     composited, not skipped: collect every painted layer up to the first opaque
+     one, then paint them back up in order. Skipping them would measure text
+     against the page behind the wash and overstate its contrast. */
   const bgOf = (el) => {
     const box = el.getBoundingClientRect();
+    const layers = [];
     let n = el;
     while (n && n !== document.documentElement) {
-      const cs = getComputedStyle(n), c = parse(cs.backgroundColor);
-      if (c.length >= 3 && (c[3] === undefined || c[3] > 0.92)) {
-        if (n === el || overlaps(box, n.getBoundingClientRect())) return c.slice(0, 3);
+      const c = parse(getComputedStyle(n).backgroundColor);
+      const a = c.length >= 3 ? (c[3] === undefined ? 1 : c[3]) : 0;
+      if (a > 0 && (n === el || overlaps(box, n.getBoundingClientRect()))) {
+        layers.push([c[0], c[1], c[2], a]);
+        if (a >= 0.99) break;
       }
       n = n.parentElement;
     }
-    return [255, 255, 255];
+    let base = [255, 255, 255];
+    for (let i = layers.length - 1; i >= 0; i--) {
+      const [r, g, b, a] = layers[i];
+      base = [r * a + base[0] * (1 - a), g * a + base[1] * (1 - a), b * a + base[2] * (1 - a)];
+    }
+    return base;
   };
   const out = [];
   document.querySelectorAll('body *').forEach((el) => {
@@ -52,9 +64,10 @@ const probe = () => {
     if (parseFloat(cs.fontSize) < 1) return;   // collapsed rail hides captions with font-size:0
     const box = el.getBoundingClientRect();
     if (box.width < 1 || box.height < 1) return;
-    const fg = parse(cs.color);
-    if (fg[3] !== undefined && fg[3] < 0.6) return;
-    const r = ratio(fg.slice(0, 3), bgOf(el));
+    const fg = parse(cs.color), bg = bgOf(el);
+    const fa = fg[3] === undefined ? 1 : fg[3];
+    const fgEff = [0, 1, 2].map((i) => fg[i] * fa + bg[i] * (1 - fa));
+    const r = ratio(fgEff, bg);
     const size = parseFloat(cs.fontSize), w = +cs.fontWeight || 400;
     const large = size >= 24 || (size >= 18.66 && w >= 700) || (size >= 18 && w >= 600);
     out.push({ r: Math.round(r * 100) / 100, large, size, w, txt: txt.slice(0, 40), sel: el.tagName.toLowerCase() + '.' + (el.className || '').toString().split(' ')[0] });
