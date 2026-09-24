@@ -11,6 +11,13 @@ Version numbers follow the published artifact versions.
 - The prototype opens on the **Dashboard** instead of the Journey Builder, matching how the Dashboard is described everywhere else. The journey canvas is now fitted the first time the builder is opened rather than at boot, because `fitView` measures the SVG and it is 0x0 while the view is hidden; later visits keep the pan and zoom the user left behind.
 - **Escape** now closes the segment assistant dialog, like every other dialog in the prototype.
 
+## v45 — 24 Sept 2026
+**Translucent chrome.** The left menu, top bar and footer are now translucent washes of the brand navy and lilac instead of solid dark fills.
+- Why: the palette benchmark by Murat's team found most competitors and vendors have moved away from full dark backgrounds, and in review (call with Fahri Kerçek, 24 Sept) the solid navy menu kept pulling the eye to the chrome instead of the content. Same colours, far less weight.
+- Kept: the active menu row's 3px orange bar (now on a lilac wash), the orange logo mark, turquoise CTAs, orange accents in the content.
+- On the washes `--ink-3` fails (4.1–4.3:1), so secondary text on chrome uses `--ink-2` (≥ 6.8:1).
+- `tests/brand-audit.js` now composites translucent layers instead of skipping them — skipping would have measured chrome text against the page behind the wash and overstated its contrast. 8047 text nodes, all AA.
+
 ## v44 — 23 Sept 2026
 **Etiya brand kit applied.** A visual re-skin through the CSS custom properties: no layout, wording, flow or behaviour changed.
 - **Colour**: primary navy `#242441` and lilac `#5D5D8D`, secondary orange `#F58220`, complimentary turquoise, and the kit's grey family. The top bar and footer are lilac, the left menu is navy with a lilac active row and an orange left bar. **Orange is accent, turquoise is action** — orange never carries white text, turquoise backgrounds only in the darkened CTA shades.

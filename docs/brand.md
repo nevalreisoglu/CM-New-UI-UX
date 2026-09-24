@@ -53,10 +53,12 @@ the values changed.
 
 | Token | Value | Where it is used |
 | --- | --- | --- |
-| `--brand-navy` | `#242441` | left menu, mail preview header, code blocks, phone bezel |
-| `--brand-lilac` | `#5D5D8D` | top bar, footer, active menu row, Gantt "done" bars |
-| `--brand-lilac-line` | `#4E4E7A` | 1px border under the header, above the footer |
-| `--brand-nav-hover` | `#2E2E52` | menu item hover |
+| `--brand-navy` | `#242441` | mail preview header, code blocks, phone bezel |
+| `--brand-lilac` | `#5D5D8D` | Gantt "done" bars, lilac accents |
+| `--glass-nav` | navy at 4.5% | left menu — composites to `#E9EAED` over the page |
+| `--glass-bar` | lilac at 10% | top bar and footer — composites to `#E3E4EB` |
+| `--glass-hover` / `--glass-active` | navy 7% / lilac 16% | menu hover and active row |
+| `--glass-line` | navy at 10% | hairline under the top bar, beside the menu, above the footer |
 | `--sec` | `#F58220` | active-row left bar, KPI tile accents, node badge, current node glow, logo mark |
 | `--sec-light` | `#F9AA56` | assistant borders, parameter chips, avatar gradient |
 | `--sec-ink` | `#9E560D` | text on orange tints — header strips, table headers, stepper |
@@ -80,9 +82,22 @@ the values changed.
 brand families — turquoise, lilac, orange and grey washes with dark ink. Every
 tint/ink pair measures ≥ 4.5:1; the lowest is `--t-offer` at 4.58:1.
 
-**Dark-surface text** is solid rather than translucent white, so it can be
-measured: menu items `#D6D6E4` (10.4:1 on navy), group captions and the menu
-footnote `#9595B0` (5.13:1), menu icons `#BFBFD4`.
+### Chrome surfaces are translucent, not dark
+
+The menu, top bar and footer are **translucent washes of the brand hues**, not
+solid navy and lilac fills. The v44 kit mapping had them solid; the palette
+benchmark by Murat's team found that most competitors and vendors have moved
+away from full dark backgrounds, and in review (Fahri Kerçek, 24 Sept) the
+solid navy menu kept pulling the eye to the chrome instead of the content. Same
+colours, far less weight.
+
+What stays: the active menu row keeps its 3px orange bar on a lilac wash, and
+the logo keeps its orange block mark.
+
+**One consequence to remember:** on these surfaces `--ink-3` fails — 4.32:1 on
+the menu, 4.10:1 on the bars. Secondary text on chrome is therefore `--ink-2`
+(7.16:1 on the menu, 6.79:1 on the bars). Menu items and captions use `--ink-2`;
+the active item uses `--green-ink` (11.4:1).
 
 ---
 
@@ -128,8 +143,10 @@ every text node against its real background:
 cd tests && node brand-audit.js
 ```
 
-It resolves the background by walking up for the first opaque ancestor the
-element actually overlaps — a chart label positioned above its bar is measured
-against the card behind it, not against the bar it is a child of. It skips
-nodes the browser is not painting (`font-size:0` in the collapsed rail, zero-size
-boxes). Current run: **8047 text nodes, no failures.**
+It resolves the background by collecting every painted layer the element
+actually overlaps, up to the first opaque one, and **compositing them** — so text
+on a translucent wash is measured against the wash, not against the page behind
+it. A chart label positioned above its bar is measured against the card behind
+it, not against the bar it is a child of. Translucent text is composited the
+same way. It skips nodes the browser is not painting (`font-size:0` in the
+collapsed rail, zero-size boxes). Current run: **8047 text nodes, no failures.**
